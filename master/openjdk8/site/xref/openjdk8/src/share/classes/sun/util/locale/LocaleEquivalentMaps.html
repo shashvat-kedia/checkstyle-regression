@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>LocaleEquivalentMaps xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<div id="overview"><a href="../../../../../../../../apidocs/sun/util/locale/LocaleEquivalentMaps.html">View Javadoc</a></div><pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright (c) 2012, 2013, Oracle and/or its affiliates. All rights reserved.</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * This code is free software; you can redistribute it and/or modify it</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * under the terms of the GNU General Public License version 2 only, as</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * published by the Free Software Foundation.  Oracle designates this</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * particular file as subject to the "Classpath" exception as provided</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * by Oracle in the LICENSE file that accompanied this code.</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * This code is distributed in the hope that it will be useful, but WITHOUT</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * version 2 for more details (a copy is included in the LICENSE file that</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * accompanied this code).</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> * You should have received a copy of the GNU General Public License version</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> * 2 along with this work; if not, write to the Free Software Foundation,</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_comment"> * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_comment"> * or visit www.oracle.com if you need additional information or have any</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_comment"> * questions.</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">package</strong> sun.util.locale;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> java.util.HashMap;
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">import</strong> java.util.Map;
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment"> * Locale equivalent map for BCP47 Locale matching</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> <a href="../../../sun/util/locale/LocaleEquivalentMaps.html">LocaleEquivalentMaps</a> {
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>      <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Map&lt;String, String&gt; singleEquivMap;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Map&lt;String, <a href="../../../java/lang/String.html">String</a>[]&gt; multiEquivsMap;
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>      <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Map&lt;String, String&gt; regionVariantEquivMap;
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>      <strong class="jxr_keyword">static</strong> {
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>          singleEquivMap = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          multiEquivsMap = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          regionVariantEquivMap = <strong class="jxr_keyword">new</strong> HashMap&lt;&gt;();
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <em class="jxr_comment">// This is an auto-generated file and should not be manually edited.</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <em class="jxr_comment">//   LSR Revision: 2013-09-23</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          singleEquivMap.put(<span class="jxr_string">"acn"</span>, <span class="jxr_string">"xia"</span>);
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          singleEquivMap.put(<span class="jxr_string">"adx"</span>, <span class="jxr_string">"pcr"</span>);
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          singleEquivMap.put(<span class="jxr_string">"ami"</span>, <span class="jxr_string">"i-ami"</span>);
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          singleEquivMap.put(<span class="jxr_string">"art-lojban"</span>, <span class="jxr_string">"jbo"</span>);
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          singleEquivMap.put(<span class="jxr_string">"ase"</span>, <span class="jxr_string">"sgn-us"</span>);
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          singleEquivMap.put(<span class="jxr_string">"ayx"</span>, <span class="jxr_string">"nun"</span>);
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>          singleEquivMap.put(<span class="jxr_string">"bfi"</span>, <span class="jxr_string">"sgn-gb"</span>);
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>          singleEquivMap.put(<span class="jxr_string">"bjd"</span>, <span class="jxr_string">"drl"</span>);
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          singleEquivMap.put(<span class="jxr_string">"bnn"</span>, <span class="jxr_string">"i-bnn"</span>);
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          singleEquivMap.put(<span class="jxr_string">"bzs"</span>, <span class="jxr_string">"sgn-br"</span>);
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          singleEquivMap.put(<span class="jxr_string">"cir"</span>, <span class="jxr_string">"meg"</span>);
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          singleEquivMap.put(<span class="jxr_string">"cjr"</span>, <span class="jxr_string">"mom"</span>);
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          singleEquivMap.put(<span class="jxr_string">"cka"</span>, <span class="jxr_string">"cmr"</span>);
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          singleEquivMap.put(<span class="jxr_string">"cmk"</span>, <span class="jxr_string">"xch"</span>);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          singleEquivMap.put(<span class="jxr_string">"cmn-hans"</span>, <span class="jxr_string">"zh-cmn-hans"</span>);
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          singleEquivMap.put(<span class="jxr_string">"cmn-hant"</span>, <span class="jxr_string">"zh-cmn-hant"</span>);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          singleEquivMap.put(<span class="jxr_string">"cmr"</span>, <span class="jxr_string">"cka"</span>);
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>          singleEquivMap.put(<span class="jxr_string">"csn"</span>, <span class="jxr_string">"sgn-co"</span>);
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>          singleEquivMap.put(<span class="jxr_string">"dev"</span>, <span class="jxr_string">"gav"</span>);
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          singleEquivMap.put(<span class="jxr_string">"drh"</span>, <span class="jxr_string">"khk"</span>);
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          singleEquivMap.put(<span class="jxr_string">"drl"</span>, <span class="jxr_string">"bjd"</span>);
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          singleEquivMap.put(<span class="jxr_string">"dse"</span>, <span class="jxr_string">"sgn-nl"</span>);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>          singleEquivMap.put(<span class="jxr_string">"dsl"</span>, <span class="jxr_string">"sgn-dk"</span>);
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>          singleEquivMap.put(<span class="jxr_string">"fsl"</span>, <span class="jxr_string">"sgn-fr"</span>);
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          singleEquivMap.put(<span class="jxr_string">"gal"</span>, <span class="jxr_string">"ilw"</span>);
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>          singleEquivMap.put(<span class="jxr_string">"gan"</span>, <span class="jxr_string">"zh-gan"</span>);
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>          singleEquivMap.put(<span class="jxr_string">"gav"</span>, <span class="jxr_string">"dev"</span>);
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          singleEquivMap.put(<span class="jxr_string">"gsg"</span>, <span class="jxr_string">"sgn-de"</span>);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>          singleEquivMap.put(<span class="jxr_string">"gss"</span>, <span class="jxr_string">"sgn-gr"</span>);
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>          singleEquivMap.put(<span class="jxr_string">"he"</span>, <span class="jxr_string">"iw"</span>);
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          singleEquivMap.put(<span class="jxr_string">"hle"</span>, <span class="jxr_string">"sca"</span>);
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>          singleEquivMap.put(<span class="jxr_string">"hrr"</span>, <span class="jxr_string">"jal"</span>);
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          singleEquivMap.put(<span class="jxr_string">"hsn"</span>, <span class="jxr_string">"zh-xiang"</span>);
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>          singleEquivMap.put(<span class="jxr_string">"i-ami"</span>, <span class="jxr_string">"ami"</span>);
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          singleEquivMap.put(<span class="jxr_string">"i-bnn"</span>, <span class="jxr_string">"bnn"</span>);
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>          singleEquivMap.put(<span class="jxr_string">"i-klingon"</span>, <span class="jxr_string">"tlh"</span>);
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>          singleEquivMap.put(<span class="jxr_string">"i-lux"</span>, <span class="jxr_string">"lb"</span>);
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>          singleEquivMap.put(<span class="jxr_string">"i-navajo"</span>, <span class="jxr_string">"nv"</span>);
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>          singleEquivMap.put(<span class="jxr_string">"i-pwn"</span>, <span class="jxr_string">"pwn"</span>);
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>          singleEquivMap.put(<span class="jxr_string">"i-tao"</span>, <span class="jxr_string">"tao"</span>);
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>          singleEquivMap.put(<span class="jxr_string">"i-tay"</span>, <span class="jxr_string">"tay"</span>);
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>          singleEquivMap.put(<span class="jxr_string">"i-tsu"</span>, <span class="jxr_string">"tsu"</span>);
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>          singleEquivMap.put(<span class="jxr_string">"ibi"</span>, <span class="jxr_string">"opa"</span>);
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>          singleEquivMap.put(<span class="jxr_string">"id"</span>, <span class="jxr_string">"in"</span>);
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>          singleEquivMap.put(<span class="jxr_string">"ilw"</span>, <span class="jxr_string">"gal"</span>);
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>          singleEquivMap.put(<span class="jxr_string">"in"</span>, <span class="jxr_string">"id"</span>);
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>          singleEquivMap.put(<span class="jxr_string">"ise"</span>, <span class="jxr_string">"sgn-it"</span>);
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>          singleEquivMap.put(<span class="jxr_string">"isg"</span>, <span class="jxr_string">"sgn-ie"</span>);
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>          singleEquivMap.put(<span class="jxr_string">"iw"</span>, <span class="jxr_string">"he"</span>);
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>          singleEquivMap.put(<span class="jxr_string">"jal"</span>, <span class="jxr_string">"hrr"</span>);
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>          singleEquivMap.put(<span class="jxr_string">"jbo"</span>, <span class="jxr_string">"art-lojban"</span>);
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>          singleEquivMap.put(<span class="jxr_string">"ji"</span>, <span class="jxr_string">"yi"</span>);
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>          singleEquivMap.put(<span class="jxr_string">"jsl"</span>, <span class="jxr_string">"sgn-jp"</span>);
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>         singleEquivMap.put(<span class="jxr_string">"jv"</span>, <span class="jxr_string">"jw"</span>);
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>         singleEquivMap.put(<span class="jxr_string">"jw"</span>, <span class="jxr_string">"jv"</span>);
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>         singleEquivMap.put(<span class="jxr_string">"kgh"</span>, <span class="jxr_string">"kml"</span>);
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>         singleEquivMap.put(<span class="jxr_string">"khk"</span>, <span class="jxr_string">"drh"</span>);
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>         singleEquivMap.put(<span class="jxr_string">"kml"</span>, <span class="jxr_string">"kgh"</span>);
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>         singleEquivMap.put(<span class="jxr_string">"lb"</span>, <span class="jxr_string">"i-lux"</span>);
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>         singleEquivMap.put(<span class="jxr_string">"lcq"</span>, <span class="jxr_string">"ppr"</span>);
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>         singleEquivMap.put(<span class="jxr_string">"lrr"</span>, <span class="jxr_string">"yma"</span>);
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>         singleEquivMap.put(<span class="jxr_string">"meg"</span>, <span class="jxr_string">"cir"</span>);
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>         singleEquivMap.put(<span class="jxr_string">"mfs"</span>, <span class="jxr_string">"sgn-mx"</span>);
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>         singleEquivMap.put(<span class="jxr_string">"mo"</span>, <span class="jxr_string">"ro"</span>);
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>         singleEquivMap.put(<span class="jxr_string">"mom"</span>, <span class="jxr_string">"cjr"</span>);
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>         singleEquivMap.put(<span class="jxr_string">"nan"</span>, <span class="jxr_string">"zh-min-nan"</span>);
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>         singleEquivMap.put(<span class="jxr_string">"nb"</span>, <span class="jxr_string">"no-bok"</span>);
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>         singleEquivMap.put(<span class="jxr_string">"ncs"</span>, <span class="jxr_string">"sgn-ni"</span>);
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>         singleEquivMap.put(<span class="jxr_string">"nn"</span>, <span class="jxr_string">"no-nyn"</span>);
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>         singleEquivMap.put(<span class="jxr_string">"no-bok"</span>, <span class="jxr_string">"nb"</span>);
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>         singleEquivMap.put(<span class="jxr_string">"no-nyn"</span>, <span class="jxr_string">"nn"</span>);
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>         singleEquivMap.put(<span class="jxr_string">"nsl"</span>, <span class="jxr_string">"sgn-no"</span>);
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>         singleEquivMap.put(<span class="jxr_string">"nun"</span>, <span class="jxr_string">"ayx"</span>);
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>         singleEquivMap.put(<span class="jxr_string">"nv"</span>, <span class="jxr_string">"i-navajo"</span>);
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>         singleEquivMap.put(<span class="jxr_string">"opa"</span>, <span class="jxr_string">"ibi"</span>);
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>         singleEquivMap.put(<span class="jxr_string">"pcr"</span>, <span class="jxr_string">"adx"</span>);
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>         singleEquivMap.put(<span class="jxr_string">"ppr"</span>, <span class="jxr_string">"lcq"</span>);
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>         singleEquivMap.put(<span class="jxr_string">"psr"</span>, <span class="jxr_string">"sgn-pt"</span>);
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>         singleEquivMap.put(<span class="jxr_string">"pwn"</span>, <span class="jxr_string">"i-pwn"</span>);
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>         singleEquivMap.put(<span class="jxr_string">"ras"</span>, <span class="jxr_string">"tie"</span>);
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>         singleEquivMap.put(<span class="jxr_string">"ro"</span>, <span class="jxr_string">"mo"</span>);
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>         singleEquivMap.put(<span class="jxr_string">"sca"</span>, <span class="jxr_string">"hle"</span>);
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>         singleEquivMap.put(<span class="jxr_string">"sfb"</span>, <span class="jxr_string">"sgn-be-fr"</span>);
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>         singleEquivMap.put(<span class="jxr_string">"sfs"</span>, <span class="jxr_string">"sgn-za"</span>);
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>         singleEquivMap.put(<span class="jxr_string">"sgg"</span>, <span class="jxr_string">"sgn-ch-de"</span>);
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>         singleEquivMap.put(<span class="jxr_string">"sgn-be-fr"</span>, <span class="jxr_string">"sfb"</span>);
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>         singleEquivMap.put(<span class="jxr_string">"sgn-be-nl"</span>, <span class="jxr_string">"vgt"</span>);
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>         singleEquivMap.put(<span class="jxr_string">"sgn-br"</span>, <span class="jxr_string">"bzs"</span>);
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>         singleEquivMap.put(<span class="jxr_string">"sgn-ch-de"</span>, <span class="jxr_string">"sgg"</span>);
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>         singleEquivMap.put(<span class="jxr_string">"sgn-co"</span>, <span class="jxr_string">"csn"</span>);
+<a class="jxr_linenumber" name="L137" href="#L137">137</a>         singleEquivMap.put(<span class="jxr_string">"sgn-de"</span>, <span class="jxr_string">"gsg"</span>);
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>         singleEquivMap.put(<span class="jxr_string">"sgn-dk"</span>, <span class="jxr_string">"dsl"</span>);
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>         singleEquivMap.put(<span class="jxr_string">"sgn-es"</span>, <span class="jxr_string">"ssp"</span>);
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>         singleEquivMap.put(<span class="jxr_string">"sgn-fr"</span>, <span class="jxr_string">"fsl"</span>);
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>         singleEquivMap.put(<span class="jxr_string">"sgn-gb"</span>, <span class="jxr_string">"bfi"</span>);
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>         singleEquivMap.put(<span class="jxr_string">"sgn-gr"</span>, <span class="jxr_string">"gss"</span>);
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>         singleEquivMap.put(<span class="jxr_string">"sgn-ie"</span>, <span class="jxr_string">"isg"</span>);
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>         singleEquivMap.put(<span class="jxr_string">"sgn-it"</span>, <span class="jxr_string">"ise"</span>);
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>         singleEquivMap.put(<span class="jxr_string">"sgn-jp"</span>, <span class="jxr_string">"jsl"</span>);
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>         singleEquivMap.put(<span class="jxr_string">"sgn-mx"</span>, <span class="jxr_string">"mfs"</span>);
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>         singleEquivMap.put(<span class="jxr_string">"sgn-ni"</span>, <span class="jxr_string">"ncs"</span>);
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>         singleEquivMap.put(<span class="jxr_string">"sgn-nl"</span>, <span class="jxr_string">"dse"</span>);
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>         singleEquivMap.put(<span class="jxr_string">"sgn-no"</span>, <span class="jxr_string">"nsl"</span>);
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>         singleEquivMap.put(<span class="jxr_string">"sgn-pt"</span>, <span class="jxr_string">"psr"</span>);
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>         singleEquivMap.put(<span class="jxr_string">"sgn-se"</span>, <span class="jxr_string">"swl"</span>);
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>         singleEquivMap.put(<span class="jxr_string">"sgn-us"</span>, <span class="jxr_string">"ase"</span>);
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>         singleEquivMap.put(<span class="jxr_string">"sgn-za"</span>, <span class="jxr_string">"sfs"</span>);
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>         singleEquivMap.put(<span class="jxr_string">"ssp"</span>, <span class="jxr_string">"sgn-es"</span>);
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>         singleEquivMap.put(<span class="jxr_string">"swl"</span>, <span class="jxr_string">"sgn-se"</span>);
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>         singleEquivMap.put(<span class="jxr_string">"tao"</span>, <span class="jxr_string">"i-tao"</span>);
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>         singleEquivMap.put(<span class="jxr_string">"tay"</span>, <span class="jxr_string">"i-tay"</span>);
+<a class="jxr_linenumber" name="L158" href="#L158">158</a>         singleEquivMap.put(<span class="jxr_string">"tie"</span>, <span class="jxr_string">"ras"</span>);
+<a class="jxr_linenumber" name="L159" href="#L159">159</a>         singleEquivMap.put(<span class="jxr_string">"tkk"</span>, <span class="jxr_string">"twm"</span>);
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>         singleEquivMap.put(<span class="jxr_string">"tlh"</span>, <span class="jxr_string">"i-klingon"</span>);
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>         singleEquivMap.put(<span class="jxr_string">"tlw"</span>, <span class="jxr_string">"weo"</span>);
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>         singleEquivMap.put(<span class="jxr_string">"tsu"</span>, <span class="jxr_string">"i-tsu"</span>);
+<a class="jxr_linenumber" name="L163" href="#L163">163</a>         singleEquivMap.put(<span class="jxr_string">"twm"</span>, <span class="jxr_string">"tkk"</span>);
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>         singleEquivMap.put(<span class="jxr_string">"vgt"</span>, <span class="jxr_string">"sgn-be-nl"</span>);
+<a class="jxr_linenumber" name="L165" href="#L165">165</a>         singleEquivMap.put(<span class="jxr_string">"weo"</span>, <span class="jxr_string">"tlw"</span>);
+<a class="jxr_linenumber" name="L166" href="#L166">166</a>         singleEquivMap.put(<span class="jxr_string">"wuu"</span>, <span class="jxr_string">"zh-wuu"</span>);
+<a class="jxr_linenumber" name="L167" href="#L167">167</a>         singleEquivMap.put(<span class="jxr_string">"xch"</span>, <span class="jxr_string">"cmk"</span>);
+<a class="jxr_linenumber" name="L168" href="#L168">168</a>         singleEquivMap.put(<span class="jxr_string">"xia"</span>, <span class="jxr_string">"acn"</span>);
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>         singleEquivMap.put(<span class="jxr_string">"yi"</span>, <span class="jxr_string">"ji"</span>);
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>         singleEquivMap.put(<span class="jxr_string">"yma"</span>, <span class="jxr_string">"lrr"</span>);
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>         singleEquivMap.put(<span class="jxr_string">"yos"</span>, <span class="jxr_string">"zom"</span>);
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>         singleEquivMap.put(<span class="jxr_string">"yue"</span>, <span class="jxr_string">"zh-yue"</span>);
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>         singleEquivMap.put(<span class="jxr_string">"zh-cmn-hans"</span>, <span class="jxr_string">"cmn-hans"</span>);
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>         singleEquivMap.put(<span class="jxr_string">"zh-cmn-hant"</span>, <span class="jxr_string">"cmn-hant"</span>);
+<a class="jxr_linenumber" name="L175" href="#L175">175</a>         singleEquivMap.put(<span class="jxr_string">"zh-gan"</span>, <span class="jxr_string">"gan"</span>);
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>         singleEquivMap.put(<span class="jxr_string">"zh-min-nan"</span>, <span class="jxr_string">"nan"</span>);
+<a class="jxr_linenumber" name="L177" href="#L177">177</a>         singleEquivMap.put(<span class="jxr_string">"zh-wuu"</span>, <span class="jxr_string">"wuu"</span>);
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>         singleEquivMap.put(<span class="jxr_string">"zh-xiang"</span>, <span class="jxr_string">"hsn"</span>);
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>         singleEquivMap.put(<span class="jxr_string">"zh-yue"</span>, <span class="jxr_string">"yue"</span>);
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>         singleEquivMap.put(<span class="jxr_string">"zom"</span>, <span class="jxr_string">"yos"</span>);
+<a class="jxr_linenumber" name="L181" href="#L181">181</a> 
+<a class="jxr_linenumber" name="L182" href="#L182">182</a>         multiEquivsMap.put(<span class="jxr_string">"ccq"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"rki"</span>, <span class="jxr_string">"ybd"</span>});
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>         multiEquivsMap.put(<span class="jxr_string">"cmn"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"zh-guoyu"</span>, <span class="jxr_string">"zh-cmn"</span>});
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>         multiEquivsMap.put(<span class="jxr_string">"drw"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"prs"</span>, <span class="jxr_string">"tnf"</span>});
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>         multiEquivsMap.put(<span class="jxr_string">"hak"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"i-hak"</span>, <span class="jxr_string">"zh-hakka"</span>});
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>         multiEquivsMap.put(<span class="jxr_string">"i-hak"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"hak"</span>, <span class="jxr_string">"zh-hakka"</span>});
+<a class="jxr_linenumber" name="L187" href="#L187">187</a>         multiEquivsMap.put(<span class="jxr_string">"mry"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"mst"</span>, <span class="jxr_string">"myt"</span>});
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>         multiEquivsMap.put(<span class="jxr_string">"mst"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"mry"</span>, <span class="jxr_string">"myt"</span>});
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>         multiEquivsMap.put(<span class="jxr_string">"myt"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"mry"</span>, <span class="jxr_string">"mst"</span>});
+<a class="jxr_linenumber" name="L190" href="#L190">190</a>         multiEquivsMap.put(<span class="jxr_string">"prs"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"drw"</span>, <span class="jxr_string">"tnf"</span>});
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>         multiEquivsMap.put(<span class="jxr_string">"rki"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"ccq"</span>, <span class="jxr_string">"ybd"</span>});
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>         multiEquivsMap.put(<span class="jxr_string">"tnf"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"prs"</span>, <span class="jxr_string">"drw"</span>});
+<a class="jxr_linenumber" name="L193" href="#L193">193</a>         multiEquivsMap.put(<span class="jxr_string">"ybd"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"rki"</span>, <span class="jxr_string">"ccq"</span>});
+<a class="jxr_linenumber" name="L194" href="#L194">194</a>         multiEquivsMap.put(<span class="jxr_string">"zh-cmn"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"cmn"</span>, <span class="jxr_string">"zh-guoyu"</span>});
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>         multiEquivsMap.put(<span class="jxr_string">"zh-guoyu"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"cmn"</span>, <span class="jxr_string">"zh-cmn"</span>});
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>         multiEquivsMap.put(<span class="jxr_string">"zh-hakka"</span>, <strong class="jxr_keyword">new</strong> <a href="../../../java/lang/String.html">String</a>[] {<span class="jxr_string">"hak"</span>, <span class="jxr_string">"i-hak"</span>});
+<a class="jxr_linenumber" name="L197" href="#L197">197</a> 
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>         regionVariantEquivMap.put(<span class="jxr_string">"-alalc97"</span>, <span class="jxr_string">"-heploc"</span>);
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>         regionVariantEquivMap.put(<span class="jxr_string">"-bu"</span>, <span class="jxr_string">"-mm"</span>);
+<a class="jxr_linenumber" name="L200" href="#L200">200</a>         regionVariantEquivMap.put(<span class="jxr_string">"-cd"</span>, <span class="jxr_string">"-zr"</span>);
+<a class="jxr_linenumber" name="L201" href="#L201">201</a>         regionVariantEquivMap.put(<span class="jxr_string">"-dd"</span>, <span class="jxr_string">"-de"</span>);
+<a class="jxr_linenumber" name="L202" href="#L202">202</a>         regionVariantEquivMap.put(<span class="jxr_string">"-de"</span>, <span class="jxr_string">"-dd"</span>);
+<a class="jxr_linenumber" name="L203" href="#L203">203</a>         regionVariantEquivMap.put(<span class="jxr_string">"-fr"</span>, <span class="jxr_string">"-fx"</span>);
+<a class="jxr_linenumber" name="L204" href="#L204">204</a>         regionVariantEquivMap.put(<span class="jxr_string">"-fx"</span>, <span class="jxr_string">"-fr"</span>);
+<a class="jxr_linenumber" name="L205" href="#L205">205</a>         regionVariantEquivMap.put(<span class="jxr_string">"-heploc"</span>, <span class="jxr_string">"-alalc97"</span>);
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>         regionVariantEquivMap.put(<span class="jxr_string">"-mm"</span>, <span class="jxr_string">"-bu"</span>);
+<a class="jxr_linenumber" name="L207" href="#L207">207</a>         regionVariantEquivMap.put(<span class="jxr_string">"-tl"</span>, <span class="jxr_string">"-tp"</span>);
+<a class="jxr_linenumber" name="L208" href="#L208">208</a>         regionVariantEquivMap.put(<span class="jxr_string">"-tp"</span>, <span class="jxr_string">"-tl"</span>);
+<a class="jxr_linenumber" name="L209" href="#L209">209</a>         regionVariantEquivMap.put(<span class="jxr_string">"-yd"</span>, <span class="jxr_string">"-ye"</span>);
+<a class="jxr_linenumber" name="L210" href="#L210">210</a>         regionVariantEquivMap.put(<span class="jxr_string">"-ye"</span>, <span class="jxr_string">"-yd"</span>);
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>         regionVariantEquivMap.put(<span class="jxr_string">"-zr"</span>, <span class="jxr_string">"-cd"</span>);
+<a class="jxr_linenumber" name="L212" href="#L212">212</a>     }
+<a class="jxr_linenumber" name="L213" href="#L213">213</a> 
+<a class="jxr_linenumber" name="L214" href="#L214">214</a> }
+</pre>
+<hr/>
+<div id="footer">Copyright &#169; 2019. All rights reserved.</div>
+</body>
+</html>
