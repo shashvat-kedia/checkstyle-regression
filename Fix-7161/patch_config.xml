@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE module PUBLIC
+          "-//Checkstyle//DTD Checkstyle Configuration 1.3//EN"
+          "https://checkstyle.org/dtds/configuration_1_3.dtd">
+          
+<module name="Checker">
+<property name="haltOnException" value="false"/>
+<module name="TreeWalker">
+<module name="SummaryJavadoc" />
+
+<!-- suppress javadoc parsing errors -->
+<module name="SuppressionXpathSingleFilter">
+<property name="message" value="Javadoc comment at column \d+ has parse error"/>
+</module>
+<module name="RightCurly">
+<property name="id" value="RightCurlyAlone"/>
+<property name="option" value="alone"/>
+<property name="tokens"
+value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT,
+INSTANCE_INIT, ENUM_DEF"/>
+</module>
+<module name="RightCurly">
+<property name="id" value="RightCurlyAloneOrSingleLine"/>
+<property name="option" value="alone_or_singleline"/>
+<property name="tokens"
+value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT,
+INSTANCE_INIT, ENUM_DEF"/>
+</module>
+<module name="RightCurly">
+<property name="id" value="RightCurlySame"/>
+<property name="option" value="same"/>
+<property name="tokens"
+value="CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT,
+INSTANCE_INIT, ENUM_DEF"/>
+</module>
+</module>
+<!-- suppress java parsing errors -->
+<module name="SuppressionSingleFilter">
+<property name="message" value="Exception occurred while parsing"/>
+<property name="checks" value="Checker"/>
+</module>
+</module>
