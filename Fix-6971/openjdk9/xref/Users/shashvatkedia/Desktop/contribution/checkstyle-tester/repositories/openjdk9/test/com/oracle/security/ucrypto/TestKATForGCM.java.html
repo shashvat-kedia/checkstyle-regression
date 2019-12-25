@@ -1,0 +1,317 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>TestKATForGCM xref</title>
+<link type="text/css" rel="stylesheet" href="../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright (c) 2014, Oracle and/or its affiliates. All rights reserved.</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * This code is free software; you can redistribute it and/or modify it</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * under the terms of the GNU General Public License version 2 only, as</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * published by the Free Software Foundation.</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * This code is distributed in the hope that it will be useful, but WITHOUT</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * version 2 for more details (a copy is included in the LICENSE file that</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * accompanied this code).</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * You should have received a copy of the GNU General Public License version</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> * 2 along with this work; if not, write to the Free Software Foundation,</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> * or visit www.oracle.com if you need additional information or have any</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_comment"> * questions.</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_comment"> * @test</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_comment"> * @bug 8014374</em>
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_comment"> * @summary Known Answer Test for AES cipher with GCM mode</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_comment"> * @author Valerie Peng</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> java.security.*;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> javax.crypto.*;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">import</strong> javax.crypto.spec.*;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">import</strong> java.math.*;
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <strong class="jxr_keyword">import</strong> java.util.*;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> TestKATForGCM <strong class="jxr_keyword">extends</strong> UcryptoTest {
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>          main(<strong class="jxr_keyword">new</strong> TestKATForGCM(), <strong class="jxr_keyword">null</strong>);
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      }
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>      <em class="jxr_comment">// Utility methods</em>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> byte[] HexToBytes(String hexVal) {
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>          <strong class="jxr_keyword">if</strong> (hexVal == <strong class="jxr_keyword">null</strong>) <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> byte[0];
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          byte[] result = <strong class="jxr_keyword">new</strong> byte[hexVal.length()/2];
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; result.length; i++) {
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>              <em class="jxr_comment">// 2 characters at a time</em>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>              String byteVal = hexVal.substring(2*i, 2*i +2);
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>              result[i] = Integer.valueOf(byteVal, 16).byteValue();
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          }
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          <strong class="jxr_keyword">return</strong> result;
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>      }
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> TestVector {
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          SecretKey key;
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          byte[] plainText;
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          byte[] aad;
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          byte[] cipherText;
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          byte[] tag;
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          GCMParameterSpec spec;
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          String info;
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>          TestVector(String key, String iv, String pt, String aad,
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>                     String ct, String tag) {
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>              <strong class="jxr_keyword">this</strong>.key = <strong class="jxr_keyword">new</strong> SecretKeySpec(HexToBytes(key), <span class="jxr_string">"AES"</span>);
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>              <strong class="jxr_keyword">this</strong>.plainText = HexToBytes(pt);
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>              <strong class="jxr_keyword">this</strong>.aad = HexToBytes(aad);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>              <strong class="jxr_keyword">this</strong>.cipherText = HexToBytes(ct);
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>              <strong class="jxr_keyword">this</strong>.tag = HexToBytes(tag);
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>              <strong class="jxr_keyword">this</strong>.spec = <strong class="jxr_keyword">new</strong> GCMParameterSpec(<strong class="jxr_keyword">this</strong>.tag.length * 8, HexToBytes(iv));
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>              <strong class="jxr_keyword">this</strong>.info = <span class="jxr_string">"key="</span> + key + <span class="jxr_string">", iv="</span> + iv + <span class="jxr_string">", pt="</span> + pt +
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>                  <span class="jxr_string">",aad="</span> + aad + <span class="jxr_string">", ct="</span> + ct + <span class="jxr_string">", tag="</span> + tag;
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          }
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>  
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>          <strong class="jxr_keyword">public</strong> String toString() {
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>              <strong class="jxr_keyword">return</strong> info;
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>          }
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>      }
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>  
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>      <em class="jxr_comment">// These test vectors are found off NIST's CAVP page</em>
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>      <em class="jxr_comment">// http://csrc.nist.gov/groups/STM/cavp/index.html</em>
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>      <em class="jxr_comment">// inside the link named "GCM Test Vectors", i.e.</em>
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>      <em class="jxr_comment">// http://csrc.nist.gov/groups/STM/cavp/documents/mac/gcmtestvectors.zip</em>
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>      <em class="jxr_comment">// CAVS 14.0, set of test vectors w/ count = 0, keysize = 128</em>
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> TestVector[] testValues = {
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>          <em class="jxr_comment">// 96-bit iv w/ 128/120/112/104/96-bit tags</em>
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>          <em class="jxr_comment">// no plain text, no aad</em>
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>          <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"11754cd72aec309bf52f7687212e8957"</span>,
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>                         <span class="jxr_string">"3c819d9a9bed087615030b65"</span>,
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>                         <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>                         <span class="jxr_string">"250327c674aaf477aef2675748cf6971"</span>),
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>          <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"272f16edb81a7abbea887357a58c1917"</span>,
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>                         <span class="jxr_string">"794ec588176c703d3d2a7a07"</span>,
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>                         <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>                         <span class="jxr_string">"b6e6f197168f5049aeda32dafbdaeb"</span>),
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>          <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"81b6844aab6a568c4556a2eb7eae752f"</span>,
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>                         <span class="jxr_string">"ce600f59618315a6829bef4d"</span>,
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>                         <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>                        <span class="jxr_string">"89b43e9dbc1b4f597dbbc7655bb5"</span>),
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"cde2f9a9b1a004165ef9dc981f18651b"</span>,
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>                        <span class="jxr_string">"29512c29566c7322e1e33e8e"</span>,
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>                        <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>                        <span class="jxr_string">"2e58ce7dabd107c82759c66a75"</span>),
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"b01e45cc3088aaba9fa43d81d481823f"</span>,
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>                        <span class="jxr_string">"5a2c4a66468713456a4bd5e1"</span>,
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>                        <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>                        <span class="jxr_string">"014280f944f53c681164b2ff"</span>),
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>         <em class="jxr_comment">// 96-bit iv w/ 128/120/112/104/96-bit tags</em>
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>         <em class="jxr_comment">// no plain text, 16-byte aad</em>
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"77be63708971c4e240d1cb79e8d77feb"</span>,
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>                        <span class="jxr_string">"e0e00f19fed7ba0136a797f3"</span>,
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>                        <span class="jxr_string">"7a43ec1d9c0a5a78a0b16533a6213cab"</span>,
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>                        <span class="jxr_string">"209fcc8d3675ed938e9c7166709dd946"</span>),
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"da0b615656135194ba6d3c851099bc48"</span>,
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>                        <span class="jxr_string">"d39d4b4d3cc927885090e6c3"</span>,
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>                        <span class="jxr_string">"e7e5e6f8dac913036cb2ff29e8625e0e"</span>,
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>                        <span class="jxr_string">"ab967711a5770461724460b07237e2"</span>),
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"7e0986937a88eef894235aba4a2f43b2"</span>,
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>                        <span class="jxr_string">"92c4a631695907166b422d60"</span>,
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>                        <span class="jxr_string">"85c185f8518f9f2cd597a8f9208fc76b"</span>,
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>                        <span class="jxr_string">"3bb916b728df94fe9d1916736be1"</span>),
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"c3db570d7f0c21e86b028f11465d1dc9"</span>,
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>                        <span class="jxr_string">"f86970f58ceef89fc7cb679e"</span>,
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>                        <span class="jxr_string">"c095240708c0f57c288d86090ae34ee1"</span>,
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>                        <span class="jxr_string">"e043c52160d652e82c7262fcf4"</span>),
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"bea48ae4980d27f357611014d4486625"</span>,
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>                        <span class="jxr_string">"32bddb5c3aa998a08556454c"</span>,
+<a class="jxr_linenumber" name="L137" href="#L137">137</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>                        <span class="jxr_string">"8a50b0b8c7654bced884f7f3afda2ead"</span>,
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>                        <span class="jxr_string">"8e0f6d8bf05ffebe6f500eb1"</span>),
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>         <em class="jxr_comment">// 96-bit iv w/ 128/120/112/104/96-bit tags</em>
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>         <em class="jxr_comment">// no plain text, 20-byte aad</em>
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"2fb45e5b8f993a2bfebc4b15b533e0b4"</span>,
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>                        <span class="jxr_string">"5b05755f984d2b90f94b8027"</span>,
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>                        <span class="jxr_string">"e85491b2202caf1d7dce03b97e09331c32473941"</span>,
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>                        <span class="jxr_string">"c75b7832b2a2d9bd827412b6ef5769db"</span>),
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"9bf406339fcef9675bbcf156aa1a0661"</span>,
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>                        <span class="jxr_string">"8be4a9543d40f542abacac95"</span>,
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>                        <span class="jxr_string">"7167cbf56971793186333a6685bbd58d47d379b3"</span>,
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>                        <span class="jxr_string">"5e7968d7bbd5ba58cfcc750e2ef8f1"</span>),
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"a2e962fff70fd0f4d63be728b80556fc"</span>,
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>                        <span class="jxr_string">"1fa7103483de43d09bc23db4"</span>,
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L158" href="#L158">158</a>                        <span class="jxr_string">"2a58edf1d53f46e4e7ee5e77ee7aeb60fc360658"</span>,
+<a class="jxr_linenumber" name="L159" href="#L159">159</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>                        <span class="jxr_string">"fa37f2dbbefab1451eae1d0d74ca"</span>),
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"6bf4fdce82926dcdfc52616ed5f23695"</span>,
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>                        <span class="jxr_string">"cc0f5899a10615567e1193ed"</span>,
+<a class="jxr_linenumber" name="L163" href="#L163">163</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>                        <span class="jxr_string">"3340655592374c1da2f05aac3ee111014986107f"</span>,
+<a class="jxr_linenumber" name="L165" href="#L165">165</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L166" href="#L166">166</a>                        <span class="jxr_string">"8ad3385cce3b5e7c985908192c"</span>),
+<a class="jxr_linenumber" name="L167" href="#L167">167</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"4df7a13e43c3d7b66b1a72fac5ba398e"</span>,
+<a class="jxr_linenumber" name="L168" href="#L168">168</a>                        <span class="jxr_string">"97179a3a2d417908dcf0fb28"</span>,
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>                        <span class="jxr_string">"cbb7fc0010c255661e23b07dbd804b1e06ae70ac"</span>,
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>                        <span class="jxr_string">"37791edae6c137ea946cfb40"</span>),
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>         <em class="jxr_comment">// 96-bit iv w/ 128-bit tags, 13/16/32/51-byte plain text, no aad</em>
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"fe9bb47deb3a61e423c2231841cfd1fb"</span>,
+<a class="jxr_linenumber" name="L175" href="#L175">175</a>                        <span class="jxr_string">"4d328eb776f500a2f7fb47aa"</span>,
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>                        <span class="jxr_string">"f1cc3818e421876bb6b8bbd6c9"</span>,
+<a class="jxr_linenumber" name="L177" href="#L177">177</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>                        <span class="jxr_string">"b88c5c1977b35b517b0aeae967"</span>,
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>                        <span class="jxr_string">"43fd4727fe5cdb4b5b42818dea7ef8c9"</span>),
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"7fddb57453c241d03efbed3ac44e371c"</span>,
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>                        <span class="jxr_string">"ee283a3fc75575e33efd4887"</span>,
+<a class="jxr_linenumber" name="L182" href="#L182">182</a>                        <span class="jxr_string">"d5de42b461646c255c87bd2962d3b9a2"</span>,
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>                        <span class="jxr_string">"2ccda4a5415cb91e135c2a0f78c9b2fd"</span>,
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>                        <span class="jxr_string">"b36d1df9b9d5e596f83e8b7f52971cb3"</span>),
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"9971071059abc009e4f2bd69869db338"</span>,
+<a class="jxr_linenumber" name="L187" href="#L187">187</a>                        <span class="jxr_string">"07a9a95ea3821e9c13c63251"</span>,
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>                        <span class="jxr_string">"f54bc3501fed4f6f6dfb5ea80106df0bd836e6826225b75c0222f6e859b35983"</span>,
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>                        <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L190" href="#L190">190</a>                        <span class="jxr_string">"0556c159f84ef36cb1602b4526b12009c775611bffb64dc0d9ca9297cd2c6a01"</span>,
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>                        <span class="jxr_string">"7870d9117f54811a346970f1de090c41"</span>),
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"594157ec4693202b030f33798b07176d"</span>,
+<a class="jxr_linenumber" name="L193" href="#L193">193</a>                        <span class="jxr_string">"49b12054082660803a1df3df"</span>,
+<a class="jxr_linenumber" name="L194" href="#L194">194</a> 
+<a class="jxr_linenumber" name="L195" href="#L195">195</a> <span class="jxr_string">"3feef98a976a1bd634f364ac428bb59cd51fb159ec1789946918dbd50ea6c9d594a3a31a5269b0da6936c29d063a5fa2cc8a1c"</span>,
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>                       <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L197" href="#L197">197</a> 
+<a class="jxr_linenumber" name="L198" href="#L198">198</a> <span class="jxr_string">"c1b7a46a335f23d65b8db4008a49796906e225474f4fe7d39e55bf2efd97fd82d4167de082ae30fa01e465a601235d8d68bc69"</span>,
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>                       <span class="jxr_string">"ba92d3661ce8b04687e8788d55417dc2"</span>),
+<a class="jxr_linenumber" name="L200" href="#L200">200</a>         <em class="jxr_comment">// 96-bit iv w/ 128-bit tags, 16-byte plain text, 16/20/48/90-byte aad</em>
+<a class="jxr_linenumber" name="L201" href="#L201">201</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"c939cc13397c1d37de6ae0e1cb7c423c"</span>,
+<a class="jxr_linenumber" name="L202" href="#L202">202</a>                        <span class="jxr_string">"b3d8cc017cbb89b39e0f67e2"</span>,
+<a class="jxr_linenumber" name="L203" href="#L203">203</a>                        <span class="jxr_string">"c3b3c41f113a31b73d9a5cd432103069"</span>,
+<a class="jxr_linenumber" name="L204" href="#L204">204</a>                        <span class="jxr_string">"24825602bd12a984e0092d3e448eda5f"</span>,
+<a class="jxr_linenumber" name="L205" href="#L205">205</a>                        <span class="jxr_string">"93fe7d9e9bfd10348a5606e5cafa7354"</span>,
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>                        <span class="jxr_string">"0032a1dc85f1c9786925a2e71d8272dd"</span>),
+<a class="jxr_linenumber" name="L207" href="#L207">207</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"d4a22488f8dd1d5c6c19a7d6ca17964c"</span>,
+<a class="jxr_linenumber" name="L208" href="#L208">208</a>                        <span class="jxr_string">"f3d5837f22ac1a0425e0d1d5"</span>,
+<a class="jxr_linenumber" name="L209" href="#L209">209</a>                        <span class="jxr_string">"7b43016a16896497fb457be6d2a54122"</span>,
+<a class="jxr_linenumber" name="L210" href="#L210">210</a>                        <span class="jxr_string">"f1c5d424b83f96c6ad8cb28ca0d20e475e023b5a"</span>,
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>                        <span class="jxr_string">"c2bd67eef5e95cac27e3b06e3031d0a8"</span>,
+<a class="jxr_linenumber" name="L212" href="#L212">212</a>                        <span class="jxr_string">"f23eacf9d1cdf8737726c58648826e9c"</span>),
+<a class="jxr_linenumber" name="L213" href="#L213">213</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"89850dd398e1f1e28443a33d40162664"</span>,
+<a class="jxr_linenumber" name="L214" href="#L214">214</a>                        <span class="jxr_string">"e462c58482fe8264aeeb7231"</span>,
+<a class="jxr_linenumber" name="L215" href="#L215">215</a>                        <span class="jxr_string">"2805cdefb3ef6cc35cd1f169f98da81a"</span>,
+<a class="jxr_linenumber" name="L216" href="#L216">216</a> <span class="jxr_string">"d74e99d1bdaa712864eec422ac507bddbe2b0d4633cd3dff29ce5059b49fe868526c59a2a3a604457bc2afea866e7606"</span>,
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>                        <span class="jxr_string">"ba80e244b7fc9025cd031d0f63677e06"</span>,
+<a class="jxr_linenumber" name="L218" href="#L218">218</a>                        <span class="jxr_string">"d84a8c3eac57d1bb0e890a8f461d1065"</span>),
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"bd7c5c63b7542b56a00ebe71336a1588"</span>,
+<a class="jxr_linenumber" name="L220" href="#L220">220</a>                        <span class="jxr_string">"87721f23ba9c3c8ea5571abc"</span>,
+<a class="jxr_linenumber" name="L221" href="#L221">221</a>                        <span class="jxr_string">"de15ddbb1e202161e8a79af6a55ac6f3"</span>,
+<a class="jxr_linenumber" name="L222" href="#L222">222</a> <span class="jxr_string">"a6ec8075a0d3370eb7598918f3b93e48444751624997b899a87fa6a9939f844e008aa8b70e9f4c3b1a19d3286bf543e7127bfecba1ad17a5ec53fccc26faecacc4c75369498eaa7d706aef634d0009279b11e4ba6c993e5e9ed9"</span>,
+<a class="jxr_linenumber" name="L223" href="#L223">223</a>                        <span class="jxr_string">"41eb28c0fee4d762de972361c863bc80"</span>,
+<a class="jxr_linenumber" name="L224" href="#L224">224</a>                        <span class="jxr_string">"9cb567220d0b252eb97bff46e4b00ff8"</span>),
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>         <em class="jxr_comment">// 8/1024-bit iv w/ 128-bit tag, no plain text, no aad</em>
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"1672c3537afa82004c6b8a46f6f0d026"</span>,
+<a class="jxr_linenumber" name="L227" href="#L227">227</a>                        <span class="jxr_string">"05"</span>,
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>                        <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L229" href="#L229">229</a>                        <span class="jxr_string">"8e2ad721f9455f74d8b53d3141f27e8e"</span>),
+<a class="jxr_linenumber" name="L230" href="#L230">230</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"d0f1f4defa1e8c08b4b26d576392027c"</span>,
+<a class="jxr_linenumber" name="L231" href="#L231">231</a> <span class="jxr_string">"42b4f01eb9f5a1ea5b1eb73b0fb0baed54f387ecaa0393c7d7dffc6af50146ecc021abf7eb9038d4303d91f8d741a11743166c0860208bcc02c6258fd9511a2fa626f96d60b72fcff773af4e88e7a923506e4916ecbd814651e9f445adef4ad6a6b6c7290cc13b956130eef5b837c939fcac0cbbcc9656cd75b13823ee5acdac"</span>,
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>                        <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>, <strong class="jxr_keyword">null</strong>,
+<a class="jxr_linenumber" name="L233" href="#L233">233</a>                        <span class="jxr_string">"7ab49b57ddf5f62c427950111c5c4f0d"</span>),
+<a class="jxr_linenumber" name="L234" href="#L234">234</a>         <em class="jxr_comment">// 8-bit iv w/ 128-bit tag, 13-byte plain text, 90-byte aad</em>
+<a class="jxr_linenumber" name="L235" href="#L235">235</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"9f79239f0904eace50784b863e723f6b"</span>,
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>                        <span class="jxr_string">"d9"</span>,
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>                        <span class="jxr_string">"bdb0bb10c87965acd34d146171"</span>,
+<a class="jxr_linenumber" name="L238" href="#L238">238</a> <span class="jxr_string">"44db436089327726c5f01139e1f339735c9e85514ccc2f167bad728010fb34a9072a9794c8a5e7361b1d0dbcdc9ac4091e354bb2896561f0486645252e9c78c86beece91bfa4f7cc4a8794ce1f305b1b735efdbf1ed1563c0be0"</span>,
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>                        <span class="jxr_string">"7e5a7c8dadb3f0c7335b4d9d8d"</span>,
+<a class="jxr_linenumber" name="L240" href="#L240">240</a>                        <span class="jxr_string">"6b6ef1f53723a89f3bb7c6d043840717"</span>),
+<a class="jxr_linenumber" name="L241" href="#L241">241</a>         <em class="jxr_comment">// 1024-bit iv w/ 128-bit tag, 51-byte plain text, 48-byte aad</em>
+<a class="jxr_linenumber" name="L242" href="#L242">242</a>         <strong class="jxr_keyword">new</strong> TestVector(<span class="jxr_string">"141f1ce91989b07e7eb6ae1dbd81ea5e"</span>,
+<a class="jxr_linenumber" name="L243" href="#L243">243</a> 
+<a class="jxr_linenumber" name="L244" href="#L244">244</a> <span class="jxr_string">"49451da24bd6074509d3cebc2c0394c972e6934b45a1d91f3ce1d3ca69e194aa1958a7c21b6f21d530ce6d2cc5256a3f846b6f9d2f38df0102c4791e57df038f6e69085646007df999751e248e06c47245f4cd3b8004585a7470dee1690e9d2d63169a58d243c0b57b3e5b4a481a3e4e8c60007094ef3adea2e8f05dd3a1396f"</span>,
+<a class="jxr_linenumber" name="L245" href="#L245">245</a> <span class="jxr_string">"d384305af2388699aa302f510913fed0f2cb63ba42efa8c5c9de2922a2ec2fe87719dadf1eb0aef212b51e74c9c5b934104a43"</span>,
+<a class="jxr_linenumber" name="L246" href="#L246">246</a> <span class="jxr_string">"630cf18a91cc5a6481ac9eefd65c24b1a3c93396bd7294d6b8ba323951727666c947a21894a079ef061ee159c05beeb4"</span>,
+<a class="jxr_linenumber" name="L247" href="#L247">247</a> <span class="jxr_string">"f4c34e5fbe74c0297313268296cd561d59ccc95bbfcdfcdc71b0097dbd83240446b28dc088abd42b0fc687f208190ff24c0548"</span>,
+<a class="jxr_linenumber" name="L248" href="#L248">248</a>                       <span class="jxr_string">"dbb93bbb56d0439cd09f620a57687f5d"</span>),
+<a class="jxr_linenumber" name="L249" href="#L249">249</a>     };
+<a class="jxr_linenumber" name="L250" href="#L250">250</a> 
+<a class="jxr_linenumber" name="L251" href="#L251">251</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">void</strong> doTest(Provider p) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="L252" href="#L252">252</a>         <strong class="jxr_keyword">boolean</strong> testFailed = false;
+<a class="jxr_linenumber" name="L253" href="#L253">253</a>         Cipher c = <strong class="jxr_keyword">null</strong>;
+<a class="jxr_linenumber" name="L254" href="#L254">254</a>         <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L255" href="#L255">255</a>             c = Cipher.getInstance(<span class="jxr_string">"AES/GCM/NoPadding"</span>, p);
+<a class="jxr_linenumber" name="L256" href="#L256">256</a>         } <strong class="jxr_keyword">catch</strong> (NoSuchAlgorithmException nsae) {
+<a class="jxr_linenumber" name="L257" href="#L257">257</a>             System.out.println(<span class="jxr_string">"Skipping Test due to no GCM support"</span>);
+<a class="jxr_linenumber" name="L258" href="#L258">258</a>             <strong class="jxr_keyword">return</strong>;
+<a class="jxr_linenumber" name="L259" href="#L259">259</a>         }
+<a class="jxr_linenumber" name="L260" href="#L260">260</a> 
+<a class="jxr_linenumber" name="L261" href="#L261">261</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; testValues.length; i++) {
+<a class="jxr_linenumber" name="L262" href="#L262">262</a>             <strong class="jxr_keyword">try</strong> {
+<a class="jxr_linenumber" name="L263" href="#L263">263</a>                 c.init(Cipher.ENCRYPT_MODE, testValues[i].key, testValues[i].spec);
+<a class="jxr_linenumber" name="L264" href="#L264">264</a>                 c.updateAAD(testValues[i].aad);
+<a class="jxr_linenumber" name="L265" href="#L265">265</a>                 byte[] ctPlusTag = c.doFinal(testValues[i].plainText);
+<a class="jxr_linenumber" name="L266" href="#L266">266</a> 
+<a class="jxr_linenumber" name="L267" href="#L267">267</a>                 c.init(Cipher.DECRYPT_MODE, testValues[i].key, testValues[i].spec);
+<a class="jxr_linenumber" name="L268" href="#L268">268</a>                 c.updateAAD(testValues[i].aad);
+<a class="jxr_linenumber" name="L269" href="#L269">269</a>                 byte[] pt = c.doFinal(ctPlusTag); <em class="jxr_comment">// should fail if tag mismatched</em>
+<a class="jxr_linenumber" name="L270" href="#L270">270</a> 
+<a class="jxr_linenumber" name="L271" href="#L271">271</a>                 <em class="jxr_comment">// check encryption/decryption results just to be sure</em>
+<a class="jxr_linenumber" name="L272" href="#L272">272</a>                 <strong class="jxr_keyword">if</strong> (!Arrays.equals(testValues[i].plainText, pt)) {
+<a class="jxr_linenumber" name="L273" href="#L273">273</a>                     System.out.println(<span class="jxr_string">"PlainText diff failed for test# "</span> + i);
+<a class="jxr_linenumber" name="L274" href="#L274">274</a>                     testFailed = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L275" href="#L275">275</a>                 }
+<a class="jxr_linenumber" name="L276" href="#L276">276</a>                 <strong class="jxr_keyword">int</strong> ctLen = testValues[i].cipherText.length;
+<a class="jxr_linenumber" name="L277" href="#L277">277</a>                 <strong class="jxr_keyword">if</strong> (!Arrays.equals(testValues[i].cipherText,
+<a class="jxr_linenumber" name="L278" href="#L278">278</a>                                    Arrays.copyOf(ctPlusTag, ctLen))) {
+<a class="jxr_linenumber" name="L279" href="#L279">279</a>                     System.out.println(<span class="jxr_string">"CipherText diff failed for test# "</span> + i);
+<a class="jxr_linenumber" name="L280" href="#L280">280</a>                     testFailed = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L281" href="#L281">281</a>                 }
+<a class="jxr_linenumber" name="L282" href="#L282">282</a>                 <strong class="jxr_keyword">int</strong> tagLen = testValues[i].tag.length;
+<a class="jxr_linenumber" name="L283" href="#L283">283</a>                 <strong class="jxr_keyword">if</strong> (!Arrays.equals
+<a class="jxr_linenumber" name="L284" href="#L284">284</a>                     (testValues[i].tag,
+<a class="jxr_linenumber" name="L285" href="#L285">285</a>                      Arrays.copyOfRange(ctPlusTag, ctLen, ctLen+tagLen))) {
+<a class="jxr_linenumber" name="L286" href="#L286">286</a>                     System.out.println(<span class="jxr_string">"Tag diff failed for test# "</span> + i);
+<a class="jxr_linenumber" name="L287" href="#L287">287</a>                     testFailed = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L288" href="#L288">288</a>                 }
+<a class="jxr_linenumber" name="L289" href="#L289">289</a>             } <strong class="jxr_keyword">catch</strong> (Exception ex) {
+<a class="jxr_linenumber" name="L290" href="#L290">290</a>                 <em class="jxr_comment">// continue testing other test vectors</em>
+<a class="jxr_linenumber" name="L291" href="#L291">291</a>                 System.out.println(<span class="jxr_string">"Failed Test Vector: "</span> + testValues[i]);
+<a class="jxr_linenumber" name="L292" href="#L292">292</a>                 ex.printStackTrace();
+<a class="jxr_linenumber" name="L293" href="#L293">293</a>                 testFailed = <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L294" href="#L294">294</a>                 <strong class="jxr_keyword">continue</strong>;
+<a class="jxr_linenumber" name="L295" href="#L295">295</a>             }
+<a class="jxr_linenumber" name="L296" href="#L296">296</a>         }
+<a class="jxr_linenumber" name="L297" href="#L297">297</a>         <strong class="jxr_keyword">if</strong> (testFailed) {
+<a class="jxr_linenumber" name="L298" href="#L298">298</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> Exception(<span class="jxr_string">"Test Failed"</span>);
+<a class="jxr_linenumber" name="L299" href="#L299">299</a>         }
+<a class="jxr_linenumber" name="L300" href="#L300">300</a>         <em class="jxr_comment">// passed all tests...hooray!</em>
+<a class="jxr_linenumber" name="L301" href="#L301">301</a>         System.out.println(<span class="jxr_string">"Test Passed"</span>);
+<a class="jxr_linenumber" name="L302" href="#L302">302</a>     }
+<a class="jxr_linenumber" name="L303" href="#L303">303</a> }
+<a class="jxr_linenumber" name="L304" href="#L304">304</a> 
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>

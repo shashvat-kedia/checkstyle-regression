@@ -1,0 +1,1078 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>HyperbolicTests xref</title>
+<link type="text/css" rel="stylesheet" href="../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * This code is free software; you can redistribute it and/or modify it</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * under the terms of the GNU General Public License version 2 only, as</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * published by the Free Software Foundation.</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * This code is distributed in the hope that it will be useful, but WITHOUT</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * version 2 for more details (a copy is included in the LICENSE file that</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * accompanied this code).</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * You should have received a copy of the GNU General Public License version</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> * 2 along with this work; if not, write to the Free Software Foundation,</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> * or visit www.oracle.com if you need additional information or have any</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_comment"> * questions.</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_comment"> * @test</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_comment"> * @bug 4851625 4900189 4939441</em>
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_comment"> * @summary Tests for {Math, StrictMath}.{sinh, cosh, tanh}</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_comment"> * @author Joseph D. Darcy</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> sun.misc.DoubleConsts;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">import</strong> sun.misc.FpUtils;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> HyperbolicTests {
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>      <strong class="jxr_keyword">private</strong> HyperbolicTests(){}
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> NaNd = Double.NaN;
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  <em class="jxr_javadoccomment">     * Test accuracy of {Math, StrictMath}.sinh.  The specified</em>
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  <em class="jxr_javadoccomment">     * accuracy is 2.5 ulps.</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  <em class="jxr_javadoccomment">     * The defintion of sinh(x) is</em>
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  <em class="jxr_javadoccomment">     * (e^x - e^(-x))/2</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">     * The series expansion of sinh(x) =</em>
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>  <em class="jxr_javadoccomment">     * x + x^3/3! + x^5/5! + x^7/7! +...</em>
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>  <em class="jxr_javadoccomment">     * Therefore,</em>
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">     * 1. For large values of x sinh(x) ~= signum(x)*exp(|x|)/2</em>
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>  <em class="jxr_javadoccomment">     * 2. For small values of x, sinh(x) ~= x.</em>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment">     * Additionally, sinh is an odd function; sinh(-x) = -sinh(x).</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>  <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>      <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> testSinh() {
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          <strong class="jxr_keyword">int</strong> failures = 0;
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>  <em class="jxr_comment">         * Array elements below generated using a quad sinh</em>
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  <em class="jxr_comment">         * implementation.  Rounded to a double, the quad result</em>
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  <em class="jxr_comment">         * *should* be correctly rounded, unless we are quite unlucky.</em>
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>  <em class="jxr_comment">         * Assuming the quad value is a correctly rounded double, the</em>
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  <em class="jxr_comment">         * allowed error is 3.0 ulps instead of 2.5 since the quad</em>
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>  <em class="jxr_comment">         * value rounded to double can have its own 1/2 ulp error.</em>
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  <em class="jxr_comment">         */</em>
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>          <strong class="jxr_keyword">double</strong> [][] testCases = {
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>              <em class="jxr_comment">// x                sinh(x)</em>
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>              {0.0625,            0.06254069805219182172183988501029229},
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>              {0.1250,            0.12532577524111545698205754229137154},
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>              {0.1875,            0.18860056562029018382047025055167585},
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>              {0.2500,            0.25261231680816830791412515054205787},
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>              {0.3125,            0.31761115611357728583959867611490292},
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>              {0.3750,            0.38385106791361456875429567642050245},
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>              {0.4375,            0.45159088610312053032509815226723017},
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>              {0.5000,            0.52109530549374736162242562641149155},
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>              {0.5625,            0.59263591611468777373870867338492247},
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>              {0.6250,            0.66649226445661608227260655608302908},
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>              {0.6875,            0.74295294580567543571442036910465007},
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>              {0.7500,            0.82231673193582998070366163444691386},
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>              {0.8125,            0.90489373856606433650504536421491368},
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>              {0.8750,            0.99100663714429475605317427568995231},
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>              {0.9375,            1.08099191569306394011007867453992548},
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>              {1.0000,            1.17520119364380145688238185059560082},
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>              {1.0625,            1.27400259579739321279181130344911907},
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>              {1.1250,            1.37778219077984075760379987065228373},
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>              {1.1875,            1.48694549961380717221109202361777593},
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>              {1.2500,            1.60191908030082563790283030151221415},
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>              {1.3125,            1.72315219460596010219069206464391528},
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>              {1.3750,            1.85111856355791532419998548438506416},
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>              {1.4375,            1.98631821852425112898943304217629457},
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>              {1.5000,            2.12927945509481749683438749467763195},
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>              {1.5625,            2.28056089740825247058075476705718764},
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>              {1.6250,            2.44075368098794353221372986997161132},
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>              {1.6875,            2.61048376261693140366028569794027603},
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>              {1.7500,            2.79041436627764265509289122308816092},
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>             {1.8125,            2.98124857471401377943765253243875520},
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>             {1.8750,            3.18373207674259205101326780071803724},
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>             {1.9375,            3.39865608104779099764440244167531810},
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>             {2.0000,            3.62686040784701876766821398280126192},
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>             {2.0625,            3.86923677050642806693938384073620450},
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>             {2.1250,            4.12673225993027252260441410537905269},
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>             {2.1875,            4.40035304533919660406976249684469164},
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>             {2.2500,            4.69116830589833069188357567763552003},
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>             {2.3125,            5.00031440855811351554075363240262157},
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>             {2.3750,            5.32899934843284576394645856548481489},
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>             {2.4375,            5.67850746906785056212578751630266858},
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>             {2.5000,            6.05020448103978732145032363835040319},
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>             {2.5625,            6.44554279850040875063706020260185553},
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>             {2.6250,            6.86606721451642172826145238779845813},
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>             {2.6875,            7.31342093738196587585692115636603571},
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>             {2.7500,            7.78935201149073201875513401029935330},
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>             {2.8125,            8.29572014785741787167717932988491961},
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>             {2.8750,            8.83450399097893197351853322827892144},
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>             {2.9375,            9.40780885043076394429977972921690859},
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>             {3.0000,            10.01787492740990189897459361946582867},
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>             {3.0625,            10.66708606836969224165124519209968368},
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>             {3.1250,            11.35797907995166028304704128775698426},
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>             {3.1875,            12.09325364161259019614431093344260209},
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>             {3.2500,            12.87578285468067003959660391705481220},
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>             {3.3125,            13.70862446906136798063935858393686525},
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>             {3.3750,            14.59503283146163690015482636921657975},
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>             {3.4375,            15.53847160182039311025096666980558478},
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>             {3.5000,            16.54262728763499762495673152901249743},
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>             {3.5625,            17.61142364906941482858466494889121694},
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>             {3.6250,            18.74903703113232171399165788088277979},
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>             {3.6875,            19.95991268283598684128844120984214675},
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>             {3.7500,            21.24878212710338697364101071825171163},
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>             {3.8125,            22.62068164929685091969259499078125023},
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>             {3.8750,            24.08097197661255803883403419733891573},
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>             {3.9375,            25.63535922523855307175060244757748997},
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>             {4.0000,            27.28991719712775244890827159079382096},
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>             {4.0625,            29.05111111351106713777825462100160185},
+<a class="jxr_linenumber" name="L137" href="#L137">137</a>             {4.1250,            30.92582287788986031725487699744107092},
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>             {4.1875,            32.92137796722343190618721270937061472},
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>             {4.2500,            35.04557405638942942322929652461901154},
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>             {4.3125,            37.30671148776788628118833357170042385},
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>             {4.3750,            39.71362570500944929025069048612806024},
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>             {4.4375,            42.27572177772344954814418332587050658},
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>             {4.5000,            45.00301115199178562180965680564371424},
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>             {4.5625,            47.90615077031205065685078058248081891},
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>             {4.6250,            50.99648471383193131253995134526177467},
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>             {4.6875,            54.28608852959281437757368957713936555},
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>             {4.7500,            57.78781641599226874961859781628591635},
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>             {4.8125,            61.51535145084362283008545918273109379},
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>             {4.8750,            65.48325905829987165560146562921543361},
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>             {4.9375,            69.70704392356508084094318094283346381},
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>             {5.0000,            74.20321057778875897700947199606456364},
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>             {5.0625,            78.98932788987998983462810080907521151},
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>             {5.1250,            84.08409771724448958901392613147384951},
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>             {5.1875,            89.50742798369883598816307922895346849},
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>             {5.2500,            95.28051047011540739630959111303975956},
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>             {5.3125,            101.42590362176666730633859252034238987},
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>             {5.3750,            107.96762069594029162704530843962700133},
+<a class="jxr_linenumber" name="L158" href="#L158">158</a>             {5.4375,            114.93122359426386042048760580590182604},
+<a class="jxr_linenumber" name="L159" href="#L159">159</a>             {5.5000,            122.34392274639096192409774240457730721},
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>             {5.5625,            130.23468343534638291488502321709913206},
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>             {5.6250,            138.63433897999898233879574111119546728},
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>             {5.6875,            147.57571121692522056519568264304815790},
+<a class="jxr_linenumber" name="L163" href="#L163">163</a>             {5.7500,            157.09373875244884423880085377625986165},
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>             {5.8125,            167.22561348600435888568183143777868662},
+<a class="jxr_linenumber" name="L165" href="#L165">165</a>             {5.8750,            178.01092593829229887752609866133883987},
+<a class="jxr_linenumber" name="L166" href="#L166">166</a>             {5.9375,            189.49181995209921964640216682906501778},
+<a class="jxr_linenumber" name="L167" href="#L167">167</a>             {6.0000,            201.71315737027922812498206768797872263},
+<a class="jxr_linenumber" name="L168" href="#L168">168</a>             {6.0625,            214.72269333437984291483666459592578915},
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>             {6.1250,            228.57126288889537420461281285729970085},
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>             {6.1875,            243.31297962030799867970551767086092471},
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>             {6.2500,            259.00544710710289911522315435345489966},
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>             {6.3125,            275.70998400700299790136562219920451185},
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>             {6.3750,            293.49186366095654566861661249898332253},
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>             {6.4375,            312.42056915013535342987623229485223434},
+<a class="jxr_linenumber" name="L175" href="#L175">175</a>             {6.5000,            332.57006480258443156075705566965111346},
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>             {6.5625,            354.01908521044116928437570109827956007},
+<a class="jxr_linenumber" name="L177" href="#L177">177</a>             {6.6250,            376.85144288706511933454985188849781703},
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>             {6.6875,            401.15635576625530823119100750634165252},
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>             {6.7500,            427.02879582326538080306830640235938517},
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>             {6.8125,            454.56986017986077163530945733572724452},
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>             {6.8750,            483.88716614351897894746751705315210621},
+<a class="jxr_linenumber" name="L182" href="#L182">182</a>             {6.9375,            515.09527172439720070161654727225752288},
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>             {7.0000,            548.31612327324652237375611757601851598},
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>             {7.0625,            583.67953198942753384680988096024373270},
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>             {7.1250,            621.32368116099280160364794462812762880},
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>             {7.1875,            661.39566611888784148449430491465857519},
+<a class="jxr_linenumber" name="L187" href="#L187">187</a>             {7.2500,            704.05206901515336623551137120663358760},
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>             {7.3125,            749.45957067108712382864538206200700256},
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>             {7.3750,            797.79560188617531521347351754559776282},
+<a class="jxr_linenumber" name="L190" href="#L190">190</a>             {7.4375,            849.24903675279739482863565789325699416},
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>             {7.5000,            904.02093068584652953510919038935849651},
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>             {7.5625,            962.32530605113249628368993221570636328},
+<a class="jxr_linenumber" name="L193" href="#L193">193</a>             {7.6250,            1024.38998846242707559349318193113614698},
+<a class="jxr_linenumber" name="L194" href="#L194">194</a>             {7.6875,            1090.45749701500081956792547346904792325},
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>             {7.7500,            1160.78599193425808533255719118417856088},
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>             {7.8125,            1235.65028334242796895820912936318532502},
+<a class="jxr_linenumber" name="L197" href="#L197">197</a>             {7.8750,            1315.34290508508890654067255740428824014},
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>             {7.9375,            1400.17525781352742299995139486063802583},
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>             {8.0000,            1490.47882578955018611587663903188144796},
+<a class="jxr_linenumber" name="L200" href="#L200">200</a>             {8.0625,            1586.60647216744061169450001100145859236},
+<a class="jxr_linenumber" name="L201" href="#L201">201</a>             {8.1250,            1688.93381781440241350635231605477507900},
+<a class="jxr_linenumber" name="L202" href="#L202">202</a>             {8.1875,            1797.86070905726094477721128358866360644},
+<a class="jxr_linenumber" name="L203" href="#L203">203</a>             {8.2500,            1913.81278009067446281883262689250118009},
+<a class="jxr_linenumber" name="L204" href="#L204">204</a>             {8.3125,            2037.24311615199935553277163192983440062},
+<a class="jxr_linenumber" name="L205" href="#L205">205</a>             {8.3750,            2168.63402396170125867037749369723761636},
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>             {8.4375,            2308.49891634734644432370720900969004306},
+<a class="jxr_linenumber" name="L207" href="#L207">207</a>             {8.5000,            2457.38431841538268239359965370719928775},
+<a class="jxr_linenumber" name="L208" href="#L208">208</a>             {8.5625,            2615.87200310986940554256648824234335262},
+<a class="jxr_linenumber" name="L209" href="#L209">209</a>             {8.6250,            2784.58126450289932429469130598902487336},
+<a class="jxr_linenumber" name="L210" href="#L210">210</a>             {8.6875,            2964.17133769964321637973459949999057146},
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>             {8.7500,            3155.34397481384944060352507473513108710},
+<a class="jxr_linenumber" name="L212" href="#L212">212</a>             {8.8125,            3358.84618707947841898217318996045550438},
+<a class="jxr_linenumber" name="L213" href="#L213">213</a>             {8.8750,            3575.47316381333288862617411467285480067},
+<a class="jxr_linenumber" name="L214" href="#L214">214</a>             {8.9375,            3806.07137963459383403903729660349293583},
+<a class="jxr_linenumber" name="L215" href="#L215">215</a>             {9.0000,            4051.54190208278996051522359589803425598},
+<a class="jxr_linenumber" name="L216" href="#L216">216</a>             {9.0625,            4312.84391255878980330955246931164633615},
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>             {9.1250,            4590.99845434696991399363282718106006883},
+<a class="jxr_linenumber" name="L218" href="#L218">218</a>             {9.1875,            4887.09242236403719571363798584676797558},
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>             {9.2500,            5202.28281022453561319352901552085348309},
+<a class="jxr_linenumber" name="L220" href="#L220">220</a>             {9.3125,            5537.80123121853803935727335892054791265},
+<a class="jxr_linenumber" name="L221" href="#L221">221</a>             {9.3750,            5894.95873086734181634245918412592155656},
+<a class="jxr_linenumber" name="L222" href="#L222">222</a>             {9.4375,            6275.15090986233399457103055108344546942},
+<a class="jxr_linenumber" name="L223" href="#L223">223</a>             {9.5000,            6679.86337740502119410058225086262108741},
+<a class="jxr_linenumber" name="L224" href="#L224">224</a>             {9.5625,            7110.67755625726876329967852256934334025},
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>             {9.6250,            7569.27686218510919585241049433331592115},
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>             {9.6875,            8057.45328194243077504648484392156371121},
+<a class="jxr_linenumber" name="L227" href="#L227">227</a>             {9.7500,            8577.11437549816065709098061006273039092},
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>             {9.8125,            9130.29072986829727910801024120918114778},
+<a class="jxr_linenumber" name="L229" href="#L229">229</a>             {9.8750,            9719.14389367880274015504995181862860062},
+<a class="jxr_linenumber" name="L230" href="#L230">230</a>             {9.9375,            10345.97482346383208590278839409938269134},
+<a class="jxr_linenumber" name="L231" href="#L231">231</a>             {10.0000,           11013.23287470339337723652455484636420303},
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>         };
+<a class="jxr_linenumber" name="L233" href="#L233">233</a> 
+<a class="jxr_linenumber" name="L234" href="#L234">234</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 0; i &lt; testCases.length; i++) {
+<a class="jxr_linenumber" name="L235" href="#L235">235</a>             <strong class="jxr_keyword">double</strong> [] testCase = testCases[i];
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>             failures += testSinhCaseWithUlpDiff(testCase[0],
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>                                                 testCase[1],
+<a class="jxr_linenumber" name="L238" href="#L238">238</a>                                                 3.0);
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>         }
+<a class="jxr_linenumber" name="L240" href="#L240">240</a> 
+<a class="jxr_linenumber" name="L241" href="#L241">241</a>         <strong class="jxr_keyword">double</strong> [][] specialTestCases = {
+<a class="jxr_linenumber" name="L242" href="#L242">242</a>             {0.0,                       0.0},
+<a class="jxr_linenumber" name="L243" href="#L243">243</a>             {NaNd,                      NaNd},
+<a class="jxr_linenumber" name="L244" href="#L244">244</a>             {Double.longBitsToDouble(0x7FF0000000000001L),      NaNd},
+<a class="jxr_linenumber" name="L245" href="#L245">245</a>             {Double.longBitsToDouble(0xFFF0000000000001L),      NaNd},
+<a class="jxr_linenumber" name="L246" href="#L246">246</a>             {Double.longBitsToDouble(0x7FF8555555555555L),      NaNd},
+<a class="jxr_linenumber" name="L247" href="#L247">247</a>             {Double.longBitsToDouble(0xFFF8555555555555L),      NaNd},
+<a class="jxr_linenumber" name="L248" href="#L248">248</a>             {Double.longBitsToDouble(0x7FFFFFFFFFFFFFFFL),      NaNd},
+<a class="jxr_linenumber" name="L249" href="#L249">249</a>             {Double.longBitsToDouble(0xFFFFFFFFFFFFFFFFL),      NaNd},
+<a class="jxr_linenumber" name="L250" href="#L250">250</a>             {Double.longBitsToDouble(0x7FFDeadBeef00000L),      NaNd},
+<a class="jxr_linenumber" name="L251" href="#L251">251</a>             {Double.longBitsToDouble(0xFFFDeadBeef00000L),      NaNd},
+<a class="jxr_linenumber" name="L252" href="#L252">252</a>             {Double.longBitsToDouble(0x7FFCafeBabe00000L),      NaNd},
+<a class="jxr_linenumber" name="L253" href="#L253">253</a>             {Double.longBitsToDouble(0xFFFCafeBabe00000L),      NaNd},
+<a class="jxr_linenumber" name="L254" href="#L254">254</a>             {Double.POSITIVE_INFINITY,  Double.POSITIVE_INFINITY}
+<a class="jxr_linenumber" name="L255" href="#L255">255</a>         };
+<a class="jxr_linenumber" name="L256" href="#L256">256</a> 
+<a class="jxr_linenumber" name="L257" href="#L257">257</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 0; i &lt; specialTestCases.length; i++) {
+<a class="jxr_linenumber" name="L258" href="#L258">258</a>             failures += testSinhCaseWithUlpDiff(specialTestCases[i][0],
+<a class="jxr_linenumber" name="L259" href="#L259">259</a>                                                 specialTestCases[i][1],
+<a class="jxr_linenumber" name="L260" href="#L260">260</a>                                                 0.0);
+<a class="jxr_linenumber" name="L261" href="#L261">261</a>         }
+<a class="jxr_linenumber" name="L262" href="#L262">262</a> 
+<a class="jxr_linenumber" name="L263" href="#L263">263</a>         <em class="jxr_comment">// For powers of 2 less than 2^(-27), the second and</em>
+<a class="jxr_linenumber" name="L264" href="#L264">264</a>         <em class="jxr_comment">// subsequent terms of the Taylor series expansion will get</em>
+<a class="jxr_linenumber" name="L265" href="#L265">265</a>         <em class="jxr_comment">// rounded away since |n-n^3| &gt; 53, the binary precision of a</em>
+<a class="jxr_linenumber" name="L266" href="#L266">266</a>         <em class="jxr_comment">// double significand.</em>
+<a class="jxr_linenumber" name="L267" href="#L267">267</a> 
+<a class="jxr_linenumber" name="L268" href="#L268">268</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = DoubleConsts.MIN_SUB_EXPONENT; i &lt; -27; i++) {
+<a class="jxr_linenumber" name="L269" href="#L269">269</a>             <strong class="jxr_keyword">double</strong> d = FpUtils.scalb(2.0, i);
+<a class="jxr_linenumber" name="L270" href="#L270">270</a> 
+<a class="jxr_linenumber" name="L271" href="#L271">271</a>             <em class="jxr_comment">// Result and expected are the same.</em>
+<a class="jxr_linenumber" name="L272" href="#L272">272</a>             failures += testSinhCaseWithUlpDiff(d, d, 2.5);
+<a class="jxr_linenumber" name="L273" href="#L273">273</a>         }
+<a class="jxr_linenumber" name="L274" href="#L274">274</a> 
+<a class="jxr_linenumber" name="L275" href="#L275">275</a>         <em class="jxr_comment">// For values of x larger than 22, the e^(-x) term is</em>
+<a class="jxr_linenumber" name="L276" href="#L276">276</a>         <em class="jxr_comment">// insignificant to the floating-point result.  Util exp(x)</em>
+<a class="jxr_linenumber" name="L277" href="#L277">277</a>         <em class="jxr_comment">// overflows around 709.8, sinh(x) ~= exp(x)/2; will will test</em>
+<a class="jxr_linenumber" name="L278" href="#L278">278</a>         <em class="jxr_comment">// 10000 values in this range.</em>
+<a class="jxr_linenumber" name="L279" href="#L279">279</a> 
+<a class="jxr_linenumber" name="L280" href="#L280">280</a>         <strong class="jxr_keyword">long</strong> trans22 = Double.doubleToLongBits(22.0);
+<a class="jxr_linenumber" name="L281" href="#L281">281</a>         <em class="jxr_comment">// (approximately) largest value such that exp shouldn't</em>
+<a class="jxr_linenumber" name="L282" href="#L282">282</a>         <em class="jxr_comment">// overflow</em>
+<a class="jxr_linenumber" name="L283" href="#L283">283</a>         <strong class="jxr_keyword">long</strong> transExpOvfl = Double.doubleToLongBits(FpUtils.nextDown(709.7827128933841));
+<a class="jxr_linenumber" name="L284" href="#L284">284</a> 
+<a class="jxr_linenumber" name="L285" href="#L285">285</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">long</strong> i = trans22;
+<a class="jxr_linenumber" name="L286" href="#L286">286</a>             i &lt; transExpOvfl;
+<a class="jxr_linenumber" name="L287" href="#L287">287</a>             i +=(transExpOvfl-trans22)/10000) {
+<a class="jxr_linenumber" name="L288" href="#L288">288</a> 
+<a class="jxr_linenumber" name="L289" href="#L289">289</a>             <strong class="jxr_keyword">double</strong> d = Double.longBitsToDouble(i);
+<a class="jxr_linenumber" name="L290" href="#L290">290</a> 
+<a class="jxr_linenumber" name="L291" href="#L291">291</a>             <em class="jxr_comment">// Allow 3.5 ulps of error to deal with error in exp.</em>
+<a class="jxr_linenumber" name="L292" href="#L292">292</a>             failures += testSinhCaseWithUlpDiff(d, StrictMath.exp(d)*0.5, 3.5);
+<a class="jxr_linenumber" name="L293" href="#L293">293</a>         }
+<a class="jxr_linenumber" name="L294" href="#L294">294</a> 
+<a class="jxr_linenumber" name="L295" href="#L295">295</a>         <em class="jxr_comment">// (approximately) largest value such that sinh shouldn't</em>
+<a class="jxr_linenumber" name="L296" href="#L296">296</a>         <em class="jxr_comment">// overflow.</em>
+<a class="jxr_linenumber" name="L297" href="#L297">297</a>         <strong class="jxr_keyword">long</strong> transSinhOvfl = Double.doubleToLongBits(710.4758600739439);
+<a class="jxr_linenumber" name="L298" href="#L298">298</a> 
+<a class="jxr_linenumber" name="L299" href="#L299">299</a>         <em class="jxr_comment">// Make sure sinh(x) doesn't overflow as soon as exp(x)</em>
+<a class="jxr_linenumber" name="L300" href="#L300">300</a>         <em class="jxr_comment">// overflows.</em>
+<a class="jxr_linenumber" name="L301" href="#L301">301</a> 
+<a class="jxr_linenumber" name="L302" href="#L302">302</a>         <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L303" href="#L303">303</a> <em class="jxr_comment">         * For large values of x, sinh(x) ~= 0.5*(e^x).  Therefore,</em>
+<a class="jxr_linenumber" name="L304" href="#L304">304</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L305" href="#L305">305</a> <em class="jxr_comment">         * sinh(x) ~= e^(ln 0.5) * e^x = e^(x + ln 0.5)</em>
+<a class="jxr_linenumber" name="L306" href="#L306">306</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L307" href="#L307">307</a> <em class="jxr_comment">         * So, we can calculate the approximate expected result as</em>
+<a class="jxr_linenumber" name="L308" href="#L308">308</a> <em class="jxr_comment">         * exp(x + -0.693147186).  However, this sum suffers from</em>
+<a class="jxr_linenumber" name="L309" href="#L309">309</a> <em class="jxr_comment">         * roundoff, limiting the accuracy of the approximation.  The</em>
+<a class="jxr_linenumber" name="L310" href="#L310">310</a> <em class="jxr_comment">         * accuracy can be improved by recovering the rounded-off</em>
+<a class="jxr_linenumber" name="L311" href="#L311">311</a> <em class="jxr_comment">         * information.  Since x is larger than ln(0.5), the trailing</em>
+<a class="jxr_linenumber" name="L312" href="#L312">312</a> <em class="jxr_comment">         * bits of ln(0.5) get rounded away when the two values are</em>
+<a class="jxr_linenumber" name="L313" href="#L313">313</a> <em class="jxr_comment">         * added.  However, high-order bits of ln(0.5) that</em>
+<a class="jxr_linenumber" name="L314" href="#L314">314</a> <em class="jxr_comment">         * contribute to the sum can be found:</em>
+<a class="jxr_linenumber" name="L315" href="#L315">315</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L316" href="#L316">316</a> <em class="jxr_comment">         * offset = log(0.5);</em>
+<a class="jxr_linenumber" name="L317" href="#L317">317</a> <em class="jxr_comment">         * effective_offset = (x + offset) - x; // exact subtraction</em>
+<a class="jxr_linenumber" name="L318" href="#L318">318</a> <em class="jxr_comment">         * rounded_away_offset = offset - effective_offset; // exact subtraction</em>
+<a class="jxr_linenumber" name="L319" href="#L319">319</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L320" href="#L320">320</a> <em class="jxr_comment">         * Therefore, the product</em>
+<a class="jxr_linenumber" name="L321" href="#L321">321</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L322" href="#L322">322</a> <em class="jxr_comment">         * exp(x + offset)*exp(rounded_away_offset)</em>
+<a class="jxr_linenumber" name="L323" href="#L323">323</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L324" href="#L324">324</a> <em class="jxr_comment">         * will be a better approximation to the exact value of</em>
+<a class="jxr_linenumber" name="L325" href="#L325">325</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L326" href="#L326">326</a> <em class="jxr_comment">         * e^(x + offset)</em>
+<a class="jxr_linenumber" name="L327" href="#L327">327</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L328" href="#L328">328</a> <em class="jxr_comment">         * than exp(x+offset) alone.  (The expected result cannot be</em>
+<a class="jxr_linenumber" name="L329" href="#L329">329</a> <em class="jxr_comment">         * computed as exp(x)*exp(offset) since exp(x) by itself would</em>
+<a class="jxr_linenumber" name="L330" href="#L330">330</a> <em class="jxr_comment">         * overflow to infinity.)</em>
+<a class="jxr_linenumber" name="L331" href="#L331">331</a> <em class="jxr_comment">         */</em>
+<a class="jxr_linenumber" name="L332" href="#L332">332</a>         <strong class="jxr_keyword">double</strong> offset = StrictMath.log(0.5);
+<a class="jxr_linenumber" name="L333" href="#L333">333</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">long</strong> i = transExpOvfl+1; i &lt; transSinhOvfl;
+<a class="jxr_linenumber" name="L334" href="#L334">334</a>             i += (transSinhOvfl-transExpOvfl)/1000 ) {
+<a class="jxr_linenumber" name="L335" href="#L335">335</a>             <strong class="jxr_keyword">double</strong> input = Double.longBitsToDouble(i);
+<a class="jxr_linenumber" name="L336" href="#L336">336</a> 
+<a class="jxr_linenumber" name="L337" href="#L337">337</a>             <strong class="jxr_keyword">double</strong> expected =
+<a class="jxr_linenumber" name="L338" href="#L338">338</a>                 StrictMath.exp(input + offset) *
+<a class="jxr_linenumber" name="L339" href="#L339">339</a>                 StrictMath.exp( offset - ((input + offset) - input) );
+<a class="jxr_linenumber" name="L340" href="#L340">340</a> 
+<a class="jxr_linenumber" name="L341" href="#L341">341</a>             failures += testSinhCaseWithUlpDiff(input, expected, 4.0);
+<a class="jxr_linenumber" name="L342" href="#L342">342</a>         }
+<a class="jxr_linenumber" name="L343" href="#L343">343</a> 
+<a class="jxr_linenumber" name="L344" href="#L344">344</a>         <em class="jxr_comment">// sinh(x) overflows for values greater than 710; in</em>
+<a class="jxr_linenumber" name="L345" href="#L345">345</a>         <em class="jxr_comment">// particular, it overflows for all 2^i, i &gt; 10.</em>
+<a class="jxr_linenumber" name="L346" href="#L346">346</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 10; i &lt;= DoubleConsts.MAX_EXPONENT; i++) {
+<a class="jxr_linenumber" name="L347" href="#L347">347</a>             <strong class="jxr_keyword">double</strong> d = FpUtils.scalb(2.0, i);
+<a class="jxr_linenumber" name="L348" href="#L348">348</a> 
+<a class="jxr_linenumber" name="L349" href="#L349">349</a>             <em class="jxr_comment">// Result and expected are the same.</em>
+<a class="jxr_linenumber" name="L350" href="#L350">350</a>             failures += testSinhCaseWithUlpDiff(d,
+<a class="jxr_linenumber" name="L351" href="#L351">351</a>                                                 Double.POSITIVE_INFINITY, 0.0);
+<a class="jxr_linenumber" name="L352" href="#L352">352</a>         }
+<a class="jxr_linenumber" name="L353" href="#L353">353</a> 
+<a class="jxr_linenumber" name="L354" href="#L354">354</a>         <strong class="jxr_keyword">return</strong> failures;
+<a class="jxr_linenumber" name="L355" href="#L355">355</a>     }
+<a class="jxr_linenumber" name="L356" href="#L356">356</a> 
+<a class="jxr_linenumber" name="L357" href="#L357">357</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> testSinhCaseWithTolerance(<strong class="jxr_keyword">double</strong> input,
+<a class="jxr_linenumber" name="L358" href="#L358">358</a>                                                 <strong class="jxr_keyword">double</strong> expected,
+<a class="jxr_linenumber" name="L359" href="#L359">359</a>                                                 <strong class="jxr_keyword">double</strong> tolerance) {
+<a class="jxr_linenumber" name="L360" href="#L360">360</a>         <strong class="jxr_keyword">int</strong> failures = 0;
+<a class="jxr_linenumber" name="L361" href="#L361">361</a>         failures += Tests.testTolerance(<span class="jxr_string">"Math.sinh(double)"</span>,
+<a class="jxr_linenumber" name="L362" href="#L362">362</a>                                         input, Math.sinh(input),
+<a class="jxr_linenumber" name="L363" href="#L363">363</a>                                         expected, tolerance);
+<a class="jxr_linenumber" name="L364" href="#L364">364</a>         failures += Tests.testTolerance(<span class="jxr_string">"Math.sinh(double)"</span>,
+<a class="jxr_linenumber" name="L365" href="#L365">365</a>                                         -input, Math.sinh(-input),
+<a class="jxr_linenumber" name="L366" href="#L366">366</a>                                         -expected, tolerance);
+<a class="jxr_linenumber" name="L367" href="#L367">367</a> 
+<a class="jxr_linenumber" name="L368" href="#L368">368</a>         failures += Tests.testTolerance(<span class="jxr_string">"StrictMath.sinh(double)"</span>,
+<a class="jxr_linenumber" name="L369" href="#L369">369</a>                                         input, StrictMath.sinh(input),
+<a class="jxr_linenumber" name="L370" href="#L370">370</a>                                         expected, tolerance);
+<a class="jxr_linenumber" name="L371" href="#L371">371</a>         failures += Tests.testTolerance(<span class="jxr_string">"StrictMath.sinh(double)"</span>,
+<a class="jxr_linenumber" name="L372" href="#L372">372</a>                                         -input, StrictMath.sinh(-input),
+<a class="jxr_linenumber" name="L373" href="#L373">373</a>                                         -expected, tolerance);
+<a class="jxr_linenumber" name="L374" href="#L374">374</a>         <strong class="jxr_keyword">return</strong> failures;
+<a class="jxr_linenumber" name="L375" href="#L375">375</a>     }
+<a class="jxr_linenumber" name="L376" href="#L376">376</a> 
+<a class="jxr_linenumber" name="L377" href="#L377">377</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> testSinhCaseWithUlpDiff(<strong class="jxr_keyword">double</strong> input,
+<a class="jxr_linenumber" name="L378" href="#L378">378</a>                                               <strong class="jxr_keyword">double</strong> expected,
+<a class="jxr_linenumber" name="L379" href="#L379">379</a>                                               <strong class="jxr_keyword">double</strong> ulps) {
+<a class="jxr_linenumber" name="L380" href="#L380">380</a>         <strong class="jxr_keyword">int</strong> failures = 0;
+<a class="jxr_linenumber" name="L381" href="#L381">381</a>         failures += Tests.testUlpDiff(<span class="jxr_string">"Math.sinh(double)"</span>,
+<a class="jxr_linenumber" name="L382" href="#L382">382</a>                                       input, Math.sinh(input),
+<a class="jxr_linenumber" name="L383" href="#L383">383</a>                                       expected, ulps);
+<a class="jxr_linenumber" name="L384" href="#L384">384</a>         failures += Tests.testUlpDiff(<span class="jxr_string">"Math.sinh(double)"</span>,
+<a class="jxr_linenumber" name="L385" href="#L385">385</a>                                       -input, Math.sinh(-input),
+<a class="jxr_linenumber" name="L386" href="#L386">386</a>                                       -expected, ulps);
+<a class="jxr_linenumber" name="L387" href="#L387">387</a> 
+<a class="jxr_linenumber" name="L388" href="#L388">388</a>         failures += Tests.testUlpDiff(<span class="jxr_string">"StrictMath.sinh(double)"</span>,
+<a class="jxr_linenumber" name="L389" href="#L389">389</a>                                       input, StrictMath.sinh(input),
+<a class="jxr_linenumber" name="L390" href="#L390">390</a>                                       expected, ulps);
+<a class="jxr_linenumber" name="L391" href="#L391">391</a>         failures += Tests.testUlpDiff(<span class="jxr_string">"StrictMath.sinh(double)"</span>,
+<a class="jxr_linenumber" name="L392" href="#L392">392</a>                                       -input, StrictMath.sinh(-input),
+<a class="jxr_linenumber" name="L393" href="#L393">393</a>                                       -expected, ulps);
+<a class="jxr_linenumber" name="L394" href="#L394">394</a>         <strong class="jxr_keyword">return</strong> failures;
+<a class="jxr_linenumber" name="L395" href="#L395">395</a>     }
+<a class="jxr_linenumber" name="L396" href="#L396">396</a> 
+<a class="jxr_linenumber" name="L397" href="#L397">397</a> 
+<a class="jxr_linenumber" name="L398" href="#L398">398</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L399" href="#L399">399</a> <em class="jxr_javadoccomment">     * Test accuracy of {Math, StrictMath}.cosh.  The specified</em>
+<a class="jxr_linenumber" name="L400" href="#L400">400</a> <em class="jxr_javadoccomment">     * accuracy is 2.5 ulps.</em>
+<a class="jxr_linenumber" name="L401" href="#L401">401</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L402" href="#L402">402</a> <em class="jxr_javadoccomment">     * The defintion of cosh(x) is</em>
+<a class="jxr_linenumber" name="L403" href="#L403">403</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L404" href="#L404">404</a> <em class="jxr_javadoccomment">     * (e^x + e^(-x))/2</em>
+<a class="jxr_linenumber" name="L405" href="#L405">405</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L406" href="#L406">406</a> <em class="jxr_javadoccomment">     * The series expansion of cosh(x) =</em>
+<a class="jxr_linenumber" name="L407" href="#L407">407</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L408" href="#L408">408</a> <em class="jxr_javadoccomment">     * 1 + x^2/2! + x^4/4! + x^6/6! +...</em>
+<a class="jxr_linenumber" name="L409" href="#L409">409</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L410" href="#L410">410</a> <em class="jxr_javadoccomment">     * Therefore,</em>
+<a class="jxr_linenumber" name="L411" href="#L411">411</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L412" href="#L412">412</a> <em class="jxr_javadoccomment">     * 1. For large values of x cosh(x) ~= exp(|x|)/2</em>
+<a class="jxr_linenumber" name="L413" href="#L413">413</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L414" href="#L414">414</a> <em class="jxr_javadoccomment">     * 2. For small values of x, cosh(x) ~= 1.</em>
+<a class="jxr_linenumber" name="L415" href="#L415">415</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L416" href="#L416">416</a> <em class="jxr_javadoccomment">     * Additionally, cosh is an even function; cosh(-x) = cosh(x).</em>
+<a class="jxr_linenumber" name="L417" href="#L417">417</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L418" href="#L418">418</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L419" href="#L419">419</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> testCosh() {
+<a class="jxr_linenumber" name="L420" href="#L420">420</a>         <strong class="jxr_keyword">int</strong> failures = 0;
+<a class="jxr_linenumber" name="L421" href="#L421">421</a>         <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L422" href="#L422">422</a> <em class="jxr_comment">         * Array elements below generated using a quad cosh</em>
+<a class="jxr_linenumber" name="L423" href="#L423">423</a> <em class="jxr_comment">         * implementation.  Rounded to a double, the quad result</em>
+<a class="jxr_linenumber" name="L424" href="#L424">424</a> <em class="jxr_comment">         * *should* be correctly rounded, unless we are quite unlucky.</em>
+<a class="jxr_linenumber" name="L425" href="#L425">425</a> <em class="jxr_comment">         * Assuming the quad value is a correctly rounded double, the</em>
+<a class="jxr_linenumber" name="L426" href="#L426">426</a> <em class="jxr_comment">         * allowed error is 3.0 ulps instead of 2.5 since the quad</em>
+<a class="jxr_linenumber" name="L427" href="#L427">427</a> <em class="jxr_comment">         * value rounded to double can have its own 1/2 ulp error.</em>
+<a class="jxr_linenumber" name="L428" href="#L428">428</a> <em class="jxr_comment">         */</em>
+<a class="jxr_linenumber" name="L429" href="#L429">429</a>         <strong class="jxr_keyword">double</strong> [][] testCases = {
+<a class="jxr_linenumber" name="L430" href="#L430">430</a>             <em class="jxr_comment">// x                cosh(x)</em>
+<a class="jxr_linenumber" name="L431" href="#L431">431</a>             {0.0625,            1.001953760865667607841550709632597376},
+<a class="jxr_linenumber" name="L432" href="#L432">432</a>             {0.1250,            1.007822677825710859846949685520422223},
+<a class="jxr_linenumber" name="L433" href="#L433">433</a>             {0.1875,            1.017629683800690526835115759894757615},
+<a class="jxr_linenumber" name="L434" href="#L434">434</a>             {0.2500,            1.031413099879573176159295417520378622},
+<a class="jxr_linenumber" name="L435" href="#L435">435</a>             {0.3125,            1.049226785060219076999158096606305793},
+<a class="jxr_linenumber" name="L436" href="#L436">436</a>             {0.3750,            1.071140346704586767299498015567016002},
+<a class="jxr_linenumber" name="L437" href="#L437">437</a>             {0.4375,            1.097239412531012567673453832328262160},
+<a class="jxr_linenumber" name="L438" href="#L438">438</a>             {0.5000,            1.127625965206380785226225161402672030},
+<a class="jxr_linenumber" name="L439" href="#L439">439</a>             {0.5625,            1.162418740845610783505338363214045218},
+<a class="jxr_linenumber" name="L440" href="#L440">440</a>             {0.6250,            1.201753692975606324229229064105075301},
+<a class="jxr_linenumber" name="L441" href="#L441">441</a>             {0.6875,            1.245784523776616395403056980542275175},
+<a class="jxr_linenumber" name="L442" href="#L442">442</a>             {0.7500,            1.294683284676844687841708185390181730},
+<a class="jxr_linenumber" name="L443" href="#L443">443</a>             {0.8125,            1.348641048647144208352285714214372703},
+<a class="jxr_linenumber" name="L444" href="#L444">444</a>             {0.8750,            1.407868656822803158638471458026344506},
+<a class="jxr_linenumber" name="L445" href="#L445">445</a>             {0.9375,            1.472597542369862933336886403008640891},
+<a class="jxr_linenumber" name="L446" href="#L446">446</a>             {1.0000,            1.543080634815243778477905620757061497},
+<a class="jxr_linenumber" name="L447" href="#L447">447</a>             {1.0625,            1.619593348374367728682469968448090763},
+<a class="jxr_linenumber" name="L448" href="#L448">448</a>             {1.1250,            1.702434658138190487400868008124755757},
+<a class="jxr_linenumber" name="L449" href="#L449">449</a>             {1.1875,            1.791928268324866464246665745956119612},
+<a class="jxr_linenumber" name="L450" href="#L450">450</a>             {1.2500,            1.888423877161015738227715728160051696},
+<a class="jxr_linenumber" name="L451" href="#L451">451</a>             {1.3125,            1.992298543335143985091891077551921106},
+<a class="jxr_linenumber" name="L452" href="#L452">452</a>             {1.3750,            2.103958159362661802010972984204389619},
+<a class="jxr_linenumber" name="L453" href="#L453">453</a>             {1.4375,            2.223839037619709260803023946704272699},
+<a class="jxr_linenumber" name="L454" href="#L454">454</a>             {1.5000,            2.352409615243247325767667965441644201},
+<a class="jxr_linenumber" name="L455" href="#L455">455</a>             {1.5625,            2.490172284559350293104864895029231913},
+<a class="jxr_linenumber" name="L456" href="#L456">456</a>             {1.6250,            2.637665356192137582275019088061812951},
+<a class="jxr_linenumber" name="L457" href="#L457">457</a>             {1.6875,            2.795465162524235691253423614360562624},
+<a class="jxr_linenumber" name="L458" href="#L458">458</a>             {1.7500,            2.964188309728087781773608481754531801},
+<a class="jxr_linenumber" name="L459" href="#L459">459</a>             {1.8125,            3.144494087167972176411236052303565201},
+<a class="jxr_linenumber" name="L460" href="#L460">460</a>             {1.8750,            3.337087043587520514308832278928116525},
+<a class="jxr_linenumber" name="L461" href="#L461">461</a>             {1.9375,            3.542719740149244276729383650503145346},
+<a class="jxr_linenumber" name="L462" href="#L462">462</a>             {2.0000,            3.762195691083631459562213477773746099},
+<a class="jxr_linenumber" name="L463" href="#L463">463</a>             {2.0625,            3.996372503438463642260225717607554880},
+<a class="jxr_linenumber" name="L464" href="#L464">464</a>             {2.1250,            4.246165228196992140600291052990934410},
+<a class="jxr_linenumber" name="L465" href="#L465">465</a>             {2.1875,            4.512549935859540340856119781585096760},
+<a class="jxr_linenumber" name="L466" href="#L466">466</a>             {2.2500,            4.796567530460195028666793366876218854},
+<a class="jxr_linenumber" name="L467" href="#L467">467</a>             {2.3125,            5.099327816921939817643745917141739051},
+<a class="jxr_linenumber" name="L468" href="#L468">468</a>             {2.3750,            5.422013837643509250646323138888569746},
+<a class="jxr_linenumber" name="L469" href="#L469">469</a>             {2.4375,            5.765886495263270945949271410819116399},
+<a class="jxr_linenumber" name="L470" href="#L470">470</a>             {2.5000,            6.132289479663686116619852312817562517},
+<a class="jxr_linenumber" name="L471" href="#L471">471</a>             {2.5625,            6.522654518468725462969589397439224177},
+<a class="jxr_linenumber" name="L472" href="#L472">472</a>             {2.6250,            6.938506971550673190999796241172117288},
+<a class="jxr_linenumber" name="L473" href="#L473">473</a>             {2.6875,            7.381471791406976069645686221095397137},
+<a class="jxr_linenumber" name="L474" href="#L474">474</a>             {2.7500,            7.853279872697439591457564035857305647},
+<a class="jxr_linenumber" name="L475" href="#L475">475</a>             {2.8125,            8.355774815752725814638234943192709129},
+<a class="jxr_linenumber" name="L476" href="#L476">476</a>             {2.8750,            8.890920130482709321824793617157134961},
+<a class="jxr_linenumber" name="L477" href="#L477">477</a>             {2.9375,            9.460806908834119747071078865866737196},
+<a class="jxr_linenumber" name="L478" href="#L478">478</a>             {3.0000,            10.067661995777765841953936035115890343},
+<a class="jxr_linenumber" name="L479" href="#L479">479</a>             {3.0625,            10.713856690753651225304006562698007312},
+<a class="jxr_linenumber" name="L480" href="#L480">480</a>             {3.1250,            11.401916013575067700373788969458446177},
+<a class="jxr_linenumber" name="L481" href="#L481">481</a>             {3.1875,            12.134528570998387744547733730974713055},
+<a class="jxr_linenumber" name="L482" href="#L482">482</a>             {3.2500,            12.914557062512392049483503752322408761},
+<a class="jxr_linenumber" name="L483" href="#L483">483</a>             {3.3125,            13.745049466398732213877084541992751273},
+<a class="jxr_linenumber" name="L484" href="#L484">484</a>             {3.3750,            14.629250949773302934853381428660210721},
+<a class="jxr_linenumber" name="L485" href="#L485">485</a>             {3.4375,            15.570616549147269180921654324879141947},
+<a class="jxr_linenumber" name="L486" href="#L486">486</a>             {3.5000,            16.572824671057316125696517821376119469},
+<a class="jxr_linenumber" name="L487" href="#L487">487</a>             {3.5625,            17.639791465519127930722105721028711044},
+<a class="jxr_linenumber" name="L488" href="#L488">488</a>             {3.6250,            18.775686128468677200079039891415789429},
+<a class="jxr_linenumber" name="L489" href="#L489">489</a>             {3.6875,            19.984947192985946987799359614758598457},
+<a class="jxr_linenumber" name="L490" href="#L490">490</a>             {3.7500,            21.272299872959396081877161903352144126},
+<a class="jxr_linenumber" name="L491" href="#L491">491</a>             {3.8125,            22.642774526961913363958587775566619798},
+<a class="jxr_linenumber" name="L492" href="#L492">492</a>             {3.8750,            24.101726314486257781049388094955970560},
+<a class="jxr_linenumber" name="L493" href="#L493">493</a>             {3.9375,            25.654856121347151067170940701379544221},
+<a class="jxr_linenumber" name="L494" href="#L494">494</a>             {4.0000,            27.308232836016486629201989612067059978},
+<a class="jxr_linenumber" name="L495" href="#L495">495</a>             {4.0625,            29.068317063936918520135334110824828950},
+<a class="jxr_linenumber" name="L496" href="#L496">496</a>             {4.1250,            30.941986372478026192360480044849306606},
+<a class="jxr_linenumber" name="L497" href="#L497">497</a>             {4.1875,            32.936562165180269851350626768308756303},
+<a class="jxr_linenumber" name="L498" href="#L498">498</a>             {4.2500,            35.059838290298428678502583470475012235},
+<a class="jxr_linenumber" name="L499" href="#L499">499</a>             {4.3125,            37.320111495433027109832850313172338419},
+<a class="jxr_linenumber" name="L500" href="#L500">500</a>             {4.3750,            39.726213847251883288518263854094284091},
+<a class="jxr_linenumber" name="L501" href="#L501">501</a>             {4.4375,            42.287547242982546165696077854963452084},
+<a class="jxr_linenumber" name="L502" href="#L502">502</a>             {4.5000,            45.014120148530027928305799939930642658},
+<a class="jxr_linenumber" name="L503" href="#L503">503</a>             {4.5625,            47.916586706774825161786212701923307169},
+<a class="jxr_linenumber" name="L504" href="#L504">504</a>             {4.6250,            51.006288368867753140854830589583165950},
+<a class="jxr_linenumber" name="L505" href="#L505">505</a>             {4.6875,            54.295298211196782516984520211780624960},
+<a class="jxr_linenumber" name="L506" href="#L506">506</a>             {4.7500,            57.796468111195389383795669320243166117},
+<a class="jxr_linenumber" name="L507" href="#L507">507</a>             {4.8125,            61.523478966332915041549750463563672435},
+<a class="jxr_linenumber" name="L508" href="#L508">508</a>             {4.8750,            65.490894152518731617237739112888213645},
+<a class="jxr_linenumber" name="L509" href="#L509">509</a>             {4.9375,            69.714216430810089539924900313140922323},
+<a class="jxr_linenumber" name="L510" href="#L510">510</a>             {5.0000,            74.209948524787844444106108044487704798},
+<a class="jxr_linenumber" name="L511" href="#L511">511</a>             {5.0625,            78.995657605307475581204965926043112946},
+<a class="jxr_linenumber" name="L512" href="#L512">512</a>             {5.1250,            84.090043934600961683400343038519519678},
+<a class="jxr_linenumber" name="L513" href="#L513">513</a>             {5.1875,            89.513013937957834087706670952561002466},
+<a class="jxr_linenumber" name="L514" href="#L514">514</a>             {5.2500,            95.285757988514588780586084642381131013},
+<a class="jxr_linenumber" name="L515" href="#L515">515</a>             {5.3125,            101.430833209098212357990123684449846912},
+<a class="jxr_linenumber" name="L516" href="#L516">516</a>             {5.3750,            107.972251614673824873137995865940755392},
+<a class="jxr_linenumber" name="L517" href="#L517">517</a>             {5.4375,            114.935573939814969189535554289886848550},
+<a class="jxr_linenumber" name="L518" href="#L518">518</a>             {5.5000,            122.348009517829425991091207107262038316},
+<a class="jxr_linenumber" name="L519" href="#L519">519</a>             {5.5625,            130.238522601820409078244923165746295574},
+<a class="jxr_linenumber" name="L520" href="#L520">520</a>             {5.6250,            138.637945543134998069351279801575968875},
+<a class="jxr_linenumber" name="L521" href="#L521">521</a>             {5.6875,            147.579099269447055276899288971207106581},
+<a class="jxr_linenumber" name="L522" href="#L522">522</a>             {5.7500,            157.096921533245353905868840194264636395},
+<a class="jxr_linenumber" name="L523" href="#L523">523</a>             {5.8125,            167.228603431860671946045256541679445836},
+<a class="jxr_linenumber" name="L524" href="#L524">524</a>             {5.8750,            178.013734732486824390148614309727161925},
+<a class="jxr_linenumber" name="L525" href="#L525">525</a>             {5.9375,            189.494458570056311567917444025807275896},
+<a class="jxr_linenumber" name="L526" href="#L526">526</a>             {6.0000,            201.715636122455894483405112855409538488},
+<a class="jxr_linenumber" name="L527" href="#L527">527</a>             {6.0625,            214.725021906554080628430756558271312513},
+<a class="jxr_linenumber" name="L528" href="#L528">528</a>             {6.1250,            228.573450380013557089736092321068279231},
+<a class="jxr_linenumber" name="L529" href="#L529">529</a>             {6.1875,            243.315034578039208138752165587134488645},
+<a class="jxr_linenumber" name="L530" href="#L530">530</a>             {6.2500,            259.007377561239126824465367865430519592},
+<a class="jxr_linenumber" name="L531" href="#L531">531</a>             {6.3125,            275.711797500835732516530131577254654076},
+<a class="jxr_linenumber" name="L532" href="#L532">532</a>             {6.3750,            293.493567280752348242602902925987643443},
+<a class="jxr_linenumber" name="L533" href="#L533">533</a>             {6.4375,            312.422169552825597994104814531010579387},
+<a class="jxr_linenumber" name="L534" href="#L534">534</a>             {6.5000,            332.571568241777409133204438572983297292},
+<a class="jxr_linenumber" name="L535" href="#L535">535</a>             {6.5625,            354.020497560858198165985214519757890505},
+<a class="jxr_linenumber" name="L536" href="#L536">536</a>             {6.6250,            376.852769667496146326030849450983914197},
+<a class="jxr_linenumber" name="L537" href="#L537">537</a>             {6.6875,            401.157602161123700280816957271992998156},
+<a class="jxr_linenumber" name="L538" href="#L538">538</a>             {6.7500,            427.029966702886171977469256622451185850},
+<a class="jxr_linenumber" name="L539" href="#L539">539</a>             {6.8125,            454.570960119471524953536004647195906721},
+<a class="jxr_linenumber" name="L540" href="#L540">540</a>             {6.8750,            483.888199441157626584508920036981010995},
+<a class="jxr_linenumber" name="L541" href="#L541">541</a>             {6.9375,            515.096242417696720610477570797503766179},
+<a class="jxr_linenumber" name="L542" href="#L542">542</a>             {7.0000,            548.317035155212076889964120712102928484},
+<a class="jxr_linenumber" name="L543" href="#L543">543</a>             {7.0625,            583.680388623257719787307547662358502345},
+<a class="jxr_linenumber" name="L544" href="#L544">544</a>             {7.1250,            621.324485894002926216918634755431456031},
+<a class="jxr_linenumber" name="L545" href="#L545">545</a>             {7.1875,            661.396422095589629755266517362992812037},
+<a class="jxr_linenumber" name="L546" href="#L546">546</a>             {7.2500,            704.052779189542208784574955807004218856},
+<a class="jxr_linenumber" name="L547" href="#L547">547</a>             {7.3125,            749.460237818184878095966335081928645934},
+<a class="jxr_linenumber" name="L548" href="#L548">548</a>             {7.3750,            797.796228612873763671070863694973560629},
+<a class="jxr_linenumber" name="L549" href="#L549">549</a>             {7.4375,            849.249625508044731271830060572510241864},
+<a class="jxr_linenumber" name="L550" href="#L550">550</a>             {7.5000,            904.021483770216677368692292389446994987},
+<a class="jxr_linenumber" name="L551" href="#L551">551</a>             {7.5625,            962.325825625814651122171697031114091993},
+<a class="jxr_linenumber" name="L552" href="#L552">552</a>             {7.6250,            1024.390476557670599008492465853663578558},
+<a class="jxr_linenumber" name="L553" href="#L553">553</a>             {7.6875,            1090.457955538048482588540574008226583335},
+<a class="jxr_linenumber" name="L554" href="#L554">554</a>             {7.7500,            1160.786422676798661020094043586456606003},
+<a class="jxr_linenumber" name="L555" href="#L555">555</a>             {7.8125,            1235.650687987597295222707689125107720568},
+<a class="jxr_linenumber" name="L556" href="#L556">556</a>             {7.8750,            1315.343285214046776004329388551335841550},
+<a class="jxr_linenumber" name="L557" href="#L557">557</a>             {7.9375,            1400.175614911635999247504386054087931958},
+<a class="jxr_linenumber" name="L558" href="#L558">558</a>             {8.0000,            1490.479161252178088627715460421007179728},
+<a class="jxr_linenumber" name="L559" href="#L559">559</a>             {8.0625,            1586.606787305415349050508956232945539108},
+<a class="jxr_linenumber" name="L560" href="#L560">560</a>             {8.1250,            1688.934113859132470361718199038326340668},
+<a class="jxr_linenumber" name="L561" href="#L561">561</a>             {8.1875,            1797.860987165547537276364148450577336075},
+<a class="jxr_linenumber" name="L562" href="#L562">562</a>             {8.2500,            1913.813041349231764486365114317586148767},
+<a class="jxr_linenumber" name="L563" href="#L563">563</a>             {8.3125,            2037.243361581700856522236313401822532385},
+<a class="jxr_linenumber" name="L564" href="#L564">564</a>             {8.3750,            2168.634254521568851112005905503069409349},
+<a class="jxr_linenumber" name="L565" href="#L565">565</a>             {8.4375,            2308.499132938297821208734949028296170563},
+<a class="jxr_linenumber" name="L566" href="#L566">566</a>             {8.5000,            2457.384521883751693037774022640629666294},
+<a class="jxr_linenumber" name="L567" href="#L567">567</a>             {8.5625,            2615.872194250713123494312356053193077854},
+<a class="jxr_linenumber" name="L568" href="#L568">568</a>             {8.6250,            2784.581444063104750127653362960649823247},
+<a class="jxr_linenumber" name="L569" href="#L569">569</a>             {8.6875,            2964.171506380845754878370650565756538203},
+<a class="jxr_linenumber" name="L570" href="#L570">570</a>             {8.7500,            3155.344133275174556354775488913749659006},
+<a class="jxr_linenumber" name="L571" href="#L571">571</a>             {8.8125,            3358.846335940117183452010789979584950102},
+<a class="jxr_linenumber" name="L572" href="#L572">572</a>             {8.8750,            3575.473303654961482727206202358956274888},
+<a class="jxr_linenumber" name="L573" href="#L573">573</a>             {8.9375,            3806.071511003646460448021740303914939059},
+<a class="jxr_linenumber" name="L574" href="#L574">574</a>             {9.0000,            4051.542025492594047194773093534725371440},
+<a class="jxr_linenumber" name="L575" href="#L575">575</a>             {9.0625,            4312.844028491571841588188869958240355518},
+<a class="jxr_linenumber" name="L576" href="#L576">576</a>             {9.1250,            4590.998563255739769060078863130940205710},
+<a class="jxr_linenumber" name="L577" href="#L577">577</a>             {9.1875,            4887.092524674358252509551443117048351290},
+<a class="jxr_linenumber" name="L578" href="#L578">578</a>             {9.2500,            5202.282906336187674588222835339193136030},
+<a class="jxr_linenumber" name="L579" href="#L579">579</a>             {9.3125,            5537.801321507079474415176386655744387251},
+<a class="jxr_linenumber" name="L580" href="#L580">580</a>             {9.3750,            5894.958815685577062811620236195525504885},
+<a class="jxr_linenumber" name="L581" href="#L581">581</a>             {9.4375,            6275.150989541692149890530417987358096221},
+<a class="jxr_linenumber" name="L582" href="#L582">582</a>             {9.5000,            6679.863452256851081801173722051940058824},
+<a class="jxr_linenumber" name="L583" href="#L583">583</a>             {9.5625,            7110.677626574055535297758456126491707647},
+<a class="jxr_linenumber" name="L584" href="#L584">584</a>             {9.6250,            7569.276928241617224537226019600213961572},
+<a class="jxr_linenumber" name="L585" href="#L585">585</a>             {9.6875,            8057.453343996777301036241026375049070162},
+<a class="jxr_linenumber" name="L586" href="#L586">586</a>             {9.7500,            8577.114433792824387959788368429252257664},
+<a class="jxr_linenumber" name="L587" href="#L587">587</a>             {9.8125,            9130.290784631065880205118262838330689429},
+<a class="jxr_linenumber" name="L588" href="#L588">588</a>             {9.8750,            9719.143945123662919857326995631317996715},
+<a class="jxr_linenumber" name="L589" href="#L589">589</a>             {9.9375,            10345.974871791805753327922796701684092861},
+<a class="jxr_linenumber" name="L590" href="#L590">590</a>             {10.0000,           11013.232920103323139721376090437880844591},
+<a class="jxr_linenumber" name="L591" href="#L591">591</a>         };
+<a class="jxr_linenumber" name="L592" href="#L592">592</a> 
+<a class="jxr_linenumber" name="L593" href="#L593">593</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 0; i &lt; testCases.length; i++) {
+<a class="jxr_linenumber" name="L594" href="#L594">594</a>             <strong class="jxr_keyword">double</strong> [] testCase = testCases[i];
+<a class="jxr_linenumber" name="L595" href="#L595">595</a>             failures += testCoshCaseWithUlpDiff(testCase[0],
+<a class="jxr_linenumber" name="L596" href="#L596">596</a>                                                 testCase[1],
+<a class="jxr_linenumber" name="L597" href="#L597">597</a>                                                 3.0);
+<a class="jxr_linenumber" name="L598" href="#L598">598</a>         }
+<a class="jxr_linenumber" name="L599" href="#L599">599</a> 
+<a class="jxr_linenumber" name="L600" href="#L600">600</a> 
+<a class="jxr_linenumber" name="L601" href="#L601">601</a>         <strong class="jxr_keyword">double</strong> [][] specialTestCases = {
+<a class="jxr_linenumber" name="L602" href="#L602">602</a>             {0.0,                       1.0},
+<a class="jxr_linenumber" name="L603" href="#L603">603</a>             {NaNd,                      NaNd},
+<a class="jxr_linenumber" name="L604" href="#L604">604</a>             {Double.longBitsToDouble(0x7FF0000000000001L),      NaNd},
+<a class="jxr_linenumber" name="L605" href="#L605">605</a>             {Double.longBitsToDouble(0xFFF0000000000001L),      NaNd},
+<a class="jxr_linenumber" name="L606" href="#L606">606</a>             {Double.longBitsToDouble(0x7FF8555555555555L),      NaNd},
+<a class="jxr_linenumber" name="L607" href="#L607">607</a>             {Double.longBitsToDouble(0xFFF8555555555555L),      NaNd},
+<a class="jxr_linenumber" name="L608" href="#L608">608</a>             {Double.longBitsToDouble(0x7FFFFFFFFFFFFFFFL),      NaNd},
+<a class="jxr_linenumber" name="L609" href="#L609">609</a>             {Double.longBitsToDouble(0xFFFFFFFFFFFFFFFFL),      NaNd},
+<a class="jxr_linenumber" name="L610" href="#L610">610</a>             {Double.longBitsToDouble(0x7FFDeadBeef00000L),      NaNd},
+<a class="jxr_linenumber" name="L611" href="#L611">611</a>             {Double.longBitsToDouble(0xFFFDeadBeef00000L),      NaNd},
+<a class="jxr_linenumber" name="L612" href="#L612">612</a>             {Double.longBitsToDouble(0x7FFCafeBabe00000L),      NaNd},
+<a class="jxr_linenumber" name="L613" href="#L613">613</a>             {Double.longBitsToDouble(0xFFFCafeBabe00000L),      NaNd},
+<a class="jxr_linenumber" name="L614" href="#L614">614</a>             {Double.POSITIVE_INFINITY,  Double.POSITIVE_INFINITY}
+<a class="jxr_linenumber" name="L615" href="#L615">615</a>         };
+<a class="jxr_linenumber" name="L616" href="#L616">616</a> 
+<a class="jxr_linenumber" name="L617" href="#L617">617</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 0; i &lt; specialTestCases.length; i++ ) {
+<a class="jxr_linenumber" name="L618" href="#L618">618</a>             failures += testCoshCaseWithUlpDiff(specialTestCases[i][0],
+<a class="jxr_linenumber" name="L619" href="#L619">619</a>                                                 specialTestCases[i][1],
+<a class="jxr_linenumber" name="L620" href="#L620">620</a>                                                 0.0);
+<a class="jxr_linenumber" name="L621" href="#L621">621</a>         }
+<a class="jxr_linenumber" name="L622" href="#L622">622</a> 
+<a class="jxr_linenumber" name="L623" href="#L623">623</a>         <em class="jxr_comment">// For powers of 2 less than 2^(-27), the second and</em>
+<a class="jxr_linenumber" name="L624" href="#L624">624</a>         <em class="jxr_comment">// subsequent terms of the Taylor series expansion will get</em>
+<a class="jxr_linenumber" name="L625" href="#L625">625</a>         <em class="jxr_comment">// rounded.</em>
+<a class="jxr_linenumber" name="L626" href="#L626">626</a> 
+<a class="jxr_linenumber" name="L627" href="#L627">627</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = DoubleConsts.MIN_SUB_EXPONENT; i &lt; -27; i++) {
+<a class="jxr_linenumber" name="L628" href="#L628">628</a>             <strong class="jxr_keyword">double</strong> d = FpUtils.scalb(2.0, i);
+<a class="jxr_linenumber" name="L629" href="#L629">629</a> 
+<a class="jxr_linenumber" name="L630" href="#L630">630</a>             <em class="jxr_comment">// Result and expected are the same.</em>
+<a class="jxr_linenumber" name="L631" href="#L631">631</a>             failures += testCoshCaseWithUlpDiff(d, 1.0, 2.5);
+<a class="jxr_linenumber" name="L632" href="#L632">632</a>         }
+<a class="jxr_linenumber" name="L633" href="#L633">633</a> 
+<a class="jxr_linenumber" name="L634" href="#L634">634</a>         <em class="jxr_comment">// For values of x larger than 22, the e^(-x) term is</em>
+<a class="jxr_linenumber" name="L635" href="#L635">635</a>         <em class="jxr_comment">// insignificant to the floating-point result.  Util exp(x)</em>
+<a class="jxr_linenumber" name="L636" href="#L636">636</a>         <em class="jxr_comment">// overflows around 709.8, cosh(x) ~= exp(x)/2; will will test</em>
+<a class="jxr_linenumber" name="L637" href="#L637">637</a>         <em class="jxr_comment">// 10000 values in this range.</em>
+<a class="jxr_linenumber" name="L638" href="#L638">638</a> 
+<a class="jxr_linenumber" name="L639" href="#L639">639</a>         <strong class="jxr_keyword">long</strong> trans22 = Double.doubleToLongBits(22.0);
+<a class="jxr_linenumber" name="L640" href="#L640">640</a>         <em class="jxr_comment">// (approximately) largest value such that exp shouldn't</em>
+<a class="jxr_linenumber" name="L641" href="#L641">641</a>         <em class="jxr_comment">// overflow</em>
+<a class="jxr_linenumber" name="L642" href="#L642">642</a>         <strong class="jxr_keyword">long</strong> transExpOvfl = Double.doubleToLongBits(FpUtils.nextDown(709.7827128933841));
+<a class="jxr_linenumber" name="L643" href="#L643">643</a> 
+<a class="jxr_linenumber" name="L644" href="#L644">644</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">long</strong> i = trans22;
+<a class="jxr_linenumber" name="L645" href="#L645">645</a>             i &lt; transExpOvfl;
+<a class="jxr_linenumber" name="L646" href="#L646">646</a>             i +=(transExpOvfl-trans22)/10000) {
+<a class="jxr_linenumber" name="L647" href="#L647">647</a> 
+<a class="jxr_linenumber" name="L648" href="#L648">648</a>             <strong class="jxr_keyword">double</strong> d = Double.longBitsToDouble(i);
+<a class="jxr_linenumber" name="L649" href="#L649">649</a> 
+<a class="jxr_linenumber" name="L650" href="#L650">650</a>             <em class="jxr_comment">// Allow 3.5 ulps of error to deal with error in exp.</em>
+<a class="jxr_linenumber" name="L651" href="#L651">651</a>             failures += testCoshCaseWithUlpDiff(d, StrictMath.exp(d)*0.5, 3.5);
+<a class="jxr_linenumber" name="L652" href="#L652">652</a>         }
+<a class="jxr_linenumber" name="L653" href="#L653">653</a> 
+<a class="jxr_linenumber" name="L654" href="#L654">654</a>         <em class="jxr_comment">// (approximately) largest value such that cosh shouldn't</em>
+<a class="jxr_linenumber" name="L655" href="#L655">655</a>         <em class="jxr_comment">// overflow.</em>
+<a class="jxr_linenumber" name="L656" href="#L656">656</a>         <strong class="jxr_keyword">long</strong> transCoshOvfl = Double.doubleToLongBits(710.4758600739439);
+<a class="jxr_linenumber" name="L657" href="#L657">657</a> 
+<a class="jxr_linenumber" name="L658" href="#L658">658</a>         <em class="jxr_comment">// Make sure sinh(x) doesn't overflow as soon as exp(x)</em>
+<a class="jxr_linenumber" name="L659" href="#L659">659</a>         <em class="jxr_comment">// overflows.</em>
+<a class="jxr_linenumber" name="L660" href="#L660">660</a> 
+<a class="jxr_linenumber" name="L661" href="#L661">661</a>         <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L662" href="#L662">662</a> <em class="jxr_comment">         * For large values of x, cosh(x) ~= 0.5*(e^x).  Therefore,</em>
+<a class="jxr_linenumber" name="L663" href="#L663">663</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L664" href="#L664">664</a> <em class="jxr_comment">         * cosh(x) ~= e^(ln 0.5) * e^x = e^(x + ln 0.5)</em>
+<a class="jxr_linenumber" name="L665" href="#L665">665</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L666" href="#L666">666</a> <em class="jxr_comment">         * So, we can calculate the approximate expected result as</em>
+<a class="jxr_linenumber" name="L667" href="#L667">667</a> <em class="jxr_comment">         * exp(x + -0.693147186).  However, this sum suffers from</em>
+<a class="jxr_linenumber" name="L668" href="#L668">668</a> <em class="jxr_comment">         * roundoff, limiting the accuracy of the approximation.  The</em>
+<a class="jxr_linenumber" name="L669" href="#L669">669</a> <em class="jxr_comment">         * accuracy can be improved by recovering the rounded-off</em>
+<a class="jxr_linenumber" name="L670" href="#L670">670</a> <em class="jxr_comment">         * information.  Since x is larger than ln(0.5), the trailing</em>
+<a class="jxr_linenumber" name="L671" href="#L671">671</a> <em class="jxr_comment">         * bits of ln(0.5) get rounded away when the two values are</em>
+<a class="jxr_linenumber" name="L672" href="#L672">672</a> <em class="jxr_comment">         * added.  However, high-order bits of ln(0.5) that</em>
+<a class="jxr_linenumber" name="L673" href="#L673">673</a> <em class="jxr_comment">         * contribute to the sum can be found:</em>
+<a class="jxr_linenumber" name="L674" href="#L674">674</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L675" href="#L675">675</a> <em class="jxr_comment">         * offset = log(0.5);</em>
+<a class="jxr_linenumber" name="L676" href="#L676">676</a> <em class="jxr_comment">         * effective_offset = (x + offset) - x; // exact subtraction</em>
+<a class="jxr_linenumber" name="L677" href="#L677">677</a> <em class="jxr_comment">         * rounded_away_offset = offset - effective_offset; // exact subtraction</em>
+<a class="jxr_linenumber" name="L678" href="#L678">678</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L679" href="#L679">679</a> <em class="jxr_comment">         * Therefore, the product</em>
+<a class="jxr_linenumber" name="L680" href="#L680">680</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L681" href="#L681">681</a> <em class="jxr_comment">         * exp(x + offset)*exp(rounded_away_offset)</em>
+<a class="jxr_linenumber" name="L682" href="#L682">682</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L683" href="#L683">683</a> <em class="jxr_comment">         * will be a better approximation to the exact value of</em>
+<a class="jxr_linenumber" name="L684" href="#L684">684</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L685" href="#L685">685</a> <em class="jxr_comment">         * e^(x + offset)</em>
+<a class="jxr_linenumber" name="L686" href="#L686">686</a> <em class="jxr_comment">         *</em>
+<a class="jxr_linenumber" name="L687" href="#L687">687</a> <em class="jxr_comment">         * than exp(x+offset) alone.  (The expected result cannot be</em>
+<a class="jxr_linenumber" name="L688" href="#L688">688</a> <em class="jxr_comment">         * computed as exp(x)*exp(offset) since exp(x) by itself would</em>
+<a class="jxr_linenumber" name="L689" href="#L689">689</a> <em class="jxr_comment">         * overflow to infinity.)</em>
+<a class="jxr_linenumber" name="L690" href="#L690">690</a> <em class="jxr_comment">         */</em>
+<a class="jxr_linenumber" name="L691" href="#L691">691</a>         <strong class="jxr_keyword">double</strong> offset = StrictMath.log(0.5);
+<a class="jxr_linenumber" name="L692" href="#L692">692</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">long</strong> i = transExpOvfl+1; i &lt; transCoshOvfl;
+<a class="jxr_linenumber" name="L693" href="#L693">693</a>             i += (transCoshOvfl-transExpOvfl)/1000 ) {
+<a class="jxr_linenumber" name="L694" href="#L694">694</a>             <strong class="jxr_keyword">double</strong> input = Double.longBitsToDouble(i);
+<a class="jxr_linenumber" name="L695" href="#L695">695</a> 
+<a class="jxr_linenumber" name="L696" href="#L696">696</a>             <strong class="jxr_keyword">double</strong> expected =
+<a class="jxr_linenumber" name="L697" href="#L697">697</a>                 StrictMath.exp(input + offset) *
+<a class="jxr_linenumber" name="L698" href="#L698">698</a>                 StrictMath.exp( offset - ((input + offset) - input) );
+<a class="jxr_linenumber" name="L699" href="#L699">699</a> 
+<a class="jxr_linenumber" name="L700" href="#L700">700</a>             failures += testCoshCaseWithUlpDiff(input, expected, 4.0);
+<a class="jxr_linenumber" name="L701" href="#L701">701</a>         }
+<a class="jxr_linenumber" name="L702" href="#L702">702</a> 
+<a class="jxr_linenumber" name="L703" href="#L703">703</a>         <em class="jxr_comment">// cosh(x) overflows for values greater than 710; in</em>
+<a class="jxr_linenumber" name="L704" href="#L704">704</a>         <em class="jxr_comment">// particular, it overflows for all 2^i, i &gt; 10.</em>
+<a class="jxr_linenumber" name="L705" href="#L705">705</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 10; i &lt;= DoubleConsts.MAX_EXPONENT; i++) {
+<a class="jxr_linenumber" name="L706" href="#L706">706</a>             <strong class="jxr_keyword">double</strong> d = FpUtils.scalb(2.0, i);
+<a class="jxr_linenumber" name="L707" href="#L707">707</a> 
+<a class="jxr_linenumber" name="L708" href="#L708">708</a>             <em class="jxr_comment">// Result and expected are the same.</em>
+<a class="jxr_linenumber" name="L709" href="#L709">709</a>             failures += testCoshCaseWithUlpDiff(d,
+<a class="jxr_linenumber" name="L710" href="#L710">710</a>                                                 Double.POSITIVE_INFINITY, 0.0);
+<a class="jxr_linenumber" name="L711" href="#L711">711</a>         }
+<a class="jxr_linenumber" name="L712" href="#L712">712</a>         <strong class="jxr_keyword">return</strong> failures;
+<a class="jxr_linenumber" name="L713" href="#L713">713</a>     }
+<a class="jxr_linenumber" name="L714" href="#L714">714</a> 
+<a class="jxr_linenumber" name="L715" href="#L715">715</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> testCoshCaseWithTolerance(<strong class="jxr_keyword">double</strong> input,
+<a class="jxr_linenumber" name="L716" href="#L716">716</a>                                                 <strong class="jxr_keyword">double</strong> expected,
+<a class="jxr_linenumber" name="L717" href="#L717">717</a>                                                 <strong class="jxr_keyword">double</strong> tolerance) {
+<a class="jxr_linenumber" name="L718" href="#L718">718</a>         <strong class="jxr_keyword">int</strong> failures = 0;
+<a class="jxr_linenumber" name="L719" href="#L719">719</a>         failures += Tests.testTolerance(<span class="jxr_string">"Math.cosh(double)"</span>,
+<a class="jxr_linenumber" name="L720" href="#L720">720</a>                                         input, Math.cosh(input),
+<a class="jxr_linenumber" name="L721" href="#L721">721</a>                                         expected, tolerance);
+<a class="jxr_linenumber" name="L722" href="#L722">722</a>         failures += Tests.testTolerance(<span class="jxr_string">"Math.cosh(double)"</span>,
+<a class="jxr_linenumber" name="L723" href="#L723">723</a>                                         -input, Math.cosh(-input),
+<a class="jxr_linenumber" name="L724" href="#L724">724</a>                                         expected, tolerance);
+<a class="jxr_linenumber" name="L725" href="#L725">725</a> 
+<a class="jxr_linenumber" name="L726" href="#L726">726</a>         failures += Tests.testTolerance(<span class="jxr_string">"StrictMath.cosh(double)"</span>,
+<a class="jxr_linenumber" name="L727" href="#L727">727</a>                                         input, StrictMath.cosh(input),
+<a class="jxr_linenumber" name="L728" href="#L728">728</a>                                         expected, tolerance);
+<a class="jxr_linenumber" name="L729" href="#L729">729</a>         failures += Tests.testTolerance(<span class="jxr_string">"StrictMath.cosh(double)"</span>,
+<a class="jxr_linenumber" name="L730" href="#L730">730</a>                                         -input, StrictMath.cosh(-input),
+<a class="jxr_linenumber" name="L731" href="#L731">731</a>                                         expected, tolerance);
+<a class="jxr_linenumber" name="L732" href="#L732">732</a>         <strong class="jxr_keyword">return</strong> failures;
+<a class="jxr_linenumber" name="L733" href="#L733">733</a>     }
+<a class="jxr_linenumber" name="L734" href="#L734">734</a> 
+<a class="jxr_linenumber" name="L735" href="#L735">735</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> testCoshCaseWithUlpDiff(<strong class="jxr_keyword">double</strong> input,
+<a class="jxr_linenumber" name="L736" href="#L736">736</a>                                               <strong class="jxr_keyword">double</strong> expected,
+<a class="jxr_linenumber" name="L737" href="#L737">737</a>                                               <strong class="jxr_keyword">double</strong> ulps) {
+<a class="jxr_linenumber" name="L738" href="#L738">738</a>         <strong class="jxr_keyword">int</strong> failures = 0;
+<a class="jxr_linenumber" name="L739" href="#L739">739</a>         failures += Tests.testUlpDiff(<span class="jxr_string">"Math.cosh(double)"</span>,
+<a class="jxr_linenumber" name="L740" href="#L740">740</a>                                       input, Math.cosh(input),
+<a class="jxr_linenumber" name="L741" href="#L741">741</a>                                       expected, ulps);
+<a class="jxr_linenumber" name="L742" href="#L742">742</a>         failures += Tests.testUlpDiff(<span class="jxr_string">"Math.cosh(double)"</span>,
+<a class="jxr_linenumber" name="L743" href="#L743">743</a>                                       -input, Math.cosh(-input),
+<a class="jxr_linenumber" name="L744" href="#L744">744</a>                                       expected, ulps);
+<a class="jxr_linenumber" name="L745" href="#L745">745</a> 
+<a class="jxr_linenumber" name="L746" href="#L746">746</a>         failures += Tests.testUlpDiff(<span class="jxr_string">"StrictMath.cosh(double)"</span>,
+<a class="jxr_linenumber" name="L747" href="#L747">747</a>                                       input, StrictMath.cosh(input),
+<a class="jxr_linenumber" name="L748" href="#L748">748</a>                                       expected, ulps);
+<a class="jxr_linenumber" name="L749" href="#L749">749</a>         failures += Tests.testUlpDiff(<span class="jxr_string">"StrictMath.cosh(double)"</span>,
+<a class="jxr_linenumber" name="L750" href="#L750">750</a>                                       -input, StrictMath.cosh(-input),
+<a class="jxr_linenumber" name="L751" href="#L751">751</a>                                       expected, ulps);
+<a class="jxr_linenumber" name="L752" href="#L752">752</a>         <strong class="jxr_keyword">return</strong> failures;
+<a class="jxr_linenumber" name="L753" href="#L753">753</a>     }
+<a class="jxr_linenumber" name="L754" href="#L754">754</a> 
+<a class="jxr_linenumber" name="L755" href="#L755">755</a> 
+<a class="jxr_linenumber" name="L756" href="#L756">756</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L757" href="#L757">757</a> <em class="jxr_javadoccomment">     * Test accuracy of {Math, StrictMath}.tanh.  The specified</em>
+<a class="jxr_linenumber" name="L758" href="#L758">758</a> <em class="jxr_javadoccomment">     * accuracy is 2.5 ulps.</em>
+<a class="jxr_linenumber" name="L759" href="#L759">759</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L760" href="#L760">760</a> <em class="jxr_javadoccomment">     * The defintion of tanh(x) is</em>
+<a class="jxr_linenumber" name="L761" href="#L761">761</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L762" href="#L762">762</a> <em class="jxr_javadoccomment">     * (e^x - e^(-x))/(e^x + e^(-x))</em>
+<a class="jxr_linenumber" name="L763" href="#L763">763</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L764" href="#L764">764</a> <em class="jxr_javadoccomment">     * The series expansion of tanh(x) =</em>
+<a class="jxr_linenumber" name="L765" href="#L765">765</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L766" href="#L766">766</a> <em class="jxr_javadoccomment">     * x - x^3/3 + 2x^5/15 - 17x^7/315 + ...</em>
+<a class="jxr_linenumber" name="L767" href="#L767">767</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L768" href="#L768">768</a> <em class="jxr_javadoccomment">     * Therefore,</em>
+<a class="jxr_linenumber" name="L769" href="#L769">769</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L770" href="#L770">770</a> <em class="jxr_javadoccomment">     * 1. For large values of x tanh(x) ~= signum(x)</em>
+<a class="jxr_linenumber" name="L771" href="#L771">771</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L772" href="#L772">772</a> <em class="jxr_javadoccomment">     * 2. For small values of x, tanh(x) ~= x.</em>
+<a class="jxr_linenumber" name="L773" href="#L773">773</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L774" href="#L774">774</a> <em class="jxr_javadoccomment">     * Additionally, tanh is an odd function; tanh(-x) = -tanh(x).</em>
+<a class="jxr_linenumber" name="L775" href="#L775">775</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L776" href="#L776">776</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L777" href="#L777">777</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> testTanh() {
+<a class="jxr_linenumber" name="L778" href="#L778">778</a>         <strong class="jxr_keyword">int</strong> failures = 0;
+<a class="jxr_linenumber" name="L779" href="#L779">779</a>         <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L780" href="#L780">780</a> <em class="jxr_comment">         * Array elements below generated using a quad sinh</em>
+<a class="jxr_linenumber" name="L781" href="#L781">781</a> <em class="jxr_comment">         * implementation.  Rounded to a double, the quad result</em>
+<a class="jxr_linenumber" name="L782" href="#L782">782</a> <em class="jxr_comment">         * *should* be correctly rounded, unless we are quite unlucky.</em>
+<a class="jxr_linenumber" name="L783" href="#L783">783</a> <em class="jxr_comment">         * Assuming the quad value is a correctly rounded double, the</em>
+<a class="jxr_linenumber" name="L784" href="#L784">784</a> <em class="jxr_comment">         * allowed error is 3.0 ulps instead of 2.5 since the quad</em>
+<a class="jxr_linenumber" name="L785" href="#L785">785</a> <em class="jxr_comment">         * value rounded to double can have its own 1/2 ulp error.</em>
+<a class="jxr_linenumber" name="L786" href="#L786">786</a> <em class="jxr_comment">         */</em>
+<a class="jxr_linenumber" name="L787" href="#L787">787</a>         <strong class="jxr_keyword">double</strong> [][] testCases = {
+<a class="jxr_linenumber" name="L788" href="#L788">788</a>             <em class="jxr_comment">// x                tanh(x)</em>
+<a class="jxr_linenumber" name="L789" href="#L789">789</a>             {0.0625,            0.06241874674751251449014289119421133},
+<a class="jxr_linenumber" name="L790" href="#L790">790</a>             {0.1250,            0.12435300177159620805464727580589271},
+<a class="jxr_linenumber" name="L791" href="#L791">791</a>             {0.1875,            0.18533319990813951753211997502482787},
+<a class="jxr_linenumber" name="L792" href="#L792">792</a>             {0.2500,            0.24491866240370912927780113149101697},
+<a class="jxr_linenumber" name="L793" href="#L793">793</a>             {0.3125,            0.30270972933210848724239738970991712},
+<a class="jxr_linenumber" name="L794" href="#L794">794</a>             {0.3750,            0.35835739835078594631936023155315807},
+<a class="jxr_linenumber" name="L795" href="#L795">795</a>             {0.4375,            0.41157005567402245143207555859415687},
+<a class="jxr_linenumber" name="L796" href="#L796">796</a>             {0.5000,            0.46211715726000975850231848364367256},
+<a class="jxr_linenumber" name="L797" href="#L797">797</a>             {0.5625,            0.50982997373525658248931213507053130},
+<a class="jxr_linenumber" name="L798" href="#L798">798</a>             {0.6250,            0.55459972234938229399903909532308371},
+<a class="jxr_linenumber" name="L799" href="#L799">799</a>             {0.6875,            0.59637355547924233984437303950726939},
+<a class="jxr_linenumber" name="L800" href="#L800">800</a>             {0.7500,            0.63514895238728731921443435731249638},
+<a class="jxr_linenumber" name="L801" href="#L801">801</a>             {0.8125,            0.67096707420687367394810954721913358},
+<a class="jxr_linenumber" name="L802" href="#L802">802</a>             {0.8750,            0.70390560393662106058763026963135371},
+<a class="jxr_linenumber" name="L803" href="#L803">803</a>             {0.9375,            0.73407151960434149263991588052503660},
+<a class="jxr_linenumber" name="L804" href="#L804">804</a>             {1.0000,            0.76159415595576488811945828260479366},
+<a class="jxr_linenumber" name="L805" href="#L805">805</a>             {1.0625,            0.78661881210869761781941794647736081},
+<a class="jxr_linenumber" name="L806" href="#L806">806</a>             {1.1250,            0.80930107020178101206077047354332696},
+<a class="jxr_linenumber" name="L807" href="#L807">807</a>             {1.1875,            0.82980190998595952708572559629034476},
+<a class="jxr_linenumber" name="L808" href="#L808">808</a>             {1.2500,            0.84828363995751289761338764670750445},
+<a class="jxr_linenumber" name="L809" href="#L809">809</a>             {1.3125,            0.86490661772074179125443141102709751},
+<a class="jxr_linenumber" name="L810" href="#L810">810</a>             {1.3750,            0.87982669965198475596055310881018259},
+<a class="jxr_linenumber" name="L811" href="#L811">811</a>             {1.4375,            0.89319334040035153149249598745889365},
+<a class="jxr_linenumber" name="L812" href="#L812">812</a>             {1.5000,            0.90514825364486643824230369645649557},
+<a class="jxr_linenumber" name="L813" href="#L813">813</a>             {1.5625,            0.91582454416876231820084311814416443},
+<a class="jxr_linenumber" name="L814" href="#L814">814</a>             {1.6250,            0.92534622531174107960457166792300374},
+<a class="jxr_linenumber" name="L815" href="#L815">815</a>             {1.6875,            0.93382804322259173763570528576138652},
+<a class="jxr_linenumber" name="L816" href="#L816">816</a>             {1.7500,            0.94137553849728736226942088377163687},
+<a class="jxr_linenumber" name="L817" href="#L817">817</a>             {1.8125,            0.94808528560440629971240651310180052},
+<a class="jxr_linenumber" name="L818" href="#L818">818</a>             {1.8750,            0.95404526017994877009219222661968285},
+<a class="jxr_linenumber" name="L819" href="#L819">819</a>             {1.9375,            0.95933529331468249183399461756952555},
+<a class="jxr_linenumber" name="L820" href="#L820">820</a>             {2.0000,            0.96402758007581688394641372410092317},
+<a class="jxr_linenumber" name="L821" href="#L821">821</a>             {2.0625,            0.96818721657637057702714316097855370},
+<a class="jxr_linenumber" name="L822" href="#L822">822</a>             {2.1250,            0.97187274591350905151254495374870401},
+<a class="jxr_linenumber" name="L823" href="#L823">823</a>             {2.1875,            0.97513669829362836159665586901156483},
+<a class="jxr_linenumber" name="L824" href="#L824">824</a>             {2.2500,            0.97802611473881363992272924300618321},
+<a class="jxr_linenumber" name="L825" href="#L825">825</a>             {2.3125,            0.98058304703705186541999427134482061},
+<a class="jxr_linenumber" name="L826" href="#L826">826</a>             {2.3750,            0.98284502917257603002353801620158861},
+<a class="jxr_linenumber" name="L827" href="#L827">827</a>             {2.4375,            0.98484551746427837912703608465407824},
+<a class="jxr_linenumber" name="L828" href="#L828">828</a>             {2.5000,            0.98661429815143028888127603923734964},
+<a class="jxr_linenumber" name="L829" href="#L829">829</a>             {2.5625,            0.98817786228751240824802592958012269},
+<a class="jxr_linenumber" name="L830" href="#L830">830</a>             {2.6250,            0.98955974861288320579361709496051109},
+<a class="jxr_linenumber" name="L831" href="#L831">831</a>             {2.6875,            0.99078085564125158320311117560719312},
+<a class="jxr_linenumber" name="L832" href="#L832">832</a>             {2.7500,            0.99185972456820774534967078914285035},
+<a class="jxr_linenumber" name="L833" href="#L833">833</a>             {2.8125,            0.99281279483715982021711715899682324},
+<a class="jxr_linenumber" name="L834" href="#L834">834</a>             {2.8750,            0.99365463431502962099607366282699651},
+<a class="jxr_linenumber" name="L835" href="#L835">835</a>             {2.9375,            0.99439814606575805343721743822723671},
+<a class="jxr_linenumber" name="L836" href="#L836">836</a>             {3.0000,            0.99505475368673045133188018525548849},
+<a class="jxr_linenumber" name="L837" href="#L837">837</a>             {3.0625,            0.99563456710930963835715538507891736},
+<a class="jxr_linenumber" name="L838" href="#L838">838</a>             {3.1250,            0.99614653067334504917102591131792951},
+<a class="jxr_linenumber" name="L839" href="#L839">839</a>             {3.1875,            0.99659855517712942451966113109487039},
+<a class="jxr_linenumber" name="L840" href="#L840">840</a>             {3.2500,            0.99699763548652601693227592643957226},
+<a class="jxr_linenumber" name="L841" href="#L841">841</a>             {3.3125,            0.99734995516557367804571991063376923},
+<a class="jxr_linenumber" name="L842" href="#L842">842</a>             {3.3750,            0.99766097946988897037219469409451602},
+<a class="jxr_linenumber" name="L843" href="#L843">843</a>             {3.4375,            0.99793553792649036103161966894686844},
+<a class="jxr_linenumber" name="L844" href="#L844">844</a>             {3.5000,            0.99817789761119870928427335245061171},
+<a class="jxr_linenumber" name="L845" href="#L845">845</a>             {3.5625,            0.99839182812874152902001617480606320},
+<a class="jxr_linenumber" name="L846" href="#L846">846</a>             {3.6250,            0.99858065920179882368897879066418294},
+<a class="jxr_linenumber" name="L847" href="#L847">847</a>             {3.6875,            0.99874733168378115962760304582965538},
+<a class="jxr_linenumber" name="L848" href="#L848">848</a>             {3.7500,            0.99889444272615280096784208280487888},
+<a class="jxr_linenumber" name="L849" href="#L849">849</a>             {3.8125,            0.99902428575443546808677966295308778},
+<a class="jxr_linenumber" name="L850" href="#L850">850</a>             {3.8750,            0.99913888583735077016137617231569011},
+<a class="jxr_linenumber" name="L851" href="#L851">851</a>             {3.9375,            0.99924003097049627100651907919688313},
+<a class="jxr_linenumber" name="L852" href="#L852">852</a>             {4.0000,            0.99932929973906704379224334434172499},
+<a class="jxr_linenumber" name="L853" href="#L853">853</a>             {4.0625,            0.99940808577297384603818654530731215},
+<a class="jxr_linenumber" name="L854" href="#L854">854</a>             {4.1250,            0.99947761936180856115470576756499454},
+<a class="jxr_linenumber" name="L855" href="#L855">855</a>             {4.1875,            0.99953898655601372055527046497863955},
+<a class="jxr_linenumber" name="L856" href="#L856">856</a>             {4.2500,            0.99959314604388958696521068958989891},
+<a class="jxr_linenumber" name="L857" href="#L857">857</a>             {4.3125,            0.99964094406130644525586201091350343},
+<a class="jxr_linenumber" name="L858" href="#L858">858</a>             {4.3750,            0.99968312756179494813069349082306235},
+<a class="jxr_linenumber" name="L859" href="#L859">859</a>             {4.4375,            0.99972035584870534179601447812936151},
+<a class="jxr_linenumber" name="L860" href="#L860">860</a>             {4.5000,            0.99975321084802753654050617379050162},
+<a class="jxr_linenumber" name="L861" href="#L861">861</a>             {4.5625,            0.99978220617994689112771768489030236},
+<a class="jxr_linenumber" name="L862" href="#L862">862</a>             {4.6250,            0.99980779516900105210240981251048167},
+<a class="jxr_linenumber" name="L863" href="#L863">863</a>             {4.6875,            0.99983037791655283849546303868853396},
+<a class="jxr_linenumber" name="L864" href="#L864">864</a>             {4.7500,            0.99985030754497877753787358852000255},
+<a class="jxr_linenumber" name="L865" href="#L865">865</a>             {4.8125,            0.99986789571029070417475400133989992},
+<a class="jxr_linenumber" name="L866" href="#L866">866</a>             {4.8750,            0.99988341746867772271011794614780441},
+<a class="jxr_linenumber" name="L867" href="#L867">867</a>             {4.9375,            0.99989711557251558205051185882773206},
+<a class="jxr_linenumber" name="L868" href="#L868">868</a>             {5.0000,            0.99990920426259513121099044753447306},
+<a class="jxr_linenumber" name="L869" href="#L869">869</a>             {5.0625,            0.99991987261554158551063867262784721},
+<a class="jxr_linenumber" name="L870" href="#L870">870</a>             {5.1250,            0.99992928749851651137225712249720606},
+<a class="jxr_linenumber" name="L871" href="#L871">871</a>             {5.1875,            0.99993759617721206697530526661105307},
+<a class="jxr_linenumber" name="L872" href="#L872">872</a>             {5.2500,            0.99994492861777083305830639416802036},
+<a class="jxr_linenumber" name="L873" href="#L873">873</a>             {5.3125,            0.99995139951851344080105352145538345},
+<a class="jxr_linenumber" name="L874" href="#L874">874</a>             {5.3750,            0.99995711010315817210152906092289064},
+<a class="jxr_linenumber" name="L875" href="#L875">875</a>             {5.4375,            0.99996214970350792531554669737676253},
+<a class="jxr_linenumber" name="L876" href="#L876">876</a>             {5.5000,            0.99996659715630380963848952941756868},
+<a class="jxr_linenumber" name="L877" href="#L877">877</a>             {5.5625,            0.99997052203605101013786592945475432},
+<a class="jxr_linenumber" name="L878" href="#L878">878</a>             {5.6250,            0.99997398574306704793434088941484766},
+<a class="jxr_linenumber" name="L879" href="#L879">879</a>             {5.6875,            0.99997704246374583929961850444364696},
+<a class="jxr_linenumber" name="L880" href="#L880">880</a>             {5.7500,            0.99997974001803825215761760428815437},
+<a class="jxr_linenumber" name="L881" href="#L881">881</a>             {5.8125,            0.99998212060739040166557477723121777},
+<a class="jxr_linenumber" name="L882" href="#L882">882</a>             {5.8750,            0.99998422147482750993344503195672517},
+<a class="jxr_linenumber" name="L883" href="#L883">883</a>             {5.9375,            0.99998607548749972326220227464612338},
+<a class="jxr_linenumber" name="L884" href="#L884">884</a>             {6.0000,            0.99998771165079557056434885235523206},
+<a class="jxr_linenumber" name="L885" href="#L885">885</a>             {6.0625,            0.99998915556205996764518917496149338},
+<a class="jxr_linenumber" name="L886" href="#L886">886</a>             {6.1250,            0.99999042981101021976277974520745310},
+<a class="jxr_linenumber" name="L887" href="#L887">887</a>             {6.1875,            0.99999155433311068015449574811497719},
+<a class="jxr_linenumber" name="L888" href="#L888">888</a>             {6.2500,            0.99999254672143162687722782398104276},
+<a class="jxr_linenumber" name="L889" href="#L889">889</a>             {6.3125,            0.99999342250186907900400800240980139},
+<a class="jxr_linenumber" name="L890" href="#L890">890</a>             {6.3750,            0.99999419537602957780612639767025158},
+<a class="jxr_linenumber" name="L891" href="#L891">891</a>             {6.4375,            0.99999487743557848265406225515388994},
+<a class="jxr_linenumber" name="L892" href="#L892">892</a>             {6.5000,            0.99999547935140419285107893831698753},
+<a class="jxr_linenumber" name="L893" href="#L893">893</a>             {6.5625,            0.99999601054055694588617385671796346},
+<a class="jxr_linenumber" name="L894" href="#L894">894</a>             {6.6250,            0.99999647931357331502887600387959900},
+<a class="jxr_linenumber" name="L895" href="#L895">895</a>             {6.6875,            0.99999689300449080997594368612277442},
+<a class="jxr_linenumber" name="L896" href="#L896">896</a>             {6.7500,            0.99999725808558628431084200832778748},
+<a class="jxr_linenumber" name="L897" href="#L897">897</a>             {6.8125,            0.99999758026863294516387464046135924},
+<a class="jxr_linenumber" name="L898" href="#L898">898</a>             {6.8750,            0.99999786459425991170635407313276785},
+<a class="jxr_linenumber" name="L899" href="#L899">899</a>             {6.9375,            0.99999811551081218572759991597586905},
+<a class="jxr_linenumber" name="L900" href="#L900">900</a>             {7.0000,            0.99999833694394467173571641595066708},
+<a class="jxr_linenumber" name="L901" href="#L901">901</a>             {7.0625,            0.99999853235803894918375164252059190},
+<a class="jxr_linenumber" name="L902" href="#L902">902</a>             {7.1250,            0.99999870481040359014665019356422927},
+<a class="jxr_linenumber" name="L903" href="#L903">903</a>             {7.1875,            0.99999885699910593255108365463415411},
+<a class="jxr_linenumber" name="L904" href="#L904">904</a>             {7.2500,            0.99999899130518359709674536482047025},
+<a class="jxr_linenumber" name="L905" href="#L905">905</a>             {7.3125,            0.99999910982989611769943303422227663},
+<a class="jxr_linenumber" name="L906" href="#L906">906</a>             {7.3750,            0.99999921442759946591163427422888252},
+<a class="jxr_linenumber" name="L907" href="#L907">907</a>             {7.4375,            0.99999930673475777603853435094943258},
+<a class="jxr_linenumber" name="L908" href="#L908">908</a>             {7.5000,            0.99999938819554614875054970643513124},
+<a class="jxr_linenumber" name="L909" href="#L909">909</a>             {7.5625,            0.99999946008444508183970109263856958},
+<a class="jxr_linenumber" name="L910" href="#L910">910</a>             {7.6250,            0.99999952352618001331402589096040117},
+<a class="jxr_linenumber" name="L911" href="#L911">911</a>             {7.6875,            0.99999957951331792817413683491979752},
+<a class="jxr_linenumber" name="L912" href="#L912">912</a>             {7.7500,            0.99999962892179632633374697389145081},
+<a class="jxr_linenumber" name="L913" href="#L913">913</a>             {7.8125,            0.99999967252462750190604116210421169},
+<a class="jxr_linenumber" name="L914" href="#L914">914</a>             {7.8750,            0.99999971100399253750324718031574484},
+<a class="jxr_linenumber" name="L915" href="#L915">915</a>             {7.9375,            0.99999974496191422474977283863588658},
+<a class="jxr_linenumber" name="L916" href="#L916">916</a>             {8.0000,            0.99999977492967588981001883295636840},
+<a class="jxr_linenumber" name="L917" href="#L917">917</a>             {8.0625,            0.99999980137613348259726597081723424},
+<a class="jxr_linenumber" name="L918" href="#L918">918</a>             {8.1250,            0.99999982471505097353529823063673263},
+<a class="jxr_linenumber" name="L919" href="#L919">919</a>             {8.1875,            0.99999984531157382142423402736529911},
+<a class="jxr_linenumber" name="L920" href="#L920">920</a>             {8.2500,            0.99999986348794179107425910499030547},
+<a class="jxr_linenumber" name="L921" href="#L921">921</a>             {8.3125,            0.99999987952853049895833839645847571},
+<a class="jxr_linenumber" name="L922" href="#L922">922</a>             {8.3750,            0.99999989368430056302584289932834041},
+<a class="jxr_linenumber" name="L923" href="#L923">923</a>             {8.4375,            0.99999990617672396471542088609051728},
+<a class="jxr_linenumber" name="L924" href="#L924">924</a>             {8.5000,            0.99999991720124905211338798152800748},
+<a class="jxr_linenumber" name="L925" href="#L925">925</a>             {8.5625,            0.99999992693035839516545287745322387},
+<a class="jxr_linenumber" name="L926" href="#L926">926</a>             {8.6250,            0.99999993551626733394129009365703767},
+<a class="jxr_linenumber" name="L927" href="#L927">927</a>             {8.6875,            0.99999994309330543951799157347876934},
+<a class="jxr_linenumber" name="L928" href="#L928">928</a>             {8.7500,            0.99999994978001814614368429416607424},
+<a class="jxr_linenumber" name="L929" href="#L929">929</a>             {8.8125,            0.99999995568102143535399207289008504},
+<a class="jxr_linenumber" name="L930" href="#L930">930</a>             {8.8750,            0.99999996088863858914831986187674522},
+<a class="jxr_linenumber" name="L931" href="#L931">931</a>             {8.9375,            0.99999996548434461974481685677429908},
+<a class="jxr_linenumber" name="L932" href="#L932">932</a>             {9.0000,            0.99999996954004097447930211118358244},
+<a class="jxr_linenumber" name="L933" href="#L933">933</a>             {9.0625,            0.99999997311918045901919121395899372},
+<a class="jxr_linenumber" name="L934" href="#L934">934</a>             {9.1250,            0.99999997627775997868467948564005257},
+<a class="jxr_linenumber" name="L935" href="#L935">935</a>             {9.1875,            0.99999997906519662964368381583648379},
+<a class="jxr_linenumber" name="L936" href="#L936">936</a>             {9.2500,            0.99999998152510084671976114264303159},
+<a class="jxr_linenumber" name="L937" href="#L937">937</a>             {9.3125,            0.99999998369595870397054673668361266},
+<a class="jxr_linenumber" name="L938" href="#L938">938</a>             {9.3750,            0.99999998561173404286033236040150950},
+<a class="jxr_linenumber" name="L939" href="#L939">939</a>             {9.4375,            0.99999998730239984852716512979473289},
+<a class="jxr_linenumber" name="L940" href="#L940">940</a>             {9.5000,            0.99999998879440718770812040917618843},
+<a class="jxr_linenumber" name="L941" href="#L941">941</a>             {9.5625,            0.99999999011109904501789298212541698},
+<a class="jxr_linenumber" name="L942" href="#L942">942</a>             {9.6250,            0.99999999127307553219220251303121960},
+<a class="jxr_linenumber" name="L943" href="#L943">943</a>             {9.6875,            0.99999999229851618412119275358396363},
+<a class="jxr_linenumber" name="L944" href="#L944">944</a>             {9.7500,            0.99999999320346438410630581726217930},
+<a class="jxr_linenumber" name="L945" href="#L945">945</a>             {9.8125,            0.99999999400207836827291739324060736},
+<a class="jxr_linenumber" name="L946" href="#L946">946</a>             {9.8750,            0.99999999470685273619047001387577653},
+<a class="jxr_linenumber" name="L947" href="#L947">947</a>             {9.9375,            0.99999999532881393331131526966058758},
+<a class="jxr_linenumber" name="L948" href="#L948">948</a>             {10.0000,           0.99999999587769276361959283713827574},
+<a class="jxr_linenumber" name="L949" href="#L949">949</a>         };
+<a class="jxr_linenumber" name="L950" href="#L950">950</a> 
+<a class="jxr_linenumber" name="L951" href="#L951">951</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 0; i &lt; testCases.length; i++) {
+<a class="jxr_linenumber" name="L952" href="#L952">952</a>             <strong class="jxr_keyword">double</strong> [] testCase = testCases[i];
+<a class="jxr_linenumber" name="L953" href="#L953">953</a>             failures += testTanhCaseWithUlpDiff(testCase[0],
+<a class="jxr_linenumber" name="L954" href="#L954">954</a>                                                 testCase[1],
+<a class="jxr_linenumber" name="L955" href="#L955">955</a>                                                 3.0);
+<a class="jxr_linenumber" name="L956" href="#L956">956</a>         }
+<a class="jxr_linenumber" name="L957" href="#L957">957</a> 
+<a class="jxr_linenumber" name="L958" href="#L958">958</a> 
+<a class="jxr_linenumber" name="L959" href="#L959">959</a>         <strong class="jxr_keyword">double</strong> [][] specialTestCases = {
+<a class="jxr_linenumber" name="L960" href="#L960">960</a>             {0.0,                       0.0},
+<a class="jxr_linenumber" name="L961" href="#L961">961</a>             {NaNd,                      NaNd},
+<a class="jxr_linenumber" name="L962" href="#L962">962</a>             {Double.longBitsToDouble(0x7FF0000000000001L),      NaNd},
+<a class="jxr_linenumber" name="L963" href="#L963">963</a>             {Double.longBitsToDouble(0xFFF0000000000001L),      NaNd},
+<a class="jxr_linenumber" name="L964" href="#L964">964</a>             {Double.longBitsToDouble(0x7FF8555555555555L),      NaNd},
+<a class="jxr_linenumber" name="L965" href="#L965">965</a>             {Double.longBitsToDouble(0xFFF8555555555555L),      NaNd},
+<a class="jxr_linenumber" name="L966" href="#L966">966</a>             {Double.longBitsToDouble(0x7FFFFFFFFFFFFFFFL),      NaNd},
+<a class="jxr_linenumber" name="L967" href="#L967">967</a>             {Double.longBitsToDouble(0xFFFFFFFFFFFFFFFFL),      NaNd},
+<a class="jxr_linenumber" name="L968" href="#L968">968</a>             {Double.longBitsToDouble(0x7FFDeadBeef00000L),      NaNd},
+<a class="jxr_linenumber" name="L969" href="#L969">969</a>             {Double.longBitsToDouble(0xFFFDeadBeef00000L),      NaNd},
+<a class="jxr_linenumber" name="L970" href="#L970">970</a>             {Double.longBitsToDouble(0x7FFCafeBabe00000L),      NaNd},
+<a class="jxr_linenumber" name="L971" href="#L971">971</a>             {Double.longBitsToDouble(0xFFFCafeBabe00000L),      NaNd},
+<a class="jxr_linenumber" name="L972" href="#L972">972</a>             {Double.POSITIVE_INFINITY,  1.0}
+<a class="jxr_linenumber" name="L973" href="#L973">973</a>         };
+<a class="jxr_linenumber" name="L974" href="#L974">974</a> 
+<a class="jxr_linenumber" name="L975" href="#L975">975</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 0; i &lt; specialTestCases.length; i++) {
+<a class="jxr_linenumber" name="L976" href="#L976">976</a>             failures += testTanhCaseWithUlpDiff(specialTestCases[i][0],
+<a class="jxr_linenumber" name="L977" href="#L977">977</a>                                                 specialTestCases[i][1],
+<a class="jxr_linenumber" name="L978" href="#L978">978</a>                                                 0.0);
+<a class="jxr_linenumber" name="L979" href="#L979">979</a>         }
+<a class="jxr_linenumber" name="L980" href="#L980">980</a> 
+<a class="jxr_linenumber" name="L981" href="#L981">981</a>         <em class="jxr_comment">// For powers of 2 less than 2^(-27), the second and</em>
+<a class="jxr_linenumber" name="L982" href="#L982">982</a>         <em class="jxr_comment">// subsequent terms of the Taylor series expansion will get</em>
+<a class="jxr_linenumber" name="L983" href="#L983">983</a>         <em class="jxr_comment">// rounded away since |n-n^3| &gt; 53, the binary precision of a</em>
+<a class="jxr_linenumber" name="L984" href="#L984">984</a>         <em class="jxr_comment">// double significand.</em>
+<a class="jxr_linenumber" name="L985" href="#L985">985</a> 
+<a class="jxr_linenumber" name="L986" href="#L986">986</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = DoubleConsts.MIN_SUB_EXPONENT; i &lt; -27; i++) {
+<a class="jxr_linenumber" name="L987" href="#L987">987</a>             <strong class="jxr_keyword">double</strong> d = FpUtils.scalb(2.0, i);
+<a class="jxr_linenumber" name="L988" href="#L988">988</a> 
+<a class="jxr_linenumber" name="L989" href="#L989">989</a>             <em class="jxr_comment">// Result and expected are the same.</em>
+<a class="jxr_linenumber" name="L990" href="#L990">990</a>             failures += testTanhCaseWithUlpDiff(d, d, 2.5);
+<a class="jxr_linenumber" name="L991" href="#L991">991</a>         }
+<a class="jxr_linenumber" name="L992" href="#L992">992</a> 
+<a class="jxr_linenumber" name="L993" href="#L993">993</a>         <em class="jxr_comment">// For values of x larger than 22, tanh(x) is 1.0 in double</em>
+<a class="jxr_linenumber" name="L994" href="#L994">994</a>         <em class="jxr_comment">// floating-point arithmetic.</em>
+<a class="jxr_linenumber" name="L995" href="#L995">995</a> 
+<a class="jxr_linenumber" name="L996" href="#L996">996</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 22; i &lt; 32; i++) {
+<a class="jxr_linenumber" name="L997" href="#L997">997</a>             failures += testTanhCaseWithUlpDiff(i, 1.0, 2.5);
+<a class="jxr_linenumber" name="L998" href="#L998">998</a>         }
+<a class="jxr_linenumber" name="L999" href="#L999">999</a> 
+<a class="jxr_linenumber" name="L1000" href="#L1000">1000</a>         <strong class="jxr_keyword">for</strong>(<strong class="jxr_keyword">int</strong> i = 5; i &lt;= DoubleConsts.MAX_EXPONENT; i++) {
+<a class="jxr_linenumber" name="L1001" href="#L1001">1001</a>             <strong class="jxr_keyword">double</strong> d = FpUtils.scalb(2.0, i);
+<a class="jxr_linenumber" name="L1002" href="#L1002">1002</a> 
+<a class="jxr_linenumber" name="L1003" href="#L1003">1003</a>             failures += testTanhCaseWithUlpDiff(d, 1.0, 2.5);
+<a class="jxr_linenumber" name="L1004" href="#L1004">1004</a>         }
+<a class="jxr_linenumber" name="L1005" href="#L1005">1005</a> 
+<a class="jxr_linenumber" name="L1006" href="#L1006">1006</a>         <strong class="jxr_keyword">return</strong> failures;
+<a class="jxr_linenumber" name="L1007" href="#L1007">1007</a>     }
+<a class="jxr_linenumber" name="L1008" href="#L1008">1008</a> 
+<a class="jxr_linenumber" name="L1009" href="#L1009">1009</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> testTanhCaseWithTolerance(<strong class="jxr_keyword">double</strong> input,
+<a class="jxr_linenumber" name="L1010" href="#L1010">1010</a>                                                 <strong class="jxr_keyword">double</strong> expected,
+<a class="jxr_linenumber" name="L1011" href="#L1011">1011</a>                                                 <strong class="jxr_keyword">double</strong> tolerance) {
+<a class="jxr_linenumber" name="L1012" href="#L1012">1012</a>         <strong class="jxr_keyword">int</strong> failures = 0;
+<a class="jxr_linenumber" name="L1013" href="#L1013">1013</a>         failures += Tests.testTolerance(<span class="jxr_string">"Math.tanh(double"</span>,
+<a class="jxr_linenumber" name="L1014" href="#L1014">1014</a>                                         input, Math.tanh(input),
+<a class="jxr_linenumber" name="L1015" href="#L1015">1015</a>                                         expected, tolerance);
+<a class="jxr_linenumber" name="L1016" href="#L1016">1016</a>         failures += Tests.testTolerance(<span class="jxr_string">"Math.tanh(double"</span>,
+<a class="jxr_linenumber" name="L1017" href="#L1017">1017</a>                                         -input, Math.tanh(-input),
+<a class="jxr_linenumber" name="L1018" href="#L1018">1018</a>                                         -expected, tolerance);
+<a class="jxr_linenumber" name="L1019" href="#L1019">1019</a> 
+<a class="jxr_linenumber" name="L1020" href="#L1020">1020</a>         failures += Tests.testTolerance(<span class="jxr_string">"StrictMath.tanh(double"</span>,
+<a class="jxr_linenumber" name="L1021" href="#L1021">1021</a>                                         input, StrictMath.tanh(input),
+<a class="jxr_linenumber" name="L1022" href="#L1022">1022</a>                                         expected, tolerance);
+<a class="jxr_linenumber" name="L1023" href="#L1023">1023</a>         failures += Tests.testTolerance(<span class="jxr_string">"StrictMath.tanh(double"</span>,
+<a class="jxr_linenumber" name="L1024" href="#L1024">1024</a>                                         -input, StrictMath.tanh(-input),
+<a class="jxr_linenumber" name="L1025" href="#L1025">1025</a>                                         -expected, tolerance);
+<a class="jxr_linenumber" name="L1026" href="#L1026">1026</a>         <strong class="jxr_keyword">return</strong> failures;
+<a class="jxr_linenumber" name="L1027" href="#L1027">1027</a>     }
+<a class="jxr_linenumber" name="L1028" href="#L1028">1028</a> 
+<a class="jxr_linenumber" name="L1029" href="#L1029">1029</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> testTanhCaseWithUlpDiff(<strong class="jxr_keyword">double</strong> input,
+<a class="jxr_linenumber" name="L1030" href="#L1030">1030</a>                                               <strong class="jxr_keyword">double</strong> expected,
+<a class="jxr_linenumber" name="L1031" href="#L1031">1031</a>                                               <strong class="jxr_keyword">double</strong> ulps) {
+<a class="jxr_linenumber" name="L1032" href="#L1032">1032</a>         <strong class="jxr_keyword">int</strong> failures = 0;
+<a class="jxr_linenumber" name="L1033" href="#L1033">1033</a> 
+<a class="jxr_linenumber" name="L1034" href="#L1034">1034</a>         failures += Tests.testUlpDiffWithAbsBound(<span class="jxr_string">"Math.tanh(double)"</span>,
+<a class="jxr_linenumber" name="L1035" href="#L1035">1035</a>                                                   input, Math.tanh(input),
+<a class="jxr_linenumber" name="L1036" href="#L1036">1036</a>                                                   expected, ulps, 1.0);
+<a class="jxr_linenumber" name="L1037" href="#L1037">1037</a>         failures += Tests.testUlpDiffWithAbsBound(<span class="jxr_string">"Math.tanh(double)"</span>,
+<a class="jxr_linenumber" name="L1038" href="#L1038">1038</a>                                                   -input, Math.tanh(-input),
+<a class="jxr_linenumber" name="L1039" href="#L1039">1039</a>                                                   -expected, ulps, 1.0);
+<a class="jxr_linenumber" name="L1040" href="#L1040">1040</a> 
+<a class="jxr_linenumber" name="L1041" href="#L1041">1041</a>         failures += Tests.testUlpDiffWithAbsBound(<span class="jxr_string">"StrictMath.tanh(double)"</span>,
+<a class="jxr_linenumber" name="L1042" href="#L1042">1042</a>                                                   input, StrictMath.tanh(input),
+<a class="jxr_linenumber" name="L1043" href="#L1043">1043</a>                                                   expected, ulps, 1.0);
+<a class="jxr_linenumber" name="L1044" href="#L1044">1044</a>         failures += Tests.testUlpDiffWithAbsBound(<span class="jxr_string">"StrictMath.tanh(double)"</span>,
+<a class="jxr_linenumber" name="L1045" href="#L1045">1045</a>                                                   -input, StrictMath.tanh(-input),
+<a class="jxr_linenumber" name="L1046" href="#L1046">1046</a>                                                   -expected, ulps, 1.0);
+<a class="jxr_linenumber" name="L1047" href="#L1047">1047</a>         <strong class="jxr_keyword">return</strong> failures;
+<a class="jxr_linenumber" name="L1048" href="#L1048">1048</a>     }
+<a class="jxr_linenumber" name="L1049" href="#L1049">1049</a> 
+<a class="jxr_linenumber" name="L1050" href="#L1050">1050</a> 
+<a class="jxr_linenumber" name="L1051" href="#L1051">1051</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String argv[]) {
+<a class="jxr_linenumber" name="L1052" href="#L1052">1052</a>         <strong class="jxr_keyword">int</strong> failures = 0;
+<a class="jxr_linenumber" name="L1053" href="#L1053">1053</a> 
+<a class="jxr_linenumber" name="L1054" href="#L1054">1054</a>         failures += testSinh();
+<a class="jxr_linenumber" name="L1055" href="#L1055">1055</a>         failures += testCosh();
+<a class="jxr_linenumber" name="L1056" href="#L1056">1056</a>         failures += testTanh();
+<a class="jxr_linenumber" name="L1057" href="#L1057">1057</a> 
+<a class="jxr_linenumber" name="L1058" href="#L1058">1058</a>         <strong class="jxr_keyword">if</strong> (failures &gt; 0) {
+<a class="jxr_linenumber" name="L1059" href="#L1059">1059</a>             System.err.println(<span class="jxr_string">"Testing the hyperbolic functions incurred "</span>
+<a class="jxr_linenumber" name="L1060" href="#L1060">1060</a>                                + failures + <span class="jxr_string">" failures."</span>);
+<a class="jxr_linenumber" name="L1061" href="#L1061">1061</a>             <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException();
+<a class="jxr_linenumber" name="L1062" href="#L1062">1062</a>         }
+<a class="jxr_linenumber" name="L1063" href="#L1063">1063</a>     }
+<a class="jxr_linenumber" name="L1064" href="#L1064">1064</a> 
+<a class="jxr_linenumber" name="L1065" href="#L1065">1065</a> }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>

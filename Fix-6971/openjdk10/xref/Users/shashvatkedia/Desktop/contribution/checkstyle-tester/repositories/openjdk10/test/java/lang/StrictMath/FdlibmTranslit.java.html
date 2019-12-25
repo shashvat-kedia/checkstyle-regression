@@ -1,0 +1,400 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>FdlibmTranslit xref</title>
+<link type="text/css" rel="stylesheet" href="../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright (c) 1998, 2016, Oracle and/or its affiliates. All rights reserved.</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * This code is free software; you can redistribute it and/or modify it</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * under the terms of the GNU General Public License version 2 only, as</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * published by the Free Software Foundation.  Oracle designates this</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * particular file as subject to the "Classpath" exception as provided</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * by Oracle in the LICENSE file that accompanied this code.</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * This code is distributed in the hope that it will be useful, but WITHOUT</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * version 2 for more details (a copy is included in the LICENSE file that</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * accompanied this code).</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> * You should have received a copy of the GNU General Public License version</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> * 2 along with this work; if not, write to the Free Software Foundation,</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_comment"> * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_comment"> * or visit www.oracle.com if you need additional information or have any</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_comment"> * questions.</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_javadoccomment"> * A transliteration of the "Freely Distributable Math Library"</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_javadoccomment"> * algorithms from C into Java. That is, this port of the algorithms</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_javadoccomment"> * is as close to the C originals as possible while still being</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment"> * readable legal Java.</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> FdlibmTranslit {
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>      <strong class="jxr_keyword">private</strong> FdlibmTranslit() {
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> UnsupportedOperationException(<span class="jxr_string">"No FdLibmTranslit instances for you."</span>);
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>      }
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment">     * Return the low-order 32 bits of the double argument as an int.</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> __LO(<strong class="jxr_keyword">double</strong> x) {
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>          <strong class="jxr_keyword">long</strong> transducer = Double.doubleToRawLongBits(x);
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          <strong class="jxr_keyword">return</strong> (<strong class="jxr_keyword">int</strong>)transducer;
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>      }
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>  
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>  <em class="jxr_javadoccomment">     * Return a double with its low-order bits of the second argument</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  <em class="jxr_javadoccomment">     * and the high-order bits of the first argument..</em>
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">double</strong> __LO(<strong class="jxr_keyword">double</strong> x, <strong class="jxr_keyword">int</strong> low) {
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          <strong class="jxr_keyword">long</strong> transX = Double.doubleToRawLongBits(x);
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          <strong class="jxr_keyword">return</strong> Double.longBitsToDouble((transX &amp; 0xFFFF_FFFF_0000_0000L) |
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>                                         (low    &amp; 0x0000_0000_FFFF_FFFFL));
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>      }
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  <em class="jxr_javadoccomment">     * Return the high-order 32 bits of the double argument as an int.</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong> __HI(<strong class="jxr_keyword">double</strong> x) {
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          <strong class="jxr_keyword">long</strong> transducer = Double.doubleToRawLongBits(x);
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          <strong class="jxr_keyword">return</strong> (<strong class="jxr_keyword">int</strong>)(transducer &gt;&gt; 32);
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>      }
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>  
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>  <em class="jxr_javadoccomment">     * Return a double with its high-order bits of the second argument</em>
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>  <em class="jxr_javadoccomment">     * and the low-order bits of the first argument..</em>
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">double</strong> __HI(<strong class="jxr_keyword">double</strong> x, <strong class="jxr_keyword">int</strong> high) {
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>          <strong class="jxr_keyword">long</strong> transX = Double.doubleToRawLongBits(x);
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>          <strong class="jxr_keyword">return</strong> Double.longBitsToDouble((transX &amp; 0x0000_0000_FFFF_FFFFL) |
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>                                         ( ((<strong class="jxr_keyword">long</strong>)high)) &lt;&lt; 32 );
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>      }
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>  
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">double</strong> hypot(<strong class="jxr_keyword">double</strong> x, <strong class="jxr_keyword">double</strong> y) {
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          <strong class="jxr_keyword">return</strong> Hypot.compute(x, y);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>      }
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>  
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>  <em class="jxr_javadoccomment">     * cbrt(x)</em>
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>  <em class="jxr_javadoccomment">     * Return cube root of x</em>
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> Cbrt {
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>          <em class="jxr_comment">// unsigned</em>
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> B1 = 715094163; <em class="jxr_comment">/* B1 = (682-0.03306235651)*2**20 */</em>
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong> B2 = 696219795; <em class="jxr_comment">/* B2 = (664-0.03306235651)*2**20 */</em>
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>  
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> C =  5.42857142857142815906e-01; <em class="jxr_comment">/* 19/35     = 0x3FE15F15, 0xF15F15F1 */</em>
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> D = -7.05306122448979611050e-01; <em class="jxr_comment">/* -864/1225 = 0xBFE691DE, 0x2532C834 */</em>
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> E =  1.41428571428571436819e+00; <em class="jxr_comment">/* 99/70     = 0x3FF6A0EA, 0x0EA0EA0F */</em>
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> F =  1.60714285714285720630e+00; <em class="jxr_comment">/* 45/28     = 0x3FF9B6DB, 0x6DB6DB6E */</em>
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> G =  3.57142857142857150787e-01; <em class="jxr_comment">/* 5/14      = 0x3FD6DB6D, 0xB6DB6DB7 */</em>
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>  
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> strictfp <strong class="jxr_keyword">double</strong> compute(<strong class="jxr_keyword">double</strong> x) {
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>              <strong class="jxr_keyword">int</strong>     hx;
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>              <strong class="jxr_keyword">double</strong>  r, s, t=0.0, w;
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>              <strong class="jxr_keyword">int</strong> sign; <em class="jxr_comment">// unsigned</em>
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>  
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>              hx = __HI(x);           <em class="jxr_comment">// high word of x</em>
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>              sign = hx &amp; 0x80000000;             <em class="jxr_comment">// sign= sign(x)</em>
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>              hx  ^= sign;
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>             <strong class="jxr_keyword">if</strong> (hx &gt;= 0x7ff00000)
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>                 <strong class="jxr_keyword">return</strong> (x+x); <em class="jxr_comment">// cbrt(NaN,INF) is itself</em>
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>             <strong class="jxr_keyword">if</strong> ((hx | __LO(x)) == 0)
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>                 <strong class="jxr_keyword">return</strong>(x);          <em class="jxr_comment">// cbrt(0) is itself</em>
+<a class="jxr_linenumber" name="L104" href="#L104">104</a> 
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>             x = __HI(x, hx);   <em class="jxr_comment">// x &lt;- |x|</em>
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>             <em class="jxr_comment">// rough cbrt to 5 bits</em>
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>             <strong class="jxr_keyword">if</strong> (hx &lt; 0x00100000) {               <em class="jxr_comment">// subnormal number</em>
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>                 t = __HI(t, 0x43500000);          <em class="jxr_comment">// set t= 2**54</em>
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>                 t *= x;
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>                 t = __HI(t, __HI(t)/3+B2);
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>                 t = __HI(t, hx/3+B1);
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>             }
+<a class="jxr_linenumber" name="L114" href="#L114">114</a> 
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>             <em class="jxr_comment">// new cbrt to 23 bits, may be implemented in single precision</em>
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>             r = t * t/x;
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>             s = C + r*t;
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>             t *= G + F/(s + E + D/s);
+<a class="jxr_linenumber" name="L119" href="#L119">119</a> 
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>             <em class="jxr_comment">// chopped to 20 bits and make it larger than cbrt(x)</em>
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>             t = __LO(t, 0);
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>             t = __HI(t, __HI(t)+0x00000001);
+<a class="jxr_linenumber" name="L123" href="#L123">123</a> 
+<a class="jxr_linenumber" name="L124" href="#L124">124</a> 
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>             <em class="jxr_comment">// one step newton iteration to 53 bits with error less than 0.667 ulps</em>
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>             s = t * t;          <em class="jxr_comment">// t*t is exact</em>
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>             r = x / s;
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>             w = t + t;
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>             r= (r - t)/(w + r);  <em class="jxr_comment">// r-s is exact</em>
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>             t= t + t*r;
+<a class="jxr_linenumber" name="L131" href="#L131">131</a> 
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>             <em class="jxr_comment">// retore the sign bit</em>
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>             t = __HI(t, __HI(t) | sign);
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>             <strong class="jxr_keyword">return</strong>(t);
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>         }
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>     }
+<a class="jxr_linenumber" name="L137" href="#L137">137</a> 
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L139" href="#L139">139</a> <em class="jxr_javadoccomment">     * hypot(x,y)</em>
+<a class="jxr_linenumber" name="L140" href="#L140">140</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L141" href="#L141">141</a> <em class="jxr_javadoccomment">     * Method :</em>
+<a class="jxr_linenumber" name="L142" href="#L142">142</a> <em class="jxr_javadoccomment">     *      If (assume round-to-nearest) z = x*x + y*y</em>
+<a class="jxr_linenumber" name="L143" href="#L143">143</a> <em class="jxr_javadoccomment">     *      has error less than sqrt(2)/2 ulp, than</em>
+<a class="jxr_linenumber" name="L144" href="#L144">144</a> <em class="jxr_javadoccomment">     *      sqrt(z) has error less than 1 ulp (exercise).</em>
+<a class="jxr_linenumber" name="L145" href="#L145">145</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L146" href="#L146">146</a> <em class="jxr_javadoccomment">     *      So, compute sqrt(x*x + y*y) with some care as</em>
+<a class="jxr_linenumber" name="L147" href="#L147">147</a> <em class="jxr_javadoccomment">     *      follows to get the error below 1 ulp:</em>
+<a class="jxr_linenumber" name="L148" href="#L148">148</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L149" href="#L149">149</a> <em class="jxr_javadoccomment">     *      Assume x &gt; y &gt; 0;</em>
+<a class="jxr_linenumber" name="L150" href="#L150">150</a> <em class="jxr_javadoccomment">     *      (if possible, set rounding to round-to-nearest)</em>
+<a class="jxr_linenumber" name="L151" href="#L151">151</a> <em class="jxr_javadoccomment">     *      1. if x &gt; 2y  use</em>
+<a class="jxr_linenumber" name="L152" href="#L152">152</a> <em class="jxr_javadoccomment">     *              x1*x1 + (y*y + (x2*(x + x1))) for x*x + y*y</em>
+<a class="jxr_linenumber" name="L153" href="#L153">153</a> <em class="jxr_javadoccomment">     *      where x1 = x with lower 32 bits cleared, x2 = x - x1; else</em>
+<a class="jxr_linenumber" name="L154" href="#L154">154</a> <em class="jxr_javadoccomment">     *      2. if x &lt;= 2y use</em>
+<a class="jxr_linenumber" name="L155" href="#L155">155</a> <em class="jxr_javadoccomment">     *              t1*y1 + ((x-y) * (x-y) + (t1*y2 + t2*y))</em>
+<a class="jxr_linenumber" name="L156" href="#L156">156</a> <em class="jxr_javadoccomment">     *      where t1 = 2x with lower 32 bits cleared, t2 = 2x - t1,</em>
+<a class="jxr_linenumber" name="L157" href="#L157">157</a> <em class="jxr_javadoccomment">     *      y1= y with lower 32 bits chopped, y2 = y - y1.</em>
+<a class="jxr_linenumber" name="L158" href="#L158">158</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L159" href="#L159">159</a> <em class="jxr_javadoccomment">     *      NOTE: scaling may be necessary if some argument is too</em>
+<a class="jxr_linenumber" name="L160" href="#L160">160</a> <em class="jxr_javadoccomment">     *            large or too tiny</em>
+<a class="jxr_linenumber" name="L161" href="#L161">161</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L162" href="#L162">162</a> <em class="jxr_javadoccomment">     * Special cases:</em>
+<a class="jxr_linenumber" name="L163" href="#L163">163</a> <em class="jxr_javadoccomment">     *      hypot(x,y) is INF if x or y is +INF or -INF; else</em>
+<a class="jxr_linenumber" name="L164" href="#L164">164</a> <em class="jxr_javadoccomment">     *      hypot(x,y) is NAN if x or y is NAN.</em>
+<a class="jxr_linenumber" name="L165" href="#L165">165</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L166" href="#L166">166</a> <em class="jxr_javadoccomment">     * Accuracy:</em>
+<a class="jxr_linenumber" name="L167" href="#L167">167</a> <em class="jxr_javadoccomment">     *      hypot(x,y) returns sqrt(x^2 + y^2) with error less</em>
+<a class="jxr_linenumber" name="L168" href="#L168">168</a> <em class="jxr_javadoccomment">     *      than 1 ulps (units in the last place)</em>
+<a class="jxr_linenumber" name="L169" href="#L169">169</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> Hypot {
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">double</strong> compute(<strong class="jxr_keyword">double</strong> x, <strong class="jxr_keyword">double</strong> y) {
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>             <strong class="jxr_keyword">double</strong> a = x;
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>             <strong class="jxr_keyword">double</strong> b = y;
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>             <strong class="jxr_keyword">double</strong> t1, t2, y1, y2, w;
+<a class="jxr_linenumber" name="L175" href="#L175">175</a>             <strong class="jxr_keyword">int</strong> j, k, ha, hb;
+<a class="jxr_linenumber" name="L176" href="#L176">176</a> 
+<a class="jxr_linenumber" name="L177" href="#L177">177</a>             ha = __HI(x) &amp; 0x7fffffff;        <em class="jxr_comment">// high word of  x</em>
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>             hb = __HI(y) &amp; 0x7fffffff;        <em class="jxr_comment">// high word of  y</em>
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>             <strong class="jxr_keyword">if</strong>(hb &gt; ha) {
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>                 a = y;
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>                 b = x;
+<a class="jxr_linenumber" name="L182" href="#L182">182</a>                 j = ha;
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>                 ha = hb;
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>                 hb = j;
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>                 a = x;
+<a class="jxr_linenumber" name="L187" href="#L187">187</a>                 b = y;
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>             }
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>             a = __HI(a, ha);   <em class="jxr_comment">// a &lt;- |a|</em>
+<a class="jxr_linenumber" name="L190" href="#L190">190</a>             b = __HI(b, hb);   <em class="jxr_comment">// b &lt;- |b|</em>
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>             <strong class="jxr_keyword">if</strong> ((ha - hb) &gt; 0x3c00000) {
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>                 <strong class="jxr_keyword">return</strong> a + b;  <em class="jxr_comment">// x / y &gt; 2**60</em>
+<a class="jxr_linenumber" name="L193" href="#L193">193</a>             }
+<a class="jxr_linenumber" name="L194" href="#L194">194</a>             k=0;
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>             <strong class="jxr_keyword">if</strong> (ha &gt; 0x5f300000) {   <em class="jxr_comment">// a&gt;2**500</em>
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>                 <strong class="jxr_keyword">if</strong> (ha &gt;= 0x7ff00000) {       <em class="jxr_comment">// Inf or NaN</em>
+<a class="jxr_linenumber" name="L197" href="#L197">197</a>                     w = a + b;                <em class="jxr_comment">// for sNaN</em>
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>                     <strong class="jxr_keyword">if</strong> (((ha &amp; 0xfffff) | __LO(a)) == 0)
+<a class="jxr_linenumber" name="L199" href="#L199">199</a>                         w = a;
+<a class="jxr_linenumber" name="L200" href="#L200">200</a>                     <strong class="jxr_keyword">if</strong> (((hb ^ 0x7ff00000) | __LO(b)) == 0)
+<a class="jxr_linenumber" name="L201" href="#L201">201</a>                         w = b;
+<a class="jxr_linenumber" name="L202" href="#L202">202</a>                     <strong class="jxr_keyword">return</strong> w;
+<a class="jxr_linenumber" name="L203" href="#L203">203</a>                 }
+<a class="jxr_linenumber" name="L204" href="#L204">204</a>                 <em class="jxr_comment">// scale a and b by 2**-600</em>
+<a class="jxr_linenumber" name="L205" href="#L205">205</a>                 ha -= 0x25800000;
+<a class="jxr_linenumber" name="L206" href="#L206">206</a>                 hb -= 0x25800000;
+<a class="jxr_linenumber" name="L207" href="#L207">207</a>                 k += 600;
+<a class="jxr_linenumber" name="L208" href="#L208">208</a>                 a = __HI(a, ha);
+<a class="jxr_linenumber" name="L209" href="#L209">209</a>                 b = __HI(b, hb);
+<a class="jxr_linenumber" name="L210" href="#L210">210</a>             }
+<a class="jxr_linenumber" name="L211" href="#L211">211</a>             <strong class="jxr_keyword">if</strong> (hb &lt; 0x20b00000) {   <em class="jxr_comment">// b &lt; 2**-500</em>
+<a class="jxr_linenumber" name="L212" href="#L212">212</a>                 <strong class="jxr_keyword">if</strong> (hb &lt;= 0x000fffff) {      <em class="jxr_comment">// subnormal b or 0 */</em>
+<a class="jxr_linenumber" name="L213" href="#L213">213</a>                     <strong class="jxr_keyword">if</strong> ((hb | (__LO(b))) == 0)
+<a class="jxr_linenumber" name="L214" href="#L214">214</a>                         <strong class="jxr_keyword">return</strong> a;
+<a class="jxr_linenumber" name="L215" href="#L215">215</a>                     t1 = 0;
+<a class="jxr_linenumber" name="L216" href="#L216">216</a>                     t1 = __HI(t1, 0x7fd00000);  <em class="jxr_comment">// t1=2^1022</em>
+<a class="jxr_linenumber" name="L217" href="#L217">217</a>                     b *= t1;
+<a class="jxr_linenumber" name="L218" href="#L218">218</a>                     a *= t1;
+<a class="jxr_linenumber" name="L219" href="#L219">219</a>                     k -= 1022;
+<a class="jxr_linenumber" name="L220" href="#L220">220</a>                 } <strong class="jxr_keyword">else</strong> {            <em class="jxr_comment">// scale a and b by 2^600</em>
+<a class="jxr_linenumber" name="L221" href="#L221">221</a>                     ha += 0x25800000;       <em class="jxr_comment">// a *= 2^600</em>
+<a class="jxr_linenumber" name="L222" href="#L222">222</a>                     hb += 0x25800000;       <em class="jxr_comment">// b *= 2^600</em>
+<a class="jxr_linenumber" name="L223" href="#L223">223</a>                     k -= 600;
+<a class="jxr_linenumber" name="L224" href="#L224">224</a>                     a = __HI(a, ha);
+<a class="jxr_linenumber" name="L225" href="#L225">225</a>                     b = __HI(b, hb);
+<a class="jxr_linenumber" name="L226" href="#L226">226</a>                 }
+<a class="jxr_linenumber" name="L227" href="#L227">227</a>             }
+<a class="jxr_linenumber" name="L228" href="#L228">228</a>             <em class="jxr_comment">// medium size a and b</em>
+<a class="jxr_linenumber" name="L229" href="#L229">229</a>             w = a - b;
+<a class="jxr_linenumber" name="L230" href="#L230">230</a>             <strong class="jxr_keyword">if</strong> (w &gt; b) {
+<a class="jxr_linenumber" name="L231" href="#L231">231</a>                 t1 = 0;
+<a class="jxr_linenumber" name="L232" href="#L232">232</a>                 t1 = __HI(t1, ha);
+<a class="jxr_linenumber" name="L233" href="#L233">233</a>                 t2 = a - t1;
+<a class="jxr_linenumber" name="L234" href="#L234">234</a>                 w  = Math.sqrt(t1*t1 - (b*(-b) - t2 * (a + t1)));
+<a class="jxr_linenumber" name="L235" href="#L235">235</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L236" href="#L236">236</a>                 a  = a + a;
+<a class="jxr_linenumber" name="L237" href="#L237">237</a>                 y1 = 0;
+<a class="jxr_linenumber" name="L238" href="#L238">238</a>                 y1 = __HI(y1, hb);
+<a class="jxr_linenumber" name="L239" href="#L239">239</a>                 y2 = b - y1;
+<a class="jxr_linenumber" name="L240" href="#L240">240</a>                 t1 = 0;
+<a class="jxr_linenumber" name="L241" href="#L241">241</a>                 t1 = __HI(t1, ha + 0x00100000);
+<a class="jxr_linenumber" name="L242" href="#L242">242</a>                 t2 = a - t1;
+<a class="jxr_linenumber" name="L243" href="#L243">243</a>                 w  = Math.sqrt(t1*y1 - (w*(-w) - (t1*y2 + t2*b)));
+<a class="jxr_linenumber" name="L244" href="#L244">244</a>             }
+<a class="jxr_linenumber" name="L245" href="#L245">245</a>             <strong class="jxr_keyword">if</strong> (k != 0) {
+<a class="jxr_linenumber" name="L246" href="#L246">246</a>                 t1 = 1.0;
+<a class="jxr_linenumber" name="L247" href="#L247">247</a>                 <strong class="jxr_keyword">int</strong> t1_hi = __HI(t1);
+<a class="jxr_linenumber" name="L248" href="#L248">248</a>                 t1_hi += (k &lt;&lt; 20);
+<a class="jxr_linenumber" name="L249" href="#L249">249</a>                 t1 = __HI(t1, t1_hi);
+<a class="jxr_linenumber" name="L250" href="#L250">250</a>                 <strong class="jxr_keyword">return</strong> t1 * w;
+<a class="jxr_linenumber" name="L251" href="#L251">251</a>             } <strong class="jxr_keyword">else</strong>
+<a class="jxr_linenumber" name="L252" href="#L252">252</a>                 <strong class="jxr_keyword">return</strong> w;
+<a class="jxr_linenumber" name="L253" href="#L253">253</a>         }
+<a class="jxr_linenumber" name="L254" href="#L254">254</a>     }
+<a class="jxr_linenumber" name="L255" href="#L255">255</a> 
+<a class="jxr_linenumber" name="L256" href="#L256">256</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L257" href="#L257">257</a> <em class="jxr_javadoccomment">     * Returns the exponential of x.</em>
+<a class="jxr_linenumber" name="L258" href="#L258">258</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L259" href="#L259">259</a> <em class="jxr_javadoccomment">     * Method</em>
+<a class="jxr_linenumber" name="L260" href="#L260">260</a> <em class="jxr_javadoccomment">     *   1. Argument reduction:</em>
+<a class="jxr_linenumber" name="L261" href="#L261">261</a> <em class="jxr_javadoccomment">     *      Reduce x to an r so that |r| &lt;= 0.5*ln2 ~ 0.34658.</em>
+<a class="jxr_linenumber" name="L262" href="#L262">262</a> <em class="jxr_javadoccomment">     *      Given x, find r and integer k such that</em>
+<a class="jxr_linenumber" name="L263" href="#L263">263</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L264" href="#L264">264</a> <em class="jxr_javadoccomment">     *               x = k*ln2 + r,  |r| &lt;= 0.5*ln2.</em>
+<a class="jxr_linenumber" name="L265" href="#L265">265</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L266" href="#L266">266</a> <em class="jxr_javadoccomment">     *      Here r will be represented as r = hi-lo for better</em>
+<a class="jxr_linenumber" name="L267" href="#L267">267</a> <em class="jxr_javadoccomment">     *      accuracy.</em>
+<a class="jxr_linenumber" name="L268" href="#L268">268</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L269" href="#L269">269</a> <em class="jxr_javadoccomment">     *   2. Approximation of exp(r) by a special rational function on</em>
+<a class="jxr_linenumber" name="L270" href="#L270">270</a> <em class="jxr_javadoccomment">     *      the interval [0,0.34658]:</em>
+<a class="jxr_linenumber" name="L271" href="#L271">271</a> <em class="jxr_javadoccomment">     *      Write</em>
+<a class="jxr_linenumber" name="L272" href="#L272">272</a> <em class="jxr_javadoccomment">     *          R(r**2) = r*(exp(r)+1)/(exp(r)-1) = 2 + r*r/6 - r**4/360 + ...</em>
+<a class="jxr_linenumber" name="L273" href="#L273">273</a> <em class="jxr_javadoccomment">     *      We use a special Reme algorithm on [0,0.34658] to generate</em>
+<a class="jxr_linenumber" name="L274" href="#L274">274</a> <em class="jxr_javadoccomment">     *      a polynomial of degree 5 to approximate R. The maximum error</em>
+<a class="jxr_linenumber" name="L275" href="#L275">275</a> <em class="jxr_javadoccomment">     *      of this polynomial approximation is bounded by 2**-59. In</em>
+<a class="jxr_linenumber" name="L276" href="#L276">276</a> <em class="jxr_javadoccomment">     *      other words,</em>
+<a class="jxr_linenumber" name="L277" href="#L277">277</a> <em class="jxr_javadoccomment">     *          R(z) ~ 2.0 + P1*z + P2*z**2 + P3*z**3 + P4*z**4 + P5*z**5</em>
+<a class="jxr_linenumber" name="L278" href="#L278">278</a> <em class="jxr_javadoccomment">     *      (where z=r*r, and the values of P1 to P5 are listed below)</em>
+<a class="jxr_linenumber" name="L279" href="#L279">279</a> <em class="jxr_javadoccomment">     *      and</em>
+<a class="jxr_linenumber" name="L280" href="#L280">280</a> <em class="jxr_javadoccomment">     *          |                  5          |     -59</em>
+<a class="jxr_linenumber" name="L281" href="#L281">281</a> <em class="jxr_javadoccomment">     *          | 2.0+P1*z+...+P5*z   -  R(z) | &lt;= 2</em>
+<a class="jxr_linenumber" name="L282" href="#L282">282</a> <em class="jxr_javadoccomment">     *          |                             |</em>
+<a class="jxr_linenumber" name="L283" href="#L283">283</a> <em class="jxr_javadoccomment">     *      The computation of exp(r) thus becomes</em>
+<a class="jxr_linenumber" name="L284" href="#L284">284</a> <em class="jxr_javadoccomment">     *                             2*r</em>
+<a class="jxr_linenumber" name="L285" href="#L285">285</a> <em class="jxr_javadoccomment">     *              exp(r) = 1 + -------</em>
+<a class="jxr_linenumber" name="L286" href="#L286">286</a> <em class="jxr_javadoccomment">     *                            R - r</em>
+<a class="jxr_linenumber" name="L287" href="#L287">287</a> <em class="jxr_javadoccomment">     *                                 r*R1(r)</em>
+<a class="jxr_linenumber" name="L288" href="#L288">288</a> <em class="jxr_javadoccomment">     *                     = 1 + r + ----------- (for better accuracy)</em>
+<a class="jxr_linenumber" name="L289" href="#L289">289</a> <em class="jxr_javadoccomment">     *                                2 - R1(r)</em>
+<a class="jxr_linenumber" name="L290" href="#L290">290</a> <em class="jxr_javadoccomment">     *      where</em>
+<a class="jxr_linenumber" name="L291" href="#L291">291</a> <em class="jxr_javadoccomment">     *                               2       4             10</em>
+<a class="jxr_linenumber" name="L292" href="#L292">292</a> <em class="jxr_javadoccomment">     *              R1(r) = r - (P1*r  + P2*r  + ... + P5*r   ).</em>
+<a class="jxr_linenumber" name="L293" href="#L293">293</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L294" href="#L294">294</a> <em class="jxr_javadoccomment">     *   3. Scale back to obtain exp(x):</em>
+<a class="jxr_linenumber" name="L295" href="#L295">295</a> <em class="jxr_javadoccomment">     *      From step 1, we have</em>
+<a class="jxr_linenumber" name="L296" href="#L296">296</a> <em class="jxr_javadoccomment">     *         exp(x) = 2^k * exp(r)</em>
+<a class="jxr_linenumber" name="L297" href="#L297">297</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L298" href="#L298">298</a> <em class="jxr_javadoccomment">     * Special cases:</em>
+<a class="jxr_linenumber" name="L299" href="#L299">299</a> <em class="jxr_javadoccomment">     *      exp(INF) is INF, exp(NaN) is NaN;</em>
+<a class="jxr_linenumber" name="L300" href="#L300">300</a> <em class="jxr_javadoccomment">     *      exp(-INF) is 0, and</em>
+<a class="jxr_linenumber" name="L301" href="#L301">301</a> <em class="jxr_javadoccomment">     *      for finite argument, only exp(0)=1 is exact.</em>
+<a class="jxr_linenumber" name="L302" href="#L302">302</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L303" href="#L303">303</a> <em class="jxr_javadoccomment">     * Accuracy:</em>
+<a class="jxr_linenumber" name="L304" href="#L304">304</a> <em class="jxr_javadoccomment">     *      according to an error analysis, the error is always less than</em>
+<a class="jxr_linenumber" name="L305" href="#L305">305</a> <em class="jxr_javadoccomment">     *      1 ulp (unit in the last place).</em>
+<a class="jxr_linenumber" name="L306" href="#L306">306</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L307" href="#L307">307</a> <em class="jxr_javadoccomment">     * Misc. info.</em>
+<a class="jxr_linenumber" name="L308" href="#L308">308</a> <em class="jxr_javadoccomment">     *      For IEEE double</em>
+<a class="jxr_linenumber" name="L309" href="#L309">309</a> <em class="jxr_javadoccomment">     *          if x &gt;  7.09782712893383973096e+02 then exp(x) overflow</em>
+<a class="jxr_linenumber" name="L310" href="#L310">310</a> <em class="jxr_javadoccomment">     *          if x &lt; -7.45133219101941108420e+02 then exp(x) underflow</em>
+<a class="jxr_linenumber" name="L311" href="#L311">311</a> <em class="jxr_javadoccomment">     *</em>
+<a class="jxr_linenumber" name="L312" href="#L312">312</a> <em class="jxr_javadoccomment">     * Constants:</em>
+<a class="jxr_linenumber" name="L313" href="#L313">313</a> <em class="jxr_javadoccomment">     * The hexadecimal values are the intended ones for the following</em>
+<a class="jxr_linenumber" name="L314" href="#L314">314</a> <em class="jxr_javadoccomment">     * constants. The decimal values may be used, provided that the</em>
+<a class="jxr_linenumber" name="L315" href="#L315">315</a> <em class="jxr_javadoccomment">     * compiler will convert from decimal to binary accurately enough</em>
+<a class="jxr_linenumber" name="L316" href="#L316">316</a> <em class="jxr_javadoccomment">     * to produce the hexadecimal values shown.</em>
+<a class="jxr_linenumber" name="L317" href="#L317">317</a> <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L318" href="#L318">318</a>     <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">class</strong> Exp {
+<a class="jxr_linenumber" name="L319" href="#L319">319</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> one     = 1.0;
+<a class="jxr_linenumber" name="L320" href="#L320">320</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong>[] halF = {0.5,-0.5,};
+<a class="jxr_linenumber" name="L321" href="#L321">321</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> huge    = 1.0e+300;
+<a class="jxr_linenumber" name="L322" href="#L322">322</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> twom1000= 9.33263618503218878990e-302;      <em class="jxr_comment">/* 2**-1000=0x01700000,0*/</em>
+<a class="jxr_linenumber" name="L323" href="#L323">323</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> o_threshold=  7.09782712893383973096e+02;   <em class="jxr_comment">/* 0x40862E42, 0xFEFA39EF */</em>
+<a class="jxr_linenumber" name="L324" href="#L324">324</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> u_threshold= -7.45133219101941108420e+02;   <em class="jxr_comment">/* 0xc0874910, 0xD52D3051 */</em>
+<a class="jxr_linenumber" name="L325" href="#L325">325</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong>[] ln2HI   ={ 6.93147180369123816490e-01,    <em class="jxr_comment">/* 0x3fe62e42, 0xfee00000 */</em>
+<a class="jxr_linenumber" name="L326" href="#L326">326</a>                                                  -6.93147180369123816490e-01};  <em class="jxr_comment">/* 0xbfe62e42, 0xfee00000 */</em>
+<a class="jxr_linenumber" name="L327" href="#L327">327</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong>[] ln2LO   ={ 1.90821492927058770002e-10,    <em class="jxr_comment">/* 0x3dea39ef, 0x35793c76 */</em>
+<a class="jxr_linenumber" name="L328" href="#L328">328</a>                                                  -1.90821492927058770002e-10,}; <em class="jxr_comment">/* 0xbdea39ef, 0x35793c76 */</em>
+<a class="jxr_linenumber" name="L329" href="#L329">329</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> invln2 =  1.44269504088896338700e+00;       <em class="jxr_comment">/* 0x3ff71547, 0x652b82fe */</em>
+<a class="jxr_linenumber" name="L330" href="#L330">330</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> P1   =  1.66666666666666019037e-01;         <em class="jxr_comment">/* 0x3FC55555, 0x5555553E */</em>
+<a class="jxr_linenumber" name="L331" href="#L331">331</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> P2   = -2.77777777770155933842e-03;         <em class="jxr_comment">/* 0xBF66C16C, 0x16BEBD93 */</em>
+<a class="jxr_linenumber" name="L332" href="#L332">332</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> P3   =  6.61375632143793436117e-05;         <em class="jxr_comment">/* 0x3F11566A, 0xAF25DE2C */</em>
+<a class="jxr_linenumber" name="L333" href="#L333">333</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> P4   = -1.65339022054652515390e-06;         <em class="jxr_comment">/* 0xBEBBBD41, 0xC5D26BF1 */</em>
+<a class="jxr_linenumber" name="L334" href="#L334">334</a>         <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">double</strong> P5   =  4.13813679705723846039e-08;         <em class="jxr_comment">/* 0x3E663769, 0x72BEA4D0 */</em>
+<a class="jxr_linenumber" name="L335" href="#L335">335</a> 
+<a class="jxr_linenumber" name="L336" href="#L336">336</a>         <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> strictfp <strong class="jxr_keyword">double</strong> compute(<strong class="jxr_keyword">double</strong> x) {
+<a class="jxr_linenumber" name="L337" href="#L337">337</a>             <strong class="jxr_keyword">double</strong> y,hi=0,lo=0,c,t;
+<a class="jxr_linenumber" name="L338" href="#L338">338</a>             <strong class="jxr_keyword">int</strong> k=0,xsb;
+<a class="jxr_linenumber" name="L339" href="#L339">339</a>             <em class="jxr_comment">/*unsigned*/</em> <strong class="jxr_keyword">int</strong> hx;
+<a class="jxr_linenumber" name="L340" href="#L340">340</a> 
+<a class="jxr_linenumber" name="L341" href="#L341">341</a>             hx  = __HI(x);  <em class="jxr_comment">/* high word of x */</em>
+<a class="jxr_linenumber" name="L342" href="#L342">342</a>             xsb = (hx&gt;&gt;31)&amp;1;               <em class="jxr_comment">/* sign bit of x */</em>
+<a class="jxr_linenumber" name="L343" href="#L343">343</a>             hx &amp;= 0x7fffffff;               <em class="jxr_comment">/* high word of |x| */</em>
+<a class="jxr_linenumber" name="L344" href="#L344">344</a> 
+<a class="jxr_linenumber" name="L345" href="#L345">345</a>             <em class="jxr_comment">/* filter out non-finite argument */</em>
+<a class="jxr_linenumber" name="L346" href="#L346">346</a>             <strong class="jxr_keyword">if</strong>(hx &gt;= 0x40862E42) {                  <em class="jxr_comment">/* if |x|&gt;=709.78... */</em>
+<a class="jxr_linenumber" name="L347" href="#L347">347</a>                 <strong class="jxr_keyword">if</strong>(hx&gt;=0x7ff00000) {
+<a class="jxr_linenumber" name="L348" href="#L348">348</a>                     <strong class="jxr_keyword">if</strong>(((hx&amp;0xfffff)|__LO(x))!=0)
+<a class="jxr_linenumber" name="L349" href="#L349">349</a>                         <strong class="jxr_keyword">return</strong> x+x;                <em class="jxr_comment">/* NaN */</em>
+<a class="jxr_linenumber" name="L350" href="#L350">350</a>                     <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">return</strong> (xsb==0)? x:0.0;    <em class="jxr_comment">/* exp(+-inf)={inf,0} */</em>
+<a class="jxr_linenumber" name="L351" href="#L351">351</a>                 }
+<a class="jxr_linenumber" name="L352" href="#L352">352</a>                 <strong class="jxr_keyword">if</strong>(x &gt; o_threshold) <strong class="jxr_keyword">return</strong> huge*huge; <em class="jxr_comment">/* overflow */</em>
+<a class="jxr_linenumber" name="L353" href="#L353">353</a>                 <strong class="jxr_keyword">if</strong>(x &lt; u_threshold) <strong class="jxr_keyword">return</strong> twom1000*twom1000; <em class="jxr_comment">/* underflow */</em>
+<a class="jxr_linenumber" name="L354" href="#L354">354</a>             }
+<a class="jxr_linenumber" name="L355" href="#L355">355</a> 
+<a class="jxr_linenumber" name="L356" href="#L356">356</a>             <em class="jxr_comment">/* argument reduction */</em>
+<a class="jxr_linenumber" name="L357" href="#L357">357</a>             <strong class="jxr_keyword">if</strong>(hx &gt; 0x3fd62e42) {           <em class="jxr_comment">/* if  |x| &gt; 0.5 ln2 */</em>
+<a class="jxr_linenumber" name="L358" href="#L358">358</a>                 <strong class="jxr_keyword">if</strong>(hx &lt; 0x3FF0A2B2) {       <em class="jxr_comment">/* and |x| &lt; 1.5 ln2 */</em>
+<a class="jxr_linenumber" name="L359" href="#L359">359</a>                     hi = x-ln2HI[xsb]; lo=ln2LO[xsb]; k = 1-xsb-xsb;
+<a class="jxr_linenumber" name="L360" href="#L360">360</a>                 } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L361" href="#L361">361</a>                     k  = (<strong class="jxr_keyword">int</strong>)(invln2*x+halF[xsb]);
+<a class="jxr_linenumber" name="L362" href="#L362">362</a>                     t  = k;
+<a class="jxr_linenumber" name="L363" href="#L363">363</a>                     hi = x - t*ln2HI[0];    <em class="jxr_comment">/* t*ln2HI is exact here */</em>
+<a class="jxr_linenumber" name="L364" href="#L364">364</a>                     lo = t*ln2LO[0];
+<a class="jxr_linenumber" name="L365" href="#L365">365</a>                 }
+<a class="jxr_linenumber" name="L366" href="#L366">366</a>                 x  = hi - lo;
+<a class="jxr_linenumber" name="L367" href="#L367">367</a>             }
+<a class="jxr_linenumber" name="L368" href="#L368">368</a>             <strong class="jxr_keyword">else</strong> <strong class="jxr_keyword">if</strong>(hx &lt; 0x3e300000)  {     <em class="jxr_comment">/* when |x|&lt;2**-28 */</em>
+<a class="jxr_linenumber" name="L369" href="#L369">369</a>                 <strong class="jxr_keyword">if</strong>(huge+x&gt;one) <strong class="jxr_keyword">return</strong> one+x;<em class="jxr_comment">/* trigger inexact */</em>
+<a class="jxr_linenumber" name="L370" href="#L370">370</a>             }
+<a class="jxr_linenumber" name="L371" href="#L371">371</a>             <strong class="jxr_keyword">else</strong> k = 0;
+<a class="jxr_linenumber" name="L372" href="#L372">372</a> 
+<a class="jxr_linenumber" name="L373" href="#L373">373</a>             <em class="jxr_comment">/* x is now in primary range */</em>
+<a class="jxr_linenumber" name="L374" href="#L374">374</a>             t  = x*x;
+<a class="jxr_linenumber" name="L375" href="#L375">375</a>             c  = x - t*(P1+t*(P2+t*(P3+t*(P4+t*P5))));
+<a class="jxr_linenumber" name="L376" href="#L376">376</a>             <strong class="jxr_keyword">if</strong>(k==0)        <strong class="jxr_keyword">return</strong> one-((x*c)/(c-2.0)-x);
+<a class="jxr_linenumber" name="L377" href="#L377">377</a>             <strong class="jxr_keyword">else</strong>            y = one-((lo-(x*c)/(2.0-c))-hi);
+<a class="jxr_linenumber" name="L378" href="#L378">378</a>             <strong class="jxr_keyword">if</strong>(k &gt;= -1021) {
+<a class="jxr_linenumber" name="L379" href="#L379">379</a>                 y = __HI(y, __HI(y) + (k&lt;&lt;20)); <em class="jxr_comment">/* add k to y's exponent */</em>
+<a class="jxr_linenumber" name="L380" href="#L380">380</a>                 <strong class="jxr_keyword">return</strong> y;
+<a class="jxr_linenumber" name="L381" href="#L381">381</a>             } <strong class="jxr_keyword">else</strong> {
+<a class="jxr_linenumber" name="L382" href="#L382">382</a>                 y = __HI(y, __HI(y) + ((k+1000)&lt;&lt;20));<em class="jxr_comment">/* add k to y's exponent */</em>
+<a class="jxr_linenumber" name="L383" href="#L383">383</a>                 <strong class="jxr_keyword">return</strong> y*twom1000;
+<a class="jxr_linenumber" name="L384" href="#L384">384</a>             }
+<a class="jxr_linenumber" name="L385" href="#L385">385</a>         }
+<a class="jxr_linenumber" name="L386" href="#L386">386</a>     }
+<a class="jxr_linenumber" name="L387" href="#L387">387</a> }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>

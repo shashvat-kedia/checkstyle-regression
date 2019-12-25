@@ -1,0 +1,1090 @@
+<html>
+	<head>
+		<title>checkstyle xml difference report</title>
+		<style type="text/css" media="all">@import url("./css/maven-base.css");@import url("./css/maven-theme.css"); );</style>
+		<http-equiv http-equiv="Content-Language" content="en"></http-equiv>
+	</head>
+	<body class="composite">
+		<div id="contentBox">
+			<div class="section">
+				<h2 a="Checkstyle XML difference report">Checkstyle XML difference report</h2>
+				This is symmetric difference generated from two checkstyle-result.xml reports. <br/>
+				All matching records from each XML file are deleted, then remaining records are merged into single report. <br>
+		        <a href="https://github.com/checkstyle/contribution/tree/master/patch-diff-report-tool">Utility that generated this report.</a>
+			</div>
+
+			
+				<h2 a="Checkstyle configuration report">Checkstyle configuration report</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Module Name</th>
+								<th>Base properties</th>
+								<th>Patch properties</th>
+							</tr>
+							
+								
+									<tr>
+										<td class="c">Checker</td>
+										
+										<td class="c">
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">TreeWalker</td>
+										
+										<td class="c">
+											
+										</td>
+										
+										
+										<td class="c">
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">SuppressionXpathSingleFilter</td>
+										
+										<td class="c">
+											
+												message
+												
+													<li>Javadoc comment at column \d+ has parse error</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												message
+												
+													<li>Javadoc comment at column \d+ has parse error</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+										
+									<tr>
+										<td class="c">NoArrayTrailingComma</td>
+										
+										
+										<td> </td>
+										<td class="a">
+											
+										</td>
+										
+										
+									</tr>
+									
+								
+									
+								
+									
+										
+									<tr>
+										<td class="c">SuppressionSingleFilter</td>
+										
+										<td class="c">
+											
+												checks
+												
+													<li>Checker</li>
+												
+												<br/>
+											
+												message
+												
+													<li>Exception occurred while parsing</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												checks
+												
+													<li>Checker</li>
+												
+												<br/>
+											
+												message
+												
+													<li>Exception occurred while parsing</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+								
+								
+					</table>	
+				</div>
+			
+
+			<div class="section">
+				<h2 a="Summary:">Summary:</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+						<tr class="a">
+							<th>Report id</th>
+							<th>Files</th>
+							<th>Violations</th>
+							
+								<th>Severity-error</th>
+							
+						</tr>
+						<tr class="b">
+							<td>base</td>
+							<td id="filesBase">750</td>
+							<td id="totalBase">0</td>
+							
+								<td id="errorSeverityNumBase">0</td>
+							
+						</tr>
+						<tr class="a">
+							<td>patch</td>
+							<td id="filesPatch">750</td>
+							<td id="totalPatch">36 (36 added)</td>
+							
+								<td id="errorSeverityStatisticsPatch">36 (36 added)</td>
+							
+						</tr>
+						<tr class="d">
+							<td/>
+							<td id="filesDiff">17 files with differences</td>
+							<td id="totalDiff">36 changes in violations</td>
+							
+								<td id="errorSeverityNumDiff">36 changes in violations</td>
+							
+						<tr>
+					</table>
+
+					
+						<br />
+						<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Report id</th>
+								
+									<th>com.puppycrawl.tools.checkstyle.checks.coding.NoArrayTrailingCommaCheck</th>
+								
+							</tr>
+							<tr class="b">
+								<td>base</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.coding.NoArrayTrailingCommaCheckModuleNumBase">0</td>
+								
+							</tr>
+							<tr class="a">
+								<td>patch</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.coding.NoArrayTrailingCommaCheckModuleStatisticsPatch">36 (36 added)</td>
+								
+							</tr>
+							<tr class="d">
+								<td>changes in violations</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.coding.NoArrayTrailingCommaCheckModuleNumDiff">36</td>
+								
+							<tr>
+						</table>
+					
+
+					<br />
+					Number of unique base messages reported below: <span id="uniqueMessagesBase">0</span><br />
+					Number of unique patch messages reported below: <span id="uniqueMessagesPatch">36</span><br />
+				</div>
+			</div>
+
+			<div class="section">
+				<h2 a="Violations:">Violations:</h2>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/bodies/IAUPoleFactory.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A1" href = "#A1">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/bodies/IAUPoleFactory.java.html#L106">106</a></td>
+								
+								
+									
+									<td>75</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/data/PolynomialParser.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A2" href = "#A2">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/data/PolynomialParser.java.html#L98">98</a></td>
+								
+								
+									
+									<td>12</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A3" href = "#A3">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/data/PolynomialParser.java.html#L131">131</a></td>
+								
+								
+									
+									<td>17</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A4" href = "#A4">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/data/PolynomialParser.java.html#L145">145</a></td>
+								
+								
+									
+									<td>12</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/orbits/CartesianOrbit.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A5" href = "#A5">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/orbits/CartesianOrbit.java.html#L558">558</a></td>
+								
+								
+									
+									<td>102</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/orbits/CircularOrbit.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A6" href = "#A6">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/orbits/CircularOrbit.java.html#L873">873</a></td>
+								
+								
+									
+									<td>106</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/utils/IERSConventions.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A7" href = "#A7">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/utils/IERSConventions.java.html#L526">526</a></td>
+								
+								
+									
+									<td>80</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A8" href = "#A8">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/utils/IERSConventions.java.html#L1095">1095</a></td>
+								
+								
+									
+									<td>57</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/utils/PVCoordinates.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A9" href = "#A9">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/main/java/org/orekit/utils/PVCoordinates.java.html#L404">404</a></td>
+								
+								
+									
+									<td>102</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/SolarInputs97to05.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A10" href = "#A10">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/SolarInputs97to05.java.html#L167">167</a></td>
+								
+								
+									
+									<td>47</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/bodies/OneAxisEllipsoidTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A11" href = "#A11">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/bodies/OneAxisEllipsoidTest.java.html#L270">270</a></td>
+								
+								
+									
+									<td>102</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/estimation/leastsquares/OrbitDeterminationTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A12" href = "#A12">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/estimation/leastsquares/OrbitDeterminationTest.java.html#L802">802</a></td>
+								
+								
+									
+									<td>82</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A13" href = "#A13">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/estimation/leastsquares/OrbitDeterminationTest.java.html#L883">883</a></td>
+								
+								
+									
+									<td>81</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/drag/DragForceTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A14" href = "#A14">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/drag/DragForceTest.java.html#L230">230</a></td>
+								
+								
+									
+									<td>119</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/CunninghamAttractionModelTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A15" href = "#A15">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/CunninghamAttractionModelTest.java.html#L160">160</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A16" href = "#A16">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/CunninghamAttractionModelTest.java.html#L164">164</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A17" href = "#A17">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/CunninghamAttractionModelTest.java.html#L228">228</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A18" href = "#A18">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/CunninghamAttractionModelTest.java.html#L232">232</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A19" href = "#A19">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/CunninghamAttractionModelTest.java.html#L245">245</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A20" href = "#A20">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/CunninghamAttractionModelTest.java.html#L249">249</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/DrozinerAttractionModelTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A21" href = "#A21">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/DrozinerAttractionModelTest.java.html#L152">152</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A22" href = "#A22">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/DrozinerAttractionModelTest.java.html#L156">156</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/HolmesFeatherstoneAttractionModelTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A23" href = "#A23">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/HolmesFeatherstoneAttractionModelTest.java.html#L409">409</a></td>
+								
+								
+									
+									<td>72</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A24" href = "#A24">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/HolmesFeatherstoneAttractionModelTest.java.html#L413">413</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A25" href = "#A25">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/HolmesFeatherstoneAttractionModelTest.java.html#L481">481</a></td>
+								
+								
+									
+									<td>72</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A26" href = "#A26">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/HolmesFeatherstoneAttractionModelTest.java.html#L485">485</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A27" href = "#A27">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/HolmesFeatherstoneAttractionModelTest.java.html#L498">498</a></td>
+								
+								
+									
+									<td>78</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A28" href = "#A28">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/gravity/HolmesFeatherstoneAttractionModelTest.java.html#L502">502</a></td>
+								
+								
+									
+									<td>42</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/maneuvers/SmallManeuverAnalyticalModelTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A29" href = "#A29">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/forces/maneuvers/SmallManeuverAnalyticalModelTest.java.html#L241">241</a></td>
+								
+								
+									
+									<td>146</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/frames/TransformTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A30" href = "#A30">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/frames/TransformTest.java.html#L463">463</a></td>
+								
+								
+									
+									<td>77</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/propagation/SpacecraftStateTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A31" href = "#A31">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/propagation/SpacecraftStateTest.java.html#L82">82</a></td>
+								
+								
+									
+									<td>82</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A32" href = "#A32">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/propagation/SpacecraftStateTest.java.html#L86">86</a></td>
+								
+								
+									
+									<td>83</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A33" href = "#A33">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/propagation/SpacecraftStateTest.java.html#L90">90</a></td>
+								
+								
+									
+									<td>82</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A34" href = "#A34">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/test/java/org/orekit/propagation/SpacecraftStateTest.java.html#L94">94</a></td>
+								
+								
+									
+									<td>83</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/tutorials/java/fr/cs/examples/estimation/OrbitDetermination.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A35" href = "#A35">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/tutorials/java/fr/cs/examples/estimation/OrbitDetermination.java.html#L798">798</a></td>
+								
+								
+									
+									<td>82</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A36" href = "#A36">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/Orekit/src/tutorials/java/fr/cs/examples/estimation/OrbitDetermination.java.html#L879">879</a></td>
+								
+								
+									
+									<td>80</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

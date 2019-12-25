@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>DriverResource xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../../../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright (c) 2005, Oracle and/or its affiliates. All rights reserved.</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * This code is free software; you can redistribute it and/or modify it</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * under the terms of the GNU General Public License version 2 only, as</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * published by the Free Software Foundation.  Oracle designates this</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * particular file as subject to the "Classpath" exception as provided</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * by Oracle in the LICENSE file that accompanied this code.</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * This code is distributed in the hope that it will be useful, but WITHOUT</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * version 2 for more details (a copy is included in the LICENSE file that</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * accompanied this code).</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> * You should have received a copy of the GNU General Public License version</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> * 2 along with this work; if not, write to the Free Software Foundation,</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_comment"> * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_comment"> * or visit www.oracle.com if you need additional information or have any</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_comment"> * questions.</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">package</strong> com.sun.java.util.jar.pack;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> java.util.ListResourceBundle;
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> DriverResource <strong class="jxr_keyword">extends</strong> ListResourceBundle {
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String VERSION =<span class="jxr_string">"VERSION"</span>;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String BAD_ARGUMENT =<span class="jxr_string">"BAD_ARGUMENT"</span>;
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String BAD_OPTION =<span class="jxr_string">"BAD_OPTION"</span>;
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String BAD_REPACK_OUTPUT=<span class="jxr_string">"BAD_REPACK_OUTPUT"</span>;
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String DETECTED_ZIP_COMMENT=<span class="jxr_string">"DETECTED_ZIP_COMMENT"</span>;
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String SKIP_FOR_REPACKED =<span class="jxr_string">"SKIP_FOR_REPACKED"</span>;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String WRITE_PACK_FILE =<span class="jxr_string">"WRITE_PACK_FILE"</span>;
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String WIRTE_PACKGZ_FILE=<span class="jxr_string">"WIRTE_PACKGZ_FILE"</span>;
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String SKIP_FOR_MOVE_FAILED=<span class="jxr_string">"SKIP_FOR_MOVE_FAILED"</span>;
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PACK_HELP=<span class="jxr_string">"PACK_HELP"</span>;
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String UNPACK_HELP =<span class="jxr_string">"UNPACK_HELP"</span>;
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String MORE_INFO = <span class="jxr_string">"MORE_INFO"</span>;
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String DUPLICATE_OPTION = <span class="jxr_string">"DUPLICATE_OPTION"</span>;
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String BAD_SPEC = <span class="jxr_string">"BAD_SPEC"</span>;
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>  
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          <em class="jxr_comment">//The following string is duplicate in PACK and UNPACK comment,which was draw out to ruduce translation work.</em>
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAMETER_V = <span class="jxr_string">"  -v, --verbose                   increase program verbosity"</span>;
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAMETER_Q = <span class="jxr_string">"  -q, --quiet                     set verbosity to lowest level"</span>;
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAMETER_LF = <span class="jxr_string">"  -l{F}, --log-file={F}           output to the given log file, or '-' for System.out"</span>;
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAMETER_H = <span class="jxr_string">"  -?, -h, --help                  print this message"</span>;
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAMETER_VER = <span class="jxr_string">"  -V, --version                   print program version"</span>;
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> String PARAMETER_J = <span class="jxr_string">"  -J{X}                           pass option X to underlying Java VM"</span>;
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>  
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          <em class="jxr_comment">//The following are outputs of command 'pack200' and 'unpack200'.</em>
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          <em class="jxr_comment">//Don't translate command arguments ,words with a prefix of '-' or '--'.</em>
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          <em class="jxr_comment">//</em>
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">final</strong> Object[][] resource= {
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>                  {VERSION,<span class="jxr_string">"{0} version {1}"</span>},<em class="jxr_comment">//parameter 0:class name;parameter 1: version value</em>
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>                  {BAD_ARGUMENT,<span class="jxr_string">"Bad argument: {0}"</span>},
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>                  {BAD_OPTION,<span class="jxr_string">"Bad option: {0}={1}"</span>},<em class="jxr_comment">//parameter 0:option name;parameter 1:option value</em>
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>                  {BAD_REPACK_OUTPUT,<span class="jxr_string">"Bad --repack output: {0}"</span>},<em class="jxr_comment">//parameter 0:filename</em>
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>                  {DETECTED_ZIP_COMMENT,<span class="jxr_string">"Detected ZIP comment: {0}"</span>},<em class="jxr_comment">//parameter 0:comment</em>
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>                  {SKIP_FOR_REPACKED,<span class="jxr_string">"Skipping because already repacked: {0}"</span>},<em class="jxr_comment">//parameter 0:filename</em>
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>                  {WRITE_PACK_FILE,<span class="jxr_string">"To write a *.pack file, specify --no-gzip: {0}"</span>},<em class="jxr_comment">//parameter 0:filename</em>
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>                  {WIRTE_PACKGZ_FILE,<span class="jxr_string">"To write a *.pack.gz file, specify --gzip: {0}"</span>},<em class="jxr_comment">//parameter 0:filename</em>
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>                  {SKIP_FOR_MOVE_FAILED,<span class="jxr_string">"Skipping unpack because move failed: {0}"</span>},<em class="jxr_comment">//parameter 0:filename</em>
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>                  {PACK_HELP,<strong class="jxr_keyword">new</strong> String[]{
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>                                  <span class="jxr_string">"Usage:  pack200 [-opt... | --option=value]... x.pack[.gz] y.jar"</span>,
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>                                  <span class="jxr_string">""</span>,
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>                                  <span class="jxr_string">"Packing Options"</span>,
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>                                  <span class="jxr_string">"  -g, --no-gzip                   output a plain *.pack file with no zipping"</span>,
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>                                  <span class="jxr_string">"  --gzip                          (default) post-process the pack output with gzip"</span>,
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>                                  <span class="jxr_string">"  -G, --strip-debug               remove debugging attributes while packing"</span>,
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>                                  <span class="jxr_string">"  -O, --no-keep-file-order        do not transmit file ordering information"</span>,
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>                                  <span class="jxr_string">"  --keep-file-order               (default) preserve input file ordering"</span>,
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>                                  <span class="jxr_string">"  -S{N}, --segment-limit={N}      output segment limit (default N=1Mb)"</span>,
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>                                  <span class="jxr_string">"  -E{N}, --effort={N}             packing effort (default N=5)"</span>,
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>                                  <span class="jxr_string">"  -H{h}, --deflate-hint={h}       transmit deflate hint: true, false, or keep (default)"</span>,
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>                                  <span class="jxr_string">"  -m{V}, --modification-time={V}  transmit modtimes: latest or keep (default)"</span>,
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>                                  <span class="jxr_string">"  -P{F}, --pass-file={F}          transmit the given input element(s) uncompressed"</span>,
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>                                  <span class="jxr_string">"  -U{a}, --unknown-attribute={a}  unknown attribute action: error, strip, or pass (default)"</span>,
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>                                  <span class="jxr_string">"  -C{N}={L}, --class-attribute={N}={L}  (user-defined attribute)"</span>,
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>                                  <span class="jxr_string">"  -F{N}={L}, --field-attribute={N}={L}  (user-defined attribute)"</span>,
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>                                  <span class="jxr_string">"  -M{N}={L}, --method-attribute={N}={L} (user-defined attribute)"</span>,
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>                                  <span class="jxr_string">"  -D{N}={L}, --code-attribute={N}={L}   (user-defined attribute)"</span>,
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>                                  <span class="jxr_string">"  -f{F}, --config-file={F}        read file F for Pack200.Packer properties"</span>,
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>                                  PARAMETER_V ,
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>                                  PARAMETER_Q ,
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>                                  PARAMETER_LF ,
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>                                  PARAMETER_H ,
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>                                  PARAMETER_VER ,
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>                                  PARAMETER_J,
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>                                  <span class="jxr_string">""</span>,
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>                                  <span class="jxr_string">"Notes:"</span>,
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>                                  <span class="jxr_string">"  The -P, -C, -F, -M, and -D options accumulate."</span>,
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>                                  <span class="jxr_string">"  Example attribute definition:  -C SourceFile=RUH ."</span>,
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>                                  <span class="jxr_string">"  Config. file properties are defined by the Pack200 API."</span>,
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>                                  <span class="jxr_string">"  For meaning of -S, -E, -H-, -m, -U values, see Pack200 API."</span>,
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>                                 <span class="jxr_string">"  Layout definitions (like RUH) are defined by JSR 200."</span>,
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>                                 <span class="jxr_string">""</span>,
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>                                 <span class="jxr_string">"Repacking mode updates the JAR file with a pack/unpack cycle:"</span>,
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>                                 <span class="jxr_string">"    pack200 [-r|--repack] [-opt | --option=value]... [repackedy.jar] y.jar\n"</span>
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>                                 }
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>                 },
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>                 {UNPACK_HELP,<strong class="jxr_keyword">new</strong> String[]{
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>                                 <span class="jxr_string">"Usage:  unpack200 [-opt... | --option=value]... x.pack[.gz] y.jar\n"</span>,
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>                                 <span class="jxr_string">""</span>,
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>                                 <span class="jxr_string">"Unpacking Options"</span>,
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>                                 <span class="jxr_string">"  -H{h}, --deflate-hint={h}     override transmitted deflate hint: true, false, or keep (default)"</span>,
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>                                 <span class="jxr_string">"  -r, --remove-pack-file        remove input file after unpacking"</span>,
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>                                 PARAMETER_V ,
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>                                 PARAMETER_Q ,
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>                                 PARAMETER_LF ,
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>                                 PARAMETER_H ,
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>                                 PARAMETER_VER ,
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>                                 PARAMETER_J,
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>                             }
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>                 },
+<a class="jxr_linenumber" name="L120" href="#L120">120</a> 
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>                 {MORE_INFO,<span class="jxr_string">"(For more information, run {0} --help .)"</span>},<em class="jxr_comment">//parameter 0:command name</em>
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>                 {DUPLICATE_OPTION,<span class="jxr_string">"duplicate option: {0}"</span>},<em class="jxr_comment">//parameter 0:option</em>
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>                 {BAD_SPEC,<span class="jxr_string">"bad spec for {0}: {1}"</span>},<em class="jxr_comment">//parameter 0:option;parameter 1:specifier</em>
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>         };
+<a class="jxr_linenumber" name="L125" href="#L125">125</a> 
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>         <strong class="jxr_keyword">protected</strong> Object[][] getContents() {
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>                 <strong class="jxr_keyword">return</strong> resource;
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>         }
+<a class="jxr_linenumber" name="L129" href="#L129">129</a> 
+<a class="jxr_linenumber" name="L130" href="#L130">130</a> 
+<a class="jxr_linenumber" name="L131" href="#L131">131</a> }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>

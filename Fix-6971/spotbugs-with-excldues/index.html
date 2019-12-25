@@ -1,0 +1,1192 @@
+<html>
+	<head>
+		<title>checkstyle xml difference report</title>
+		<style type="text/css" media="all">@import url("./css/maven-base.css");@import url("./css/maven-theme.css"); );</style>
+		<http-equiv http-equiv="Content-Language" content="en"></http-equiv>
+	</head>
+	<body class="composite">
+		<div id="contentBox">
+			<div class="section">
+				<h2 a="Checkstyle XML difference report">Checkstyle XML difference report</h2>
+				This is symmetric difference generated from two checkstyle-result.xml reports. <br/>
+				All matching records from each XML file are deleted, then remaining records are merged into single report. <br>
+		        <a href="https://github.com/checkstyle/contribution/tree/master/patch-diff-report-tool">Utility that generated this report.</a>
+			</div>
+
+			
+				<h2 a="Checkstyle configuration report">Checkstyle configuration report</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Module Name</th>
+								<th>Base properties</th>
+								<th>Patch properties</th>
+							</tr>
+							
+								
+									<tr>
+										<td class="c">Checker</td>
+										
+										<td class="c">
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">TreeWalker</td>
+										
+										<td class="c">
+											
+										</td>
+										
+										
+										<td class="c">
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">SuppressionXpathSingleFilter</td>
+										
+										<td class="c">
+											
+												message
+												
+													<li>Javadoc comment at column \d+ has parse error</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												message
+												
+													<li>Javadoc comment at column \d+ has parse error</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+										
+									<tr>
+										<td class="c">NoArrayTrailingComma</td>
+										
+										
+										<td> </td>
+										<td class="a">
+											
+										</td>
+										
+										
+									</tr>
+									
+								
+									
+								
+									
+										
+									<tr>
+										<td class="c">SuppressionSingleFilter</td>
+										
+										<td class="c">
+											
+												checks
+												
+													<li>Checker</li>
+												
+												<br/>
+											
+												message
+												
+													<li>Exception occurred while parsing</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												checks
+												
+													<li>Checker</li>
+												
+												<br/>
+											
+												message
+												
+													<li>Exception occurred while parsing</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+								
+								
+					</table>	
+				</div>
+			
+
+			<div class="section">
+				<h2 a="Summary:">Summary:</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+						<tr class="a">
+							<th>Report id</th>
+							<th>Files</th>
+							<th>Violations</th>
+							
+								<th>Severity-error</th>
+							
+						</tr>
+						<tr class="b">
+							<td>base</td>
+							<td id="filesBase">2687</td>
+							<td id="totalBase">0</td>
+							
+								<td id="errorSeverityNumBase">0</td>
+							
+						</tr>
+						<tr class="a">
+							<td>patch</td>
+							<td id="filesPatch">2687</td>
+							<td id="totalPatch">42 (42 added)</td>
+							
+								<td id="errorSeverityStatisticsPatch">42 (42 added)</td>
+							
+						</tr>
+						<tr class="d">
+							<td/>
+							<td id="filesDiff">17 files with differences</td>
+							<td id="totalDiff">42 changes in violations</td>
+							
+								<td id="errorSeverityNumDiff">42 changes in violations</td>
+							
+						<tr>
+					</table>
+
+					
+						<br />
+						<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Report id</th>
+								
+									<th>com.puppycrawl.tools.checkstyle.checks.coding.NoArrayTrailingCommaCheck</th>
+								
+							</tr>
+							<tr class="b">
+								<td>base</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.coding.NoArrayTrailingCommaCheckModuleNumBase">0</td>
+								
+							</tr>
+							<tr class="a">
+								<td>patch</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.coding.NoArrayTrailingCommaCheckModuleStatisticsPatch">42 (42 added)</td>
+								
+							</tr>
+							<tr class="d">
+								<td>changes in violations</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.coding.NoArrayTrailingCommaCheckModuleNumDiff">42</td>
+								
+							<tr>
+						</table>
+					
+
+					<br />
+					Number of unique base messages reported below: <span id="uniqueMessagesBase">0</span><br />
+					Number of unique patch messages reported below: <span id="uniqueMessagesPatch">42</span><br />
+				</div>
+			</div>
+
+			<div class="section">
+				<h2 a="Violations:">Violations:</h2>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs-tests/src/test/java/edu/umd/cs/findbugs/FindBugsTestCase.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A1" href = "#A1">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs-tests/src/test/java/edu/umd/cs/findbugs/FindBugsTestCase.java.html#L64">64</a></td>
+								
+								
+									
+									<td>98</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/gui/edu/umd/cs/findbugs/gui2/MainFrame.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A2" href = "#A2">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/gui/edu/umd/cs/findbugs/gui2/MainFrame.java.html#L350">350</a></td>
+								
+								
+									
+									<td>68</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/DetectorFactoryCollection.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A3" href = "#A3">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/DetectorFactoryCollection.java.html#L301">301</a></td>
+								
+								
+									
+									<td>74</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/FindBugs.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A4" href = "#A4">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/FindBugs.java.html#L68">68</a></td>
+								
+								
+									
+									<td>119</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A5" href = "#A5">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/FindBugs.java.html#L84">84</a></td>
+								
+								
+									
+									<td>119</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A6" href = "#A6">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/FindBugs.java.html#L100">100</a></td>
+								
+								
+									
+									<td>119</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A7" href = "#A7">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/FindBugs.java.html#L116">116</a></td>
+								
+								
+									
+									<td>119</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A8" href = "#A8">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/FindBugs.java.html#L132">132</a></td>
+								
+								
+									
+									<td>118</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/ClassHash.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A9" href = "#A9">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/ClassHash.java.html#L233">233</a></td>
+								
+								
+									
+									<td>125</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/ReturnPath.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A10" href = "#A10">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/ReturnPath.java.html#L72">72</a></td>
+								
+								
+									
+									<td>14</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A11" href = "#A11">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/ReturnPath.java.html#L73">73</a></td>
+								
+								
+									
+									<td>21</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A12" href = "#A12">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/ReturnPath.java.html#L74">74</a></td>
+								
+								
+									
+									<td>26</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A13" href = "#A13">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/ReturnPath.java.html#L75">75</a></td>
+								
+								
+									
+									<td>45</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A14" href = "#A14">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/ReturnPath.java.html#L76">76</a></td>
+								
+								
+									
+									<td>56</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/FlowValue.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A15" href = "#A15">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/FlowValue.java.html#L69">69</a></td>
+								
+								
+									
+									<td>23</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A16" href = "#A16">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/FlowValue.java.html#L70">70</a></td>
+								
+								
+									
+									<td>37</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A17" href = "#A17">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/FlowValue.java.html#L71">71</a></td>
+								
+								
+									
+									<td>43</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A18" href = "#A18">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/FlowValue.java.html#L72">72</a></td>
+								
+								
+									
+									<td>60</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/TypeQualifierAnnotation.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A19" href = "#A19">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/TypeQualifierAnnotation.java.html#L97">97</a></td>
+								
+								
+									
+									<td>34</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A20" href = "#A20">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/TypeQualifierAnnotation.java.html#L98">98</a></td>
+								
+								
+									
+									<td>49</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A21" href = "#A21">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/TypeQualifierAnnotation.java.html#L99">99</a></td>
+								
+								
+									
+									<td>59</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A22" href = "#A22">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/TypeQualifierAnnotation.java.html#L100">100</a></td>
+								
+								
+									
+									<td>56</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A23" href = "#A23">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/TypeQualifierAnnotation.java.html#L104">104</a></td>
+								
+								
+									
+									<td>34</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A24" href = "#A24">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/TypeQualifierAnnotation.java.html#L105">105</a></td>
+								
+								
+									
+									<td>50</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A25" href = "#A25">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/TypeQualifierAnnotation.java.html#L106">106</a></td>
+								
+								
+									
+									<td>56</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A26" href = "#A26">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/jsr305/TypeQualifierAnnotation.java.html#L107">107</a></td>
+								
+								
+									
+									<td>72</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/npe/IsNullValue.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A27" href = "#A27">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/npe/IsNullValue.java.html#L104">104</a></td>
+								
+								
+									
+									<td>29</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A28" href = "#A28">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/npe/IsNullValue.java.html#L106">106</a></td>
+								
+								
+									
+									<td>35</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A29" href = "#A29">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/npe/IsNullValue.java.html#L109">109</a></td>
+								
+								
+									
+									<td>72</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A30" href = "#A30">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/npe/IsNullValue.java.html#L110">110</a></td>
+								
+								
+									
+									<td>54</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A31" href = "#A31">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/ba/npe/IsNullValue.java.html#L125">125</a></td>
+								
+								
+									
+									<td>46</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/classfile/engine/ClassParser.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A32" href = "#A32">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/classfile/engine/ClassParser.java.html#L233">233</a></td>
+								
+								
+									
+									<td>12</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/classfile/engine/asm/EngineRegistrar.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A33" href = "#A33">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/classfile/engine/asm/EngineRegistrar.java.html#L34">34</a></td>
+								
+								
+									
+									<td>40</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/classfile/engine/bcel/EngineRegistrar.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A34" href = "#A34">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/classfile/engine/bcel/EngineRegistrar.java.html#L59">59</a></td>
+								
+								
+									
+									<td>38</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A35" href = "#A35">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/classfile/engine/bcel/EngineRegistrar.java.html#L88">88</a></td>
+								
+								
+									
+									<td>66</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/detect/FindNoSideEffectMethods.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A36" href = "#A36">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/detect/FindNoSideEffectMethods.java.html#L108">108</a></td>
+								
+								
+									
+									<td>46</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/detect/FindSqlInjection.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A37" href = "#A37">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/detect/FindSqlInjection.java.html#L91">91</a></td>
+								
+								
+									
+									<td>78</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A38" href = "#A38">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/detect/FindSqlInjection.java.html#L108">108</a></td>
+								
+								
+									
+									<td>88</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/jaif/JAIFScanner.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A39" href = "#A39">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/main/java/edu/umd/cs/findbugs/jaif/JAIFScanner.java.html#L130">130</a></td>
+								
+								
+									
+									<td>95</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/test/java/edu/umd/cs/findbugs/ba/NullnessAnnotationTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A40" href = "#A40">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/test/java/edu/umd/cs/findbugs/ba/NullnessAnnotationTest.java.html#L43">43</a></td>
+								
+								
+									
+									<td>46</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/test/java/edu/umd/cs/findbugs/util/StringsTest.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A41" href = "#A41">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/test/java/edu/umd/cs/findbugs/util/StringsTest.java.html#L45">45</a></td>
+								
+								
+									
+									<td>11</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A42" href = "#A42">#</a></td>
+								<td>error</td>
+								<td>NoArrayTrailingComma</td>
+								<td>Array should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/spotbugs-with-excldues/spotbugs/src/test/java/edu/umd/cs/findbugs/util/StringsTest.java.html#L49">49</a></td>
+								
+								
+									
+									<td>86</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

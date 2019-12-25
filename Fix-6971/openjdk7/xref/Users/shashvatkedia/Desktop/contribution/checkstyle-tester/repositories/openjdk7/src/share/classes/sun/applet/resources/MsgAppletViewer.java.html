@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>MsgAppletViewer xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright (c) 1996, 2011, Oracle and/or its affiliates. All rights reserved.</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * This code is free software; you can redistribute it and/or modify it</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * under the terms of the GNU General Public License version 2 only, as</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * published by the Free Software Foundation.  Oracle designates this</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * particular file as subject to the "Classpath" exception as provided</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * by Oracle in the LICENSE file that accompanied this code.</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * This code is distributed in the hope that it will be useful, but WITHOUT</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * version 2 for more details (a copy is included in the LICENSE file that</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * accompanied this code).</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> * You should have received a copy of the GNU General Public License version</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> * 2 along with this work; if not, write to the Free Software Foundation,</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_comment"> * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_comment"> * or visit www.oracle.com if you need additional information or have any</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_comment"> * questions.</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <strong class="jxr_keyword">package</strong> sun.applet.resources;
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <strong class="jxr_keyword">import</strong> java.util.ListResourceBundle;
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> MsgAppletViewer <strong class="jxr_keyword">extends</strong> ListResourceBundle {
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>      <strong class="jxr_keyword">public</strong> Object[][] getContents() {
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>          Object[][] temp = <strong class="jxr_keyword">new</strong> Object[][] {
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>              {<span class="jxr_string">"textframe.button.dismiss"</span>, <span class="jxr_string">"Dismiss"</span>},
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>              {<span class="jxr_string">"appletviewer.tool.title"</span>, <span class="jxr_string">"Applet Viewer: {0}"</span>},
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>              {<span class="jxr_string">"appletviewer.menu.applet"</span>, <span class="jxr_string">"Applet"</span>},
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>              {<span class="jxr_string">"appletviewer.menuitem.restart"</span>, <span class="jxr_string">"Restart"</span>},
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>              {<span class="jxr_string">"appletviewer.menuitem.reload"</span>, <span class="jxr_string">"Reload"</span>},
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>              {<span class="jxr_string">"appletviewer.menuitem.stop"</span>, <span class="jxr_string">"Stop"</span>},
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>              {<span class="jxr_string">"appletviewer.menuitem.save"</span>, <span class="jxr_string">"Save..."</span>},
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>              {<span class="jxr_string">"appletviewer.menuitem.start"</span>, <span class="jxr_string">"Start"</span>},
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>              {<span class="jxr_string">"appletviewer.menuitem.clone"</span>, <span class="jxr_string">"Clone..."</span>},
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>              {<span class="jxr_string">"appletviewer.menuitem.tag"</span>, <span class="jxr_string">"Tag..."</span>},
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>              {<span class="jxr_string">"appletviewer.menuitem.info"</span>, <span class="jxr_string">"Info..."</span>},
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>              {<span class="jxr_string">"appletviewer.menuitem.edit"</span>, <span class="jxr_string">"Edit"</span>},
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>              {<span class="jxr_string">"appletviewer.menuitem.encoding"</span>, <span class="jxr_string">"Character Encoding"</span>},
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>              {<span class="jxr_string">"appletviewer.menuitem.print"</span>, <span class="jxr_string">"Print..."</span>},
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>              {<span class="jxr_string">"appletviewer.menuitem.props"</span>, <span class="jxr_string">"Properties..."</span>},
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>              {<span class="jxr_string">"appletviewer.menuitem.close"</span>, <span class="jxr_string">"Close"</span>},
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>              {<span class="jxr_string">"appletviewer.menuitem.quit"</span>, <span class="jxr_string">"Quit"</span>},
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>              {<span class="jxr_string">"appletviewer.label.hello"</span>, <span class="jxr_string">"Hello..."</span>},
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>              {<span class="jxr_string">"appletviewer.status.start"</span>, <span class="jxr_string">"starting applet..."</span>},
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>              {<span class="jxr_string">"appletviewer.appletsave.filedialogtitle"</span>,<span class="jxr_string">"Serialize Applet into File"</span>},
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>              {<span class="jxr_string">"appletviewer.appletsave.err1"</span>, <span class="jxr_string">"serializing an {0} to {1}"</span>},
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>              {<span class="jxr_string">"appletviewer.appletsave.err2"</span>, <span class="jxr_string">"in appletSave: {0}"</span>},
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>              {<span class="jxr_string">"appletviewer.applettag"</span>, <span class="jxr_string">"Tag shown"</span>},
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>              {<span class="jxr_string">"appletviewer.applettag.textframe"</span>, <span class="jxr_string">"Applet HTML Tag"</span>},
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>              {<span class="jxr_string">"appletviewer.appletinfo.applet"</span>, <span class="jxr_string">"-- no applet info --"</span>},
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>              {<span class="jxr_string">"appletviewer.appletinfo.param"</span>, <span class="jxr_string">"-- no parameter info --"</span>},
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>              {<span class="jxr_string">"appletviewer.appletinfo.textframe"</span>, <span class="jxr_string">"Applet Info"</span>},
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>              {<span class="jxr_string">"appletviewer.appletprint.fail"</span>, <span class="jxr_string">"Printing failed."</span>},
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>              {<span class="jxr_string">"appletviewer.appletprint.finish"</span>, <span class="jxr_string">"Finished printing."</span>},
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>              {<span class="jxr_string">"appletviewer.appletprint.cancel"</span>, <span class="jxr_string">"Printing cancelled."</span>},
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>              {<span class="jxr_string">"appletviewer.appletencoding"</span>, <span class="jxr_string">"Character Encoding: {0}"</span>},
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>              {<span class="jxr_string">"appletviewer.parse.warning.requiresname"</span>, <span class="jxr_string">"Warning: &lt;param name=... value=...&gt; tag requires name attribute."</span>},
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>              {<span class="jxr_string">"appletviewer.parse.warning.paramoutside"</span>, <span class="jxr_string">"Warning: &lt;param&gt; tag outside &lt;applet&gt; ... &lt;/applet&gt;."</span>},
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>              {<span class="jxr_string">"appletviewer.parse.warning.applet.requirescode"</span>, <span class="jxr_string">"Warning: &lt;applet&gt; tag requires code attribute."</span>},
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>              {<span class="jxr_string">"appletviewer.parse.warning.applet.requiresheight"</span>, <span class="jxr_string">"Warning: &lt;applet&gt; tag requires height attribute."</span>},
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>              {<span class="jxr_string">"appletviewer.parse.warning.applet.requireswidth"</span>, <span class="jxr_string">"Warning: &lt;applet&gt; tag requires width attribute."</span>},
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>              {<span class="jxr_string">"appletviewer.parse.warning.object.requirescode"</span>, <span class="jxr_string">"Warning: &lt;object&gt; tag requires code attribute."</span>},
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>              {<span class="jxr_string">"appletviewer.parse.warning.object.requiresheight"</span>, <span class="jxr_string">"Warning: &lt;object&gt; tag requires height attribute."</span>},
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>              {<span class="jxr_string">"appletviewer.parse.warning.object.requireswidth"</span>, <span class="jxr_string">"Warning: &lt;object&gt; tag requires width attribute."</span>},
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>              {<span class="jxr_string">"appletviewer.parse.warning.embed.requirescode"</span>, <span class="jxr_string">"Warning: &lt;embed&gt; tag requires code attribute."</span>},
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>              {<span class="jxr_string">"appletviewer.parse.warning.embed.requiresheight"</span>, <span class="jxr_string">"Warning: &lt;embed&gt; tag requires height attribute."</span>},
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>              {<span class="jxr_string">"appletviewer.parse.warning.embed.requireswidth"</span>, <span class="jxr_string">"Warning: &lt;embed&gt; tag requires width attribute."</span>},
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>              {<span class="jxr_string">"appletviewer.parse.warning.appnotLongersupported"</span>, <span class="jxr_string">"Warning: &lt;app&gt; tag no longer supported, use &lt;applet&gt; instead:"</span>},
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>              {<span class="jxr_string">"appletviewer.usage"</span>, <span class="jxr_string">"Usage: appletviewer &lt;options&gt; url(s)\n\nwhere &lt;options&gt; include:\n  -debug                  Start the applet viewer in the Java debugger\n  -encoding &lt;encoding&gt;    Specify character encoding used by HTML files\n  -J&lt;runtime flag&gt;        Pass argument to the java interpreter\n\nThe -J option is non-standard and subject to change without notice."</span>},
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>              {<span class="jxr_string">"appletviewer.main.err.unsupportedopt"</span>, <span class="jxr_string">"Unsupported option: {0}"</span>},
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>              {<span class="jxr_string">"appletviewer.main.err.unrecognizedarg"</span>, <span class="jxr_string">"Unrecognized argument: {0}"</span>},
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>              {<span class="jxr_string">"appletviewer.main.err.dupoption"</span>, <span class="jxr_string">"Duplicate use of option: {0}"</span>},
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>              {<span class="jxr_string">"appletviewer.main.err.inputfile"</span>, <span class="jxr_string">"No input files specified."</span>},
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>              {<span class="jxr_string">"appletviewer.main.err.badurl"</span>, <span class="jxr_string">"Bad URL: {0} ( {1} )"</span>},
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>              {<span class="jxr_string">"appletviewer.main.err.io"</span>, <span class="jxr_string">"I/O exception while reading: {0}"</span>},
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>              {<span class="jxr_string">"appletviewer.main.err.readablefile"</span>, <span class="jxr_string">"Make sure that {0} is a file and is readable."</span>},
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>              {<span class="jxr_string">"appletviewer.main.err.correcturl"</span>, <span class="jxr_string">"Is {0} the correct URL?"</span>},
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>              {<span class="jxr_string">"appletviewer.main.prop.store"</span>, <span class="jxr_string">"User-specific properties for AppletViewer"</span>},
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>              {<span class="jxr_string">"appletviewer.main.err.prop.cantread"</span>, <span class="jxr_string">"Can''t read user properties file: {0}"</span>},
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>              {<span class="jxr_string">"appletviewer.main.err.prop.cantsave"</span>, <span class="jxr_string">"Can''t save user properties file: {0}"</span>},
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>              {<span class="jxr_string">"appletviewer.main.warn.nosecmgr"</span>, <span class="jxr_string">"Warning: disabling security."</span>},
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>              {<span class="jxr_string">"appletviewer.main.debug.cantfinddebug"</span>, <span class="jxr_string">"Can''t find the debugger!"</span>},
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>              {<span class="jxr_string">"appletviewer.main.debug.cantfindmain"</span>, <span class="jxr_string">"Can''t find main method in the debugger!"</span>},
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>              {<span class="jxr_string">"appletviewer.main.debug.exceptionindebug"</span>, <span class="jxr_string">"Exception in the debugger!"</span>},
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>              {<span class="jxr_string">"appletviewer.main.debug.cantaccess"</span>, <span class="jxr_string">"Can''t access the debugger!"</span>},
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>              {<span class="jxr_string">"appletviewer.main.nosecmgr"</span>, <span class="jxr_string">"Warning: SecurityManager not installed!"</span>},
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>              {<span class="jxr_string">"appletviewer.main.warning"</span>, <span class="jxr_string">"Warning: No applets were started. Make sure the input contains an &lt;applet&gt; tag."</span>},
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>              {<span class="jxr_string">"appletviewer.main.warn.prop.overwrite"</span>, <span class="jxr_string">"Warning: Temporarily overwriting system property at user''s request: key: {0} old value: {1} new value: {2}"</span>},
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>              {<span class="jxr_string">"appletviewer.main.warn.cantreadprops"</span>, <span class="jxr_string">"Warning: Can''t read AppletViewer properties file: {0} Using defaults."</span>},
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>              {<span class="jxr_string">"appletioexception.loadclass.throw.interrupted"</span>, <span class="jxr_string">"class loading interrupted: {0}"</span>},
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>              {<span class="jxr_string">"appletioexception.loadclass.throw.notloaded"</span>, <span class="jxr_string">"class not loaded: {0}"</span>},
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>              {<span class="jxr_string">"appletclassloader.loadcode.verbose"</span>, <span class="jxr_string">"Opening stream to: {0} to get {1}"</span>},
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>             {<span class="jxr_string">"appletclassloader.filenotfound"</span>, <span class="jxr_string">"File not found when looking for: {0}"</span>},
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>             {<span class="jxr_string">"appletclassloader.fileformat"</span>, <span class="jxr_string">"File format exception when loading: {0}"</span>},
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>             {<span class="jxr_string">"appletclassloader.fileioexception"</span>, <span class="jxr_string">"I/O exception when loading: {0}"</span>},
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>             {<span class="jxr_string">"appletclassloader.fileexception"</span>, <span class="jxr_string">"{0} exception when loading: {1}"</span>},
+<a class="jxr_linenumber" name="L104" href="#L104">104</a>             {<span class="jxr_string">"appletclassloader.filedeath"</span>, <span class="jxr_string">"{0} killed when loading: {1}"</span>},
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>             {<span class="jxr_string">"appletclassloader.fileerror"</span>, <span class="jxr_string">"{0} error when loading: {1}"</span>},
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>             {<span class="jxr_string">"appletclassloader.findclass.verbose.openstream"</span>, <span class="jxr_string">"Opening stream to: {0} to get {1}"</span>},
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>             {<span class="jxr_string">"appletclassloader.getresource.verbose.forname"</span>, <span class="jxr_string">"AppletClassLoader.getResource for name: {0}"</span>},
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>             {<span class="jxr_string">"appletclassloader.getresource.verbose.found"</span>, <span class="jxr_string">"Found resource: {0} as a system resource"</span>},
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>             {<span class="jxr_string">"appletclassloader.getresourceasstream.verbose"</span>, <span class="jxr_string">"Found resource: {0} as a system resource"</span>},
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>             {<span class="jxr_string">"appletpanel.runloader.err"</span>, <span class="jxr_string">"Either object or code parameter!"</span>},
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>             {<span class="jxr_string">"appletpanel.runloader.exception"</span>, <span class="jxr_string">"exception while deserializing {0}"</span>},
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>             {<span class="jxr_string">"appletpanel.destroyed"</span>, <span class="jxr_string">"Applet destroyed."</span>},
+<a class="jxr_linenumber" name="L113" href="#L113">113</a>             {<span class="jxr_string">"appletpanel.loaded"</span>, <span class="jxr_string">"Applet loaded."</span>},
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>             {<span class="jxr_string">"appletpanel.started"</span>, <span class="jxr_string">"Applet started."</span>},
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>             {<span class="jxr_string">"appletpanel.inited"</span>, <span class="jxr_string">"Applet initialized."</span>},
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>             {<span class="jxr_string">"appletpanel.stopped"</span>, <span class="jxr_string">"Applet stopped."</span>},
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>             {<span class="jxr_string">"appletpanel.disposed"</span>, <span class="jxr_string">"Applet disposed."</span>},
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>             {<span class="jxr_string">"appletpanel.nocode"</span>, <span class="jxr_string">"APPLET tag missing CODE parameter."</span>},
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>             {<span class="jxr_string">"appletpanel.notfound"</span>, <span class="jxr_string">"load: class {0} not found."</span>},
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>             {<span class="jxr_string">"appletpanel.nocreate"</span>, <span class="jxr_string">"load: {0} can''t be instantiated."</span>},
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>             {<span class="jxr_string">"appletpanel.noconstruct"</span>, <span class="jxr_string">"load: {0} is not public or has no public constructor."</span>},
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>             {<span class="jxr_string">"appletpanel.death"</span>, <span class="jxr_string">"killed"</span>},
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>             {<span class="jxr_string">"appletpanel.exception"</span>, <span class="jxr_string">"exception: {0}."</span>},
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>             {<span class="jxr_string">"appletpanel.exception2"</span>, <span class="jxr_string">"exception: {0}: {1}."</span>},
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>             {<span class="jxr_string">"appletpanel.error"</span>, <span class="jxr_string">"error: {0}."</span>},
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>             {<span class="jxr_string">"appletpanel.error2"</span>, <span class="jxr_string">"error: {0}: {1}."</span>},
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>             {<span class="jxr_string">"appletpanel.notloaded"</span>, <span class="jxr_string">"Init: applet not loaded."</span>},
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>             {<span class="jxr_string">"appletpanel.notinited"</span>, <span class="jxr_string">"Start: applet not initialized."</span>},
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>             {<span class="jxr_string">"appletpanel.notstarted"</span>, <span class="jxr_string">"Stop: applet not started."</span>},
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>             {<span class="jxr_string">"appletpanel.notstopped"</span>, <span class="jxr_string">"Destroy: applet not stopped."</span>},
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>             {<span class="jxr_string">"appletpanel.notdestroyed"</span>, <span class="jxr_string">"Dispose: applet not destroyed."</span>},
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>             {<span class="jxr_string">"appletpanel.notdisposed"</span>, <span class="jxr_string">"Load: applet not disposed."</span>},
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>             {<span class="jxr_string">"appletpanel.bail"</span>, <span class="jxr_string">"Interrupted: bailing out."</span>},
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>             {<span class="jxr_string">"appletpanel.filenotfound"</span>, <span class="jxr_string">"File not found when looking for: {0}"</span>},
+<a class="jxr_linenumber" name="L135" href="#L135">135</a>             {<span class="jxr_string">"appletpanel.fileformat"</span>, <span class="jxr_string">"File format exception when loading: {0}"</span>},
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>             {<span class="jxr_string">"appletpanel.fileioexception"</span>, <span class="jxr_string">"I/O exception when loading: {0}"</span>},
+<a class="jxr_linenumber" name="L137" href="#L137">137</a>             {<span class="jxr_string">"appletpanel.fileexception"</span>, <span class="jxr_string">"{0} exception when loading: {1}"</span>},
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>             {<span class="jxr_string">"appletpanel.filedeath"</span>, <span class="jxr_string">"{0} killed when loading: {1}"</span>},
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>             {<span class="jxr_string">"appletpanel.fileerror"</span>, <span class="jxr_string">"{0} error when loading: {1}"</span>},
+<a class="jxr_linenumber" name="L140" href="#L140">140</a>             {<span class="jxr_string">"appletpanel.badattribute.exception"</span>, <span class="jxr_string">"HTML parsing: incorrect value for width/height attribute"</span>},
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>             {<span class="jxr_string">"appletillegalargumentexception.objectinputstream"</span>, <span class="jxr_string">"AppletObjectInputStream requires non-null loader"</span>},
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>             {<span class="jxr_string">"appletprops.title"</span>, <span class="jxr_string">"AppletViewer Properties"</span>},
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>             {<span class="jxr_string">"appletprops.label.http.server"</span>, <span class="jxr_string">"Http proxy server:"</span>},
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>             {<span class="jxr_string">"appletprops.label.http.proxy"</span>, <span class="jxr_string">"Http proxy port:"</span>},
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>             {<span class="jxr_string">"appletprops.label.network"</span>, <span class="jxr_string">"Network access:"</span>},
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>             {<span class="jxr_string">"appletprops.choice.network.item.none"</span>, <span class="jxr_string">"None"</span>},
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>             {<span class="jxr_string">"appletprops.choice.network.item.applethost"</span>, <span class="jxr_string">"Applet Host"</span>},
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>             {<span class="jxr_string">"appletprops.choice.network.item.unrestricted"</span>, <span class="jxr_string">"Unrestricted"</span>},
+<a class="jxr_linenumber" name="L149" href="#L149">149</a>             {<span class="jxr_string">"appletprops.label.class"</span>, <span class="jxr_string">"Class access:"</span>},
+<a class="jxr_linenumber" name="L150" href="#L150">150</a>             {<span class="jxr_string">"appletprops.choice.class.item.restricted"</span>, <span class="jxr_string">"Restricted"</span>},
+<a class="jxr_linenumber" name="L151" href="#L151">151</a>             {<span class="jxr_string">"appletprops.choice.class.item.unrestricted"</span>, <span class="jxr_string">"Unrestricted"</span>},
+<a class="jxr_linenumber" name="L152" href="#L152">152</a>             {<span class="jxr_string">"appletprops.label.unsignedapplet"</span>, <span class="jxr_string">"Allow unsigned applets:"</span>},
+<a class="jxr_linenumber" name="L153" href="#L153">153</a>             {<span class="jxr_string">"appletprops.choice.unsignedapplet.no"</span>, <span class="jxr_string">"No"</span>},
+<a class="jxr_linenumber" name="L154" href="#L154">154</a>             {<span class="jxr_string">"appletprops.choice.unsignedapplet.yes"</span>, <span class="jxr_string">"Yes"</span>},
+<a class="jxr_linenumber" name="L155" href="#L155">155</a>             {<span class="jxr_string">"appletprops.button.apply"</span>, <span class="jxr_string">"Apply"</span>},
+<a class="jxr_linenumber" name="L156" href="#L156">156</a>             {<span class="jxr_string">"appletprops.button.cancel"</span>, <span class="jxr_string">"Cancel"</span>},
+<a class="jxr_linenumber" name="L157" href="#L157">157</a>             {<span class="jxr_string">"appletprops.button.reset"</span>, <span class="jxr_string">"Reset"</span>},
+<a class="jxr_linenumber" name="L158" href="#L158">158</a>             {<span class="jxr_string">"appletprops.apply.exception"</span>, <span class="jxr_string">"Failed to save properties: {0}"</span>},
+<a class="jxr_linenumber" name="L159" href="#L159">159</a>             <em class="jxr_comment">/* 4066432 */</em>
+<a class="jxr_linenumber" name="L160" href="#L160">160</a>             {<span class="jxr_string">"appletprops.title.invalidproxy"</span>, <span class="jxr_string">"Invalid Entry"</span>},
+<a class="jxr_linenumber" name="L161" href="#L161">161</a>             {<span class="jxr_string">"appletprops.label.invalidproxy"</span>, <span class="jxr_string">"Proxy Port must be a positive integer value."</span>},
+<a class="jxr_linenumber" name="L162" href="#L162">162</a>             {<span class="jxr_string">"appletprops.button.ok"</span>, <span class="jxr_string">"OK"</span>},
+<a class="jxr_linenumber" name="L163" href="#L163">163</a>             <em class="jxr_comment">/* end 4066432 */</em>
+<a class="jxr_linenumber" name="L164" href="#L164">164</a>             {<span class="jxr_string">"appletprops.prop.store"</span>, <span class="jxr_string">"User-specific properties for AppletViewer"</span>},
+<a class="jxr_linenumber" name="L165" href="#L165">165</a>             {<span class="jxr_string">"appletsecurityexception.checkcreateclassloader"</span>, <span class="jxr_string">"Security Exception: classloader"</span>},
+<a class="jxr_linenumber" name="L166" href="#L166">166</a>             {<span class="jxr_string">"appletsecurityexception.checkaccess.thread"</span>, <span class="jxr_string">"Security Exception: thread"</span>},
+<a class="jxr_linenumber" name="L167" href="#L167">167</a>             {<span class="jxr_string">"appletsecurityexception.checkaccess.threadgroup"</span>, <span class="jxr_string">"Security Exception: threadgroup: {0}"</span>},
+<a class="jxr_linenumber" name="L168" href="#L168">168</a>             {<span class="jxr_string">"appletsecurityexception.checkexit"</span>, <span class="jxr_string">"Security Exception: exit: {0}"</span>},
+<a class="jxr_linenumber" name="L169" href="#L169">169</a>             {<span class="jxr_string">"appletsecurityexception.checkexec"</span>, <span class="jxr_string">"Security Exception: exec: {0}"</span>},
+<a class="jxr_linenumber" name="L170" href="#L170">170</a>             {<span class="jxr_string">"appletsecurityexception.checklink"</span>, <span class="jxr_string">"Security Exception: link: {0}"</span>},
+<a class="jxr_linenumber" name="L171" href="#L171">171</a>             {<span class="jxr_string">"appletsecurityexception.checkpropsaccess"</span>, <span class="jxr_string">"Security Exception: properties"</span>},
+<a class="jxr_linenumber" name="L172" href="#L172">172</a>             {<span class="jxr_string">"appletsecurityexception.checkpropsaccess.key"</span>, <span class="jxr_string">"Security Exception: properties access {0}"</span>},
+<a class="jxr_linenumber" name="L173" href="#L173">173</a>             {<span class="jxr_string">"appletsecurityexception.checkread.exception1"</span>, <span class="jxr_string">"Security Exception: {0}, {1}"</span>},
+<a class="jxr_linenumber" name="L174" href="#L174">174</a>             {<span class="jxr_string">"appletsecurityexception.checkread.exception2"</span>, <span class="jxr_string">"Security Exception: file.read: {0}"</span>},
+<a class="jxr_linenumber" name="L175" href="#L175">175</a>             {<span class="jxr_string">"appletsecurityexception.checkread"</span>, <span class="jxr_string">"Security Exception: file.read: {0} == {1}"</span>},
+<a class="jxr_linenumber" name="L176" href="#L176">176</a>             {<span class="jxr_string">"appletsecurityexception.checkwrite.exception"</span>, <span class="jxr_string">"Security Exception: {0}, {1}"</span>},
+<a class="jxr_linenumber" name="L177" href="#L177">177</a>             {<span class="jxr_string">"appletsecurityexception.checkwrite"</span>, <span class="jxr_string">"Security Exception: file.write: {0} == {1}"</span>},
+<a class="jxr_linenumber" name="L178" href="#L178">178</a>             {<span class="jxr_string">"appletsecurityexception.checkread.fd"</span>, <span class="jxr_string">"Security Exception: fd.read"</span>},
+<a class="jxr_linenumber" name="L179" href="#L179">179</a>             {<span class="jxr_string">"appletsecurityexception.checkwrite.fd"</span>, <span class="jxr_string">"Security Exception: fd.write"</span>},
+<a class="jxr_linenumber" name="L180" href="#L180">180</a>             {<span class="jxr_string">"appletsecurityexception.checklisten"</span>, <span class="jxr_string">"Security Exception: socket.listen: {0}"</span>},
+<a class="jxr_linenumber" name="L181" href="#L181">181</a>             {<span class="jxr_string">"appletsecurityexception.checkaccept"</span>, <span class="jxr_string">"Security Exception: socket.accept: {0}:{1}"</span>},
+<a class="jxr_linenumber" name="L182" href="#L182">182</a>             {<span class="jxr_string">"appletsecurityexception.checkconnect.networknone"</span>, <span class="jxr_string">"Security Exception: socket.connect: {0}-&gt;{1}"</span>},
+<a class="jxr_linenumber" name="L183" href="#L183">183</a>             {<span class="jxr_string">"appletsecurityexception.checkconnect.networkhost1"</span>, <span class="jxr_string">"Security Exception: Couldn''t connect to {0} with origin from {1}."</span>},
+<a class="jxr_linenumber" name="L184" href="#L184">184</a>             {<span class="jxr_string">"appletsecurityexception.checkconnect.networkhost2"</span>, <span class="jxr_string">"Security Exception: Couldn''t resolve IP for host {0} or for {1}. "</span>},
+<a class="jxr_linenumber" name="L185" href="#L185">185</a>             {<span class="jxr_string">"appletsecurityexception.checkconnect.networkhost3"</span>, <span class="jxr_string">"Security Exception: Could not resolve IP for host {0}. See the trustProxy property."</span>},
+<a class="jxr_linenumber" name="L186" href="#L186">186</a>             {<span class="jxr_string">"appletsecurityexception.checkconnect"</span>, <span class="jxr_string">"Security Exception: connect: {0}-&gt;{1}"</span>},
+<a class="jxr_linenumber" name="L187" href="#L187">187</a>             {<span class="jxr_string">"appletsecurityexception.checkpackageaccess"</span>, <span class="jxr_string">"Security Exception: cannot access package: {0}"</span>},
+<a class="jxr_linenumber" name="L188" href="#L188">188</a>             {<span class="jxr_string">"appletsecurityexception.checkpackagedefinition"</span>, <span class="jxr_string">"Security Exception: cannot define package: {0}"</span>},
+<a class="jxr_linenumber" name="L189" href="#L189">189</a>             {<span class="jxr_string">"appletsecurityexception.cannotsetfactory"</span>, <span class="jxr_string">"Security Exception: cannot set factory"</span>},
+<a class="jxr_linenumber" name="L190" href="#L190">190</a>             {<span class="jxr_string">"appletsecurityexception.checkmemberaccess"</span>, <span class="jxr_string">"Security Exception: check member access"</span>},
+<a class="jxr_linenumber" name="L191" href="#L191">191</a>             {<span class="jxr_string">"appletsecurityexception.checkgetprintjob"</span>, <span class="jxr_string">"Security Exception: getPrintJob"</span>},
+<a class="jxr_linenumber" name="L192" href="#L192">192</a>             {<span class="jxr_string">"appletsecurityexception.checksystemclipboardaccess"</span>, <span class="jxr_string">"Security Exception: getSystemClipboard"</span>},
+<a class="jxr_linenumber" name="L193" href="#L193">193</a>             {<span class="jxr_string">"appletsecurityexception.checkawteventqueueaccess"</span>, <span class="jxr_string">"Security Exception: getEventQueue"</span>},
+<a class="jxr_linenumber" name="L194" href="#L194">194</a>             {<span class="jxr_string">"appletsecurityexception.checksecurityaccess"</span>, <span class="jxr_string">"Security Exception: security operation: {0}"</span>},
+<a class="jxr_linenumber" name="L195" href="#L195">195</a>             {<span class="jxr_string">"appletsecurityexception.getsecuritycontext.unknown"</span>, <span class="jxr_string">"unknown class loader type. unable to check for getContext"</span>},
+<a class="jxr_linenumber" name="L196" href="#L196">196</a>             {<span class="jxr_string">"appletsecurityexception.checkread.unknown"</span>, <span class="jxr_string">"unknown class loader type. unable to check for checking read {0}"</span>},
+<a class="jxr_linenumber" name="L197" href="#L197">197</a>             {<span class="jxr_string">"appletsecurityexception.checkconnect.unknown"</span>, <span class="jxr_string">"unknown class loader type. unable to check for checking connect"</span>},
+<a class="jxr_linenumber" name="L198" href="#L198">198</a>         };
+<a class="jxr_linenumber" name="L199" href="#L199">199</a> 
+<a class="jxr_linenumber" name="L200" href="#L200">200</a>         <strong class="jxr_keyword">return</strong> temp;
+<a class="jxr_linenumber" name="L201" href="#L201">201</a>     }
+<a class="jxr_linenumber" name="L202" href="#L202">202</a> }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>MD2 xref</title>
+<link type="text/css" rel="stylesheet" href="../../../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * This code is free software; you can redistribute it and/or modify it</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * under the terms of the GNU General Public License version 2 only, as</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * published by the Free Software Foundation.  Oracle designates this</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> * particular file as subject to the "Classpath" exception as provided</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * by Oracle in the LICENSE file that accompanied this code.</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * This code is distributed in the hope that it will be useful, but WITHOUT</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> * version 2 for more details (a copy is included in the LICENSE file that</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * accompanied this code).</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> * You should have received a copy of the GNU General Public License version</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> * 2 along with this work; if not, write to the Free Software Foundation,</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_comment"> * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_comment"> * or visit www.oracle.com if you need additional information or have any</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  <em class="jxr_comment"> * questions.</em>
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <strong class="jxr_keyword">package</strong> sun.security.provider;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <strong class="jxr_keyword">import</strong> java.util.Arrays;
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment"> * Implementation for the MD2 algorithm, see RFC1319. It is very slow and</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment"> * not particular secure. It is only supported to be able to verify</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <em class="jxr_javadoccomment"> * RSA/Verisign root certificates signed using MD2withRSA. It should not</em>
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>  <em class="jxr_javadoccomment"> * be used for anything else.</em>
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>  <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>  <em class="jxr_javadoccomment"> * @since   1.5</em>
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>  <em class="jxr_javadoccomment"> * @author  Andreas Sterbenz</em>
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>  <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">class</strong> MD2 <strong class="jxr_keyword">extends</strong> DigestBase {
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <em class="jxr_comment">// state, 48 ints</em>
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong>[] X;
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>  
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>      <em class="jxr_comment">// checksum, 16 ints. they are really bytes, but byte arithmetic in</em>
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>      <em class="jxr_comment">// the JVM is much slower that int arithmetic.</em>
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">int</strong>[] C;
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>  
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>      <em class="jxr_comment">// temporary store for checksum C during final digest</em>
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> byte[] cBytes;
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>      <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>  <em class="jxr_javadoccomment">     * Create a new MD2 digest. Called by the JCA framework</em>
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>  <em class="jxr_javadoccomment">     */</em>
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>      <strong class="jxr_keyword">public</strong> MD2() {
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>          <strong class="jxr_keyword">super</strong>(<span class="jxr_string">"MD2"</span>, 16, 16);
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>          X = <strong class="jxr_keyword">new</strong> <strong class="jxr_keyword">int</strong>[48];
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>          C = <strong class="jxr_keyword">new</strong> <strong class="jxr_keyword">int</strong>[16];
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          cBytes = <strong class="jxr_keyword">new</strong> byte[16];
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>      }
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>  
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>      <strong class="jxr_keyword">private</strong> MD2(MD2 base) {
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          <strong class="jxr_keyword">super</strong>(base);
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          <strong class="jxr_keyword">this</strong>.X = base.X.clone();
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>          <strong class="jxr_keyword">this</strong>.C = base.C.clone();
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>          cBytes = <strong class="jxr_keyword">new</strong> byte[16];
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>      }
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>  
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>      <strong class="jxr_keyword">public</strong> Object clone() {
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>          <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">new</strong> MD2(<strong class="jxr_keyword">this</strong>);
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      }
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>  
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>      <em class="jxr_comment">// reset state and checksum</em>
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>      <strong class="jxr_keyword">void</strong> implReset() {
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          Arrays.fill(X, 0);
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>          Arrays.fill(C, 0);
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>      }
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>  
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>      <em class="jxr_comment">// finish the digest</em>
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>      <strong class="jxr_keyword">void</strong> implDigest(byte[] out, <strong class="jxr_keyword">int</strong> ofs) {
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>          <strong class="jxr_keyword">int</strong> padValue = 16 - ((<strong class="jxr_keyword">int</strong>)bytesProcessed &amp; 15);
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>          engineUpdate(PADDING[padValue], 0, padValue);
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 16; i++) {
+<a class="jxr_linenumber" name="L83" href="#L83">83</a>              cBytes[i] = (byte)C[i];
+<a class="jxr_linenumber" name="L84" href="#L84">84</a>          }
+<a class="jxr_linenumber" name="L85" href="#L85">85</a>          implCompress(cBytes, 0);
+<a class="jxr_linenumber" name="L86" href="#L86">86</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 16; i++) {
+<a class="jxr_linenumber" name="L87" href="#L87">87</a>              out[ofs + i] = (byte)X[i];
+<a class="jxr_linenumber" name="L88" href="#L88">88</a>          }
+<a class="jxr_linenumber" name="L89" href="#L89">89</a>      }
+<a class="jxr_linenumber" name="L90" href="#L90">90</a>  
+<a class="jxr_linenumber" name="L91" href="#L91">91</a>      <em class="jxr_comment">// one iteration of the compression function</em>
+<a class="jxr_linenumber" name="L92" href="#L92">92</a>      <strong class="jxr_keyword">void</strong> implCompress(byte[] b, <strong class="jxr_keyword">int</strong> ofs) {
+<a class="jxr_linenumber" name="L93" href="#L93">93</a>          <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 16; i++) {
+<a class="jxr_linenumber" name="L94" href="#L94">94</a>              <strong class="jxr_keyword">int</strong> k = b[ofs + i] &amp; 0xff;
+<a class="jxr_linenumber" name="L95" href="#L95">95</a>              X[16 + i] = k;
+<a class="jxr_linenumber" name="L96" href="#L96">96</a>              X[32 + i] = k ^ X[i];
+<a class="jxr_linenumber" name="L97" href="#L97">97</a>          }
+<a class="jxr_linenumber" name="L98" href="#L98">98</a>  
+<a class="jxr_linenumber" name="L99" href="#L99">99</a>          <em class="jxr_comment">// update the checksum</em>
+<a class="jxr_linenumber" name="L100" href="#L100">100</a>         <strong class="jxr_keyword">int</strong> t = C[15];
+<a class="jxr_linenumber" name="L101" href="#L101">101</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 16; i++) {
+<a class="jxr_linenumber" name="L102" href="#L102">102</a>             t = (C[i] ^= S[X[16 + i] ^ t]);
+<a class="jxr_linenumber" name="L103" href="#L103">103</a>         }
+<a class="jxr_linenumber" name="L104" href="#L104">104</a> 
+<a class="jxr_linenumber" name="L105" href="#L105">105</a>         t = 0;
+<a class="jxr_linenumber" name="L106" href="#L106">106</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 0; i &lt; 18; i++) {
+<a class="jxr_linenumber" name="L107" href="#L107">107</a>             <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> j = 0; j &lt; 48; j++) {
+<a class="jxr_linenumber" name="L108" href="#L108">108</a>                 t = (X[j] ^= S[t]);
+<a class="jxr_linenumber" name="L109" href="#L109">109</a>             }
+<a class="jxr_linenumber" name="L110" href="#L110">110</a>             t = (t + i) &amp; 0xff;
+<a class="jxr_linenumber" name="L111" href="#L111">111</a>         }
+<a class="jxr_linenumber" name="L112" href="#L112">112</a>     }
+<a class="jxr_linenumber" name="L113" href="#L113">113</a> 
+<a class="jxr_linenumber" name="L114" href="#L114">114</a>     <em class="jxr_comment">// substitution table derived from Pi. Copied from the RFC.</em>
+<a class="jxr_linenumber" name="L115" href="#L115">115</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">int</strong>[] S = <strong class="jxr_keyword">new</strong> <strong class="jxr_keyword">int</strong>[] {
+<a class="jxr_linenumber" name="L116" href="#L116">116</a>         41, 46, 67, 201, 162, 216, 124, 1, 61, 54, 84, 161, 236, 240, 6,
+<a class="jxr_linenumber" name="L117" href="#L117">117</a>         19, 98, 167, 5, 243, 192, 199, 115, 140, 152, 147, 43, 217, 188,
+<a class="jxr_linenumber" name="L118" href="#L118">118</a>         76, 130, 202, 30, 155, 87, 60, 253, 212, 224, 22, 103, 66, 111, 24,
+<a class="jxr_linenumber" name="L119" href="#L119">119</a>         138, 23, 229, 18, 190, 78, 196, 214, 218, 158, 222, 73, 160, 251,
+<a class="jxr_linenumber" name="L120" href="#L120">120</a>         245, 142, 187, 47, 238, 122, 169, 104, 121, 145, 21, 178, 7, 63,
+<a class="jxr_linenumber" name="L121" href="#L121">121</a>         148, 194, 16, 137, 11, 34, 95, 33, 128, 127, 93, 154, 90, 144, 50,
+<a class="jxr_linenumber" name="L122" href="#L122">122</a>         39, 53, 62, 204, 231, 191, 247, 151, 3, 255, 25, 48, 179, 72, 165,
+<a class="jxr_linenumber" name="L123" href="#L123">123</a>         181, 209, 215, 94, 146, 42, 172, 86, 170, 198, 79, 184, 56, 210,
+<a class="jxr_linenumber" name="L124" href="#L124">124</a>         150, 164, 125, 182, 118, 252, 107, 226, 156, 116, 4, 241, 69, 157,
+<a class="jxr_linenumber" name="L125" href="#L125">125</a>         112, 89, 100, 113, 135, 32, 134, 91, 207, 101, 230, 45, 168, 2, 27,
+<a class="jxr_linenumber" name="L126" href="#L126">126</a>         96, 37, 173, 174, 176, 185, 246, 28, 70, 97, 105, 52, 64, 126, 15,
+<a class="jxr_linenumber" name="L127" href="#L127">127</a>         85, 71, 163, 35, 221, 81, 175, 58, 195, 92, 249, 206, 186, 197,
+<a class="jxr_linenumber" name="L128" href="#L128">128</a>         234, 38, 44, 83, 13, 110, 133, 40, 132, 9, 211, 223, 205, 244, 65,
+<a class="jxr_linenumber" name="L129" href="#L129">129</a>         129, 77, 82, 106, 220, 55, 200, 108, 193, 171, 250, 36, 225, 123,
+<a class="jxr_linenumber" name="L130" href="#L130">130</a>         8, 12, 189, 177, 74, 120, 136, 149, 139, 227, 99, 232, 109, 233,
+<a class="jxr_linenumber" name="L131" href="#L131">131</a>         203, 213, 254, 59, 0, 29, 57, 242, 239, 183, 14, 102, 88, 208, 228,
+<a class="jxr_linenumber" name="L132" href="#L132">132</a>         166, 119, 114, 248, 235, 117, 75, 10, 49, 68, 80, 180, 143, 237,
+<a class="jxr_linenumber" name="L133" href="#L133">133</a>         31, 26, 219, 153, 141, 51, 159, 17, 131, 20,
+<a class="jxr_linenumber" name="L134" href="#L134">134</a>     };
+<a class="jxr_linenumber" name="L135" href="#L135">135</a> 
+<a class="jxr_linenumber" name="L136" href="#L136">136</a>     <em class="jxr_comment">// digest padding. 17 element array.</em>
+<a class="jxr_linenumber" name="L137" href="#L137">137</a>     <em class="jxr_comment">// padding[0] is null</em>
+<a class="jxr_linenumber" name="L138" href="#L138">138</a>     <em class="jxr_comment">// padding[i] is an array of i time the byte value i (i = 1..16)</em>
+<a class="jxr_linenumber" name="L139" href="#L139">139</a>     <strong class="jxr_keyword">private</strong> <strong class="jxr_keyword">final</strong> <strong class="jxr_keyword">static</strong> byte[][] PADDING;
+<a class="jxr_linenumber" name="L140" href="#L140">140</a> 
+<a class="jxr_linenumber" name="L141" href="#L141">141</a>     <strong class="jxr_keyword">static</strong> {
+<a class="jxr_linenumber" name="L142" href="#L142">142</a>         PADDING = <strong class="jxr_keyword">new</strong> byte[17][];
+<a class="jxr_linenumber" name="L143" href="#L143">143</a>         <strong class="jxr_keyword">for</strong> (<strong class="jxr_keyword">int</strong> i = 1; i &lt; 17; i++) {
+<a class="jxr_linenumber" name="L144" href="#L144">144</a>             byte[] b = <strong class="jxr_keyword">new</strong> byte[i];
+<a class="jxr_linenumber" name="L145" href="#L145">145</a>             Arrays.fill(b, (byte)i);
+<a class="jxr_linenumber" name="L146" href="#L146">146</a>             PADDING[i] = b;
+<a class="jxr_linenumber" name="L147" href="#L147">147</a>         }
+<a class="jxr_linenumber" name="L148" href="#L148">148</a>     }
+<a class="jxr_linenumber" name="L149" href="#L149">149</a> 
+<a class="jxr_linenumber" name="L150" href="#L150">150</a> }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>
