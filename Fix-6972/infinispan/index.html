@@ -1,0 +1,1376 @@
+<html>
+	<head>
+		<title>checkstyle xml difference report</title>
+		<style type="text/css" media="all">@import url("./css/maven-base.css");@import url("./css/maven-theme.css"); );</style>
+		<http-equiv http-equiv="Content-Language" content="en"></http-equiv>
+	</head>
+	<body class="composite">
+		<div id="contentBox">
+			<div class="section">
+				<h2 a="Checkstyle XML difference report">Checkstyle XML difference report</h2>
+				This is symmetric difference generated from two checkstyle-result.xml reports. <br/>
+				All matching records from each XML file are deleted, then remaining records are merged into single report. <br>
+		        <a href="https://github.com/checkstyle/contribution/tree/master/patch-diff-report-tool">Utility that generated this report.</a>
+			</div>
+
+			
+				<h2 a="Checkstyle configuration report">Checkstyle configuration report</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Module Name</th>
+								<th>Base properties</th>
+								<th>Patch properties</th>
+							</tr>
+							
+								
+									<tr>
+										<td class="c">Checker</td>
+										
+										<td class="c">
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												haltOnException
+												
+													<li>false</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">TreeWalker</td>
+										
+										<td class="c">
+											
+										</td>
+										
+										
+										<td class="c">
+											
+										</td>
+										
+									</tr>
+									
+										
+									<tr>
+										<td class="c">SuppressionXpathSingleFilter</td>
+										
+										<td class="c">
+											
+												message
+												
+													<li>Javadoc comment at column \d+ has parse error</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												message
+												
+													<li>Javadoc comment at column \d+ has parse error</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+										
+									<tr>
+										<td class="c">NoEnumTrailingComma</td>
+										
+										
+										<td> </td>
+										<td class="a">
+											
+										</td>
+										
+										
+									</tr>
+									
+								
+									
+								
+									
+										
+									<tr>
+										<td class="c">SuppressionSingleFilter</td>
+										
+										<td class="c">
+											
+												checks
+												
+													<li>Checker</li>
+												
+												<br/>
+											
+												message
+												
+													<li>Exception occurred while parsing</li>
+												
+												<br/>
+											
+										</td>
+										
+										
+										<td class="c">
+											
+												checks
+												
+													<li>Checker</li>
+												
+												<br/>
+											
+												message
+												
+													<li>Exception occurred while parsing</li>
+												
+												<br/>
+											
+										</td>
+										
+									</tr>
+									
+								
+									
+								
+								
+					</table>	
+				</div>
+			
+
+			<div class="section">
+				<h2 a="Summary:">Summary:</h2>
+				<div class="section">
+					<table border="0" class="bodyTable">
+						<tr class="a">
+							<th>Report id</th>
+							<th>Files</th>
+							<th>Violations</th>
+							
+								<th>Severity-error</th>
+							
+						</tr>
+						<tr class="b">
+							<td>base</td>
+							<td id="filesBase">4840</td>
+							<td id="totalBase">0</td>
+							
+								<td id="errorSeverityNumBase">0</td>
+							
+						</tr>
+						<tr class="a">
+							<td>patch</td>
+							<td id="filesPatch">4840</td>
+							<td id="totalPatch">38 (38 added)</td>
+							
+								<td id="errorSeverityStatisticsPatch">38 (38 added)</td>
+							
+						</tr>
+						<tr class="d">
+							<td/>
+							<td id="filesDiff">35 files with differences</td>
+							<td id="totalDiff">38 changes in violations</td>
+							
+								<td id="errorSeverityNumDiff">38 changes in violations</td>
+							
+						<tr>
+					</table>
+
+					
+						<br />
+						<table border="0" class="bodyTable">
+							<tr class="a">
+								<th>Report id</th>
+								
+									<th>com.puppycrawl.tools.checkstyle.checks.coding.NoEnumTrailingCommaCheck</th>
+								
+							</tr>
+							<tr class="b">
+								<td>base</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.coding.NoEnumTrailingCommaCheckModuleNumBase">0</td>
+								
+							</tr>
+							<tr class="a">
+								<td>patch</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.coding.NoEnumTrailingCommaCheckModuleStatisticsPatch">38 (38 added)</td>
+								
+							</tr>
+							<tr class="d">
+								<td>changes in violations</td>
+								
+									<td id="com.puppycrawl.tools.checkstyle.checks.coding.NoEnumTrailingCommaCheckModuleNumDiff">38</td>
+								
+							<tr>
+						</table>
+					
+
+					<br />
+					Number of unique base messages reported below: <span id="uniqueMessagesBase">0</span><br />
+					Number of unique patch messages reported below: <span id="uniqueMessagesPatch">38</span><br />
+				</div>
+			</div>
+
+			<div class="section">
+				<h2 a="Violations:">Violations:</h2>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/client/hotrod-client/src/main/java/org/infinispan/client/hotrod/impl/operations/PingOperation.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A1" href = "#A1">#A1</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/client/hotrod-client/src/main/java/org/infinispan/client/hotrod/impl/operations/PingOperation.java.html#L72">72</a></td>
+								
+								
+									
+									<td>11</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/commands/write/ValueMatcher.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A2" href = "#A2">#A2</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/commands/write/ValueMatcher.java.html#L120">120</a></td>
+								
+								
+									
+									<td>5</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Element.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A3" href = "#A3">#A3</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Element.java.html#L83">83</a></td>
+								
+								
+									
+									<td>45</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Parser70.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A4" href = "#A4">#A4</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Parser70.java.html#L1944">1944</a></td>
+								
+								
+									
+									<td>91</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A5" href = "#A5">#A5</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Parser70.java.html#L1977">1977</a></td>
+								
+								
+									
+									<td>19</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Parser71.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A6" href = "#A6">#A6</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Parser71.java.html#L1945">1945</a></td>
+								
+								
+									
+									<td>91</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A7" href = "#A7">#A7</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Parser71.java.html#L1978">1978</a></td>
+								
+								
+									
+									<td>19</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Parser72.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A8" href = "#A8">#A8</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Parser72.java.html#L1954">1954</a></td>
+								
+								
+									
+									<td>91</td>
+								
+							</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A9" href = "#A9">#A9</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/configuration/parsing/Parser72.java.html#L1987">1987</a></td>
+								
+								
+									
+									<td>19</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/distribution/DataLocality.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A10" href = "#A10">#A10</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/distribution/DataLocality.java.html#L18">18</a></td>
+								
+								
+									
+									<td>35</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/distribution/topologyaware/TopologyLevel.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A11" href = "#A11">#A11</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/distribution/topologyaware/TopologyLevel.java.html#L14">14</a></td>
+								
+								
+									
+									<td>8</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/partitionhandling/AvailabilityMode.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A12" href = "#A12">#A12</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/partitionhandling/AvailabilityMode.java.html#L14">14</a></td>
+								
+								
+									
+									<td>15</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/registry/InternalCacheRegistry.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A13" href = "#A13">#A13</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/registry/InternalCacheRegistry.java.html#L21">21</a></td>
+								
+								
+									
+									<td>11</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/topology/CacheTopologyControlCommand.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A14" href = "#A14">#A14</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/main/java/org/infinispan/topology/CacheTopologyControlCommand.java.html#L54">54</a></td>
+								
+								
+									
+									<td>31</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/test/java/org/infinispan/configuration/module/Attribute.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A15" href = "#A15">#A15</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/core/src/test/java/org/infinispan/configuration/module/Attribute.java.html#L16">16</a></td>
+								
+								
+									
+									<td>40</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/cli/src/main/java/org/infinispan/persistence/cli/configuration/Attribute.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A16" href = "#A16">#A16</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/cli/src/main/java/org/infinispan/persistence/cli/configuration/Attribute.java.html#L16">16</a></td>
+								
+								
+									
+									<td>28</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/jdbc/src/main/java/org/infinispan/persistence/jdbc/configuration/Element.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A17" href = "#A17">#A17</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/jdbc/src/main/java/org/infinispan/persistence/jdbc/configuration/Element.java.html#L29">29</a></td>
+								
+								
+									
+									<td>41</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/leveldb/src/main/java/org/infinispan/persistence/leveldb/configuration/Attribute.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A18" href = "#A18">#A18</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/leveldb/src/main/java/org/infinispan/persistence/leveldb/configuration/Attribute.java.html#L26">26</a></td>
+								
+								
+									
+									<td>16</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/leveldb/src/main/java/org/infinispan/persistence/leveldb/configuration/Element.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A19" href = "#A19">#A19</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/leveldb/src/main/java/org/infinispan/persistence/leveldb/configuration/Element.java.html#L18">18</a></td>
+								
+								
+									
+									<td>34</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/remote/src/main/java/org/infinispan/persistence/remote/configuration/Attribute.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A20" href = "#A20">#A20</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/remote/src/main/java/org/infinispan/persistence/remote/configuration/Attribute.java.html#L42">42</a></td>
+								
+								
+									
+									<td>46</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/rest/src/main/java/org/infinispan/persistence/rest/configuration/Attribute.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A21" href = "#A21">#A21</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/persistence/rest/src/main/java/org/infinispan/persistence/rest/configuration/Attribute.java.html#L28">28</a></td>
+								
+								
+									
+									<td>32</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/hotrod/src/main/scala/org/infinispan/server/hotrod/HotRodDecoderState.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A22" href = "#A22">#A22</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/hotrod/src/main/scala/org/infinispan/server/hotrod/HotRodDecoderState.java.html#L13">13</a></td>
+								
+								
+									
+									<td>16</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/endpoint/src/main/java/org/infinispan/server/endpoint/subsystem/Attribute.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A23" href = "#A23">#A23</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/endpoint/src/main/java/org/infinispan/server/endpoint/subsystem/Attribute.java.html#L67">67</a></td>
+								
+								
+									
+									<td>45</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/endpoint/src/main/java/org/infinispan/server/endpoint/subsystem/Element.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A24" href = "#A24">#A24</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/endpoint/src/main/java/org/infinispan/server/endpoint/subsystem/Element.java.html#L57">57</a></td>
+								
+								
+									
+									<td>49</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/endpoint/src/main/java/org/infinispan/server/endpoint/subsystem/Namespace.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A25" href = "#A25">#A25</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/endpoint/src/main/java/org/infinispan/server/endpoint/subsystem/Namespace.java.html#L33">33</a></td>
+								
+								
+									
+									<td>99</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/endpoint/src/main/java/org/infinispan/server/endpoint/subsystem/SaslQop.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A26" href = "#A26">#A26</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/endpoint/src/main/java/org/infinispan/server/endpoint/subsystem/SaslQop.java.html#L45">45</a></td>
+								
+								
+									
+									<td>27</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/endpoint/src/main/java/org/infinispan/server/endpoint/subsystem/SaslStrength.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A27" href = "#A27">#A27</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/endpoint/src/main/java/org/infinispan/server/endpoint/subsystem/SaslStrength.java.html#L43">43</a></td>
+								
+								
+									
+									<td>9</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/Attribute.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A28" href = "#A28">#A28</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/Attribute.java.html#L143">143</a></td>
+								
+								
+									
+									<td>35</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/Element.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A29" href = "#A29">#A29</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/Element.java.html#L91">91</a></td>
+								
+								
+									
+									<td>41</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/Indexing.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A30" href = "#A30">#A30</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/Indexing.java.html#L33">33</a></td>
+								
+								
+									
+									<td>21</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/Mode.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A31" href = "#A31">#A31</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/Mode.java.html#L32">32</a></td>
+								
+								
+									
+									<td>17</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/Namespace.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A32" href = "#A32">#A32</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/Namespace.java.html#L44">44</a></td>
+								
+								
+									
+									<td>98</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/StartMode.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A33" href = "#A33">#A33</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/StartMode.java.html#L32">32</a></td>
+								
+								
+									
+									<td>43</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/TransactionMode.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A34" href = "#A34">#A34</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/infinispan/src/main/java/org/jboss/as/clustering/infinispan/subsystem/TransactionMode.java.html#L32">32</a></td>
+								
+								
+									
+									<td>82</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/jgroups/src/main/java/org/jboss/as/clustering/jgroups/subsystem/Attribute.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A35" href = "#A35">#A35</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/jgroups/src/main/java/org/jboss/as/clustering/jgroups/subsystem/Attribute.java.html#L51">51</a></td>
+								
+								
+									
+									<td>25</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/jgroups/src/main/java/org/jboss/as/clustering/jgroups/subsystem/Element.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A36" href = "#A36">#A36</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/jgroups/src/main/java/org/jboss/as/clustering/jgroups/subsystem/Element.java.html#L40">40</a></td>
+								
+								
+									
+									<td>35</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/jgroups/src/main/java/org/jboss/as/clustering/jgroups/subsystem/Namespace.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A37" href = "#A37">#A37</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/integration/jgroups/src/main/java/org/jboss/as/clustering/jgroups/subsystem/Namespace.java.html#L45">45</a></td>
+								
+								
+									
+									<td>106</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+				<div class="section">
+					<h3>/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/memcached/src/main/scala/org/infinispan/server/memcached/MemcachedDecoderState.java</h3>
+					<tr class="b">
+					<table border="0" class="bodyTable">
+					        <th></th>
+							<th>Severity</th>
+							<th>Rule</th>
+							<th>Message</th>
+							<th>Line</th>
+							<th>Col</th>
+						</tr>
+						
+							
+								<tr class="a">
+							
+								<td><a name="A38" href = "#A38">#A38</a></td>
+								<td>error</td>
+								<td>NoEnumTrailingComma</td>
+								<td>Enum should not contain trailing comma.</td>
+								
+									
+									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/infinispan/server/memcached/src/main/scala/org/infinispan/server/memcached/MemcachedDecoderState.java.html#L13">13</a></td>
+								
+								
+									
+									<td>16</td>
+								
+							</tr>
+						
+					</table>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
