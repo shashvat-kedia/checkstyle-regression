@@ -5,101 +5,16 @@
 
 <module name="Checker">
   <property name="haltOnException" value="false"/>
-<module name="TreeWalker">
-  <module name="SummaryJavadoc" />
-  <module name="SuppressionXpathSingleFilter"/>
-    <module name="ArrayTrailingComma"/>
-    <module name="AvoidInlineConditionals"/>
-    <module name="CovariantEquals"/>
-    <module name="DeclarationOrder"/>
-    <module name="DefaultComesLast"/>
-    <module name="EmptyStatement"/>
-    <module name="EqualsAvoidNull"/>
-    <module name="EqualsHashCode"/>
-    <module name="ExplicitInitialization"/>
-    <module name="FallThrough"/>
-    <module name="FinalLocalVariable"/>
-    <module name="HiddenField">
-        <property name="ignoreConstructorParameter" value="true"/>
-        <property name="ignoreSetter" value="true"/>
-        <property name="setterCanReturnItsClass" value="true"/>
+  <module name="TreeWalker">
+    <!-- suppress javadoc parsing errors -->
+    <module name="SuppressionXpathSingleFilter">
+      <property name="message" value="Javadoc comment at column \d+ has parse error"/>
     </module>
-    <module name="IllegalCatch">
-        <property name="illegalClassNames"
-                  value="java.lang.Exception,
-                         java.lang.Throwable,
-                         java.lang.RuntimeException,
-                         java.lang.NullPointerException"/>
-    </module>
-    <module name="IllegalInstantiation">
-        <property name="classes"
-                  value="org.xml.sax.SAXException, org.xml.sax.SAXParseException,
-                         org.apache.commons.beanutils.ConversionException,
-                         org.antlr.v4.runtime.misc.ParseCancellationException,
-                         antlr.RecognitionException, antlr.TokenStreamException,
-                         antlr.TokenStreamRecognitionException, antlr.ANTLRException,
-                         java.lang.StringBuffer"/>
-    </module>
-    <module name="IllegalThrows"/>
-    <module name="IllegalToken">
-        <property name="tokens" value="LABELED_STAT"/>
-        <property name="tokens" value="LITERAL_NATIVE"/>
-        <property name="tokens" value="LITERAL_VOLATILE"/>
-        <property name="tokens" value="LITERAL_ASSERT"/>
-    </module>
-    <module name="IllegalTokenText">
-      <property name="tokens" value="STRING_LITERAL"/>
-      <property name="format" value="^(US-ASCII|ISO-8859-1|UTF-8|UTF-16BE|UTF-16LE|UTF-16)$"/>
-      <property name="ignoreCase" value="true"/>
-    </module>
-    <module name="IllegalType">
-      <property name="illegalClassNames"
-                value="java.util.HashSet, HashSet, java.util.LinkedHashMap, LinkedHashMap,
-                       java.util.TreeMap, TreeMap, java.util.HashMap, HashMap,
-                       java.util.LinkedHashSet, LinkedHashSet, java.util.TreeSet, TreeSet,
-                       java.lang.StringBuffer, StringBuffer"/>
-    </module>
-    <module name="InnerAssignment"/>
-    <module name="MagicNumber"/>
-    <module name="MissingCtor">
-      <property name="severity" value="ignore"/>
-    </module>
-    <module name="MissingSwitchDefault"/>
-    <module name="ModifiedControlVariable"/>
-    <module name="MultipleStringLiterals"/>
-    <module name="MultipleVariableDeclarations"/>
-    <module name="NestedForDepth">
-      <property name="max" value="2"/>
-    </module>
-    <module name="NestedIfDepth">
-      <property name="max" value="3"/>
-    </module>
-    <module name="NestedTryDepth"/>
-    <module name="NoClone"/>
     <module name="NoEnumTrailingComma"/>
-    <module name="NoFinalizer"/>
-    <module name="OneStatementPerLine"/>
-    <module name="OverloadMethodsDeclarationOrder"/>
-    <module name="PackageDeclaration"/>
-    <module name="ParameterAssignment"/>
-    <module name="RequireThis"/>
-    <module name="ReturnCount">
-      <property name="max" value="1"/>
-      <property name="maxForVoid" value="0"/>
-    </module>
-    <module name="SimplifyBooleanExpression"/>
-    <module name="SimplifyBooleanReturn"/>
-    <module name="StringLiteralEquality"/>
-    <module name="SuperClone"/>
-    <module name="SuperFinalize"/>
-    <module name="UnnecessaryParentheses"/>
-    <module name="UnnecessarySemicolonAfterTypeMemberDeclaration"/>
-    <module name="UnnecessarySemicolonInEnumeration"/>
-    <module name="UnnecessarySemicolonInTryWithResources"/>
-    <module name="VariableDeclarationUsageDistance"/>
-  </module>
+  </module>     
+  <!-- suppress java parsing errors -->
   <module name="SuppressionSingleFilter">
-<property name="message" value="Exception occurred while parsing"/>
-<property name="checks" value="Checker"/>
+    <property name="message" value="Exception occurred while parsing"/>
+    <property name="checks" value="Checker"/>
+  </module>
 </module>
-</module>     
