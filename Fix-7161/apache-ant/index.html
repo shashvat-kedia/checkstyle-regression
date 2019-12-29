@@ -118,7 +118,7 @@
 											
 												tokens
 												
-													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT</li>
+													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT, ANNOTATION_DEF</li>
 												
 												<br/>
 											
@@ -141,7 +141,7 @@
 											
 												tokens
 												
-													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT, ENUM_DEF</li>
+													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT, ANNOTATION_DEF, ENUM_DEF</li>
 												
 												<br/>
 											
@@ -171,7 +171,7 @@
 											
 												tokens
 												
-													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT</li>
+													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT, ANNOTATION_DEF</li>
 												
 												<br/>
 											
@@ -194,7 +194,7 @@
 											
 												tokens
 												
-													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT, ENUM_DEF</li>
+													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT, ANNOTATION_DEF, ENUM_DEF</li>
 												
 												<br/>
 											
@@ -224,7 +224,7 @@
 											
 												tokens
 												
-													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT</li>
+													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT, ANNOTATION_DEF</li>
 												
 												<br/>
 											
@@ -247,7 +247,7 @@
 											
 												tokens
 												
-													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT, ENUM_DEF</li>
+													<li>CLASS_DEF, METHOD_DEF, CTOR_DEF, LITERAL_FOR, LITERAL_WHILE, STATIC_INIT, INSTANCE_INIT, ANNOTATION_DEF, ENUM_DEF</li>
 												
 												<br/>
 											
@@ -342,17 +342,17 @@
 						<tr class="a">
 							<td>patch</td>
 							<td id="filesPatch">1233</td>
-							<td id="totalPatch">3700 (3 added)</td>
+							<td id="totalPatch">3698 (1 added)</td>
 							
-								<td id="errorSeverityStatisticsPatch">3700 (3 added)</td>
+								<td id="errorSeverityStatisticsPatch">3698 (1 added)</td>
 							
 						</tr>
 						<tr class="d">
 							<td/>
 							<td id="filesDiff">1 file with differences</td>
-							<td id="totalDiff">3 changes in violations</td>
+							<td id="totalDiff">1 change in violations</td>
 							
-								<td id="errorSeverityNumDiff">3 changes in violations</td>
+								<td id="errorSeverityNumDiff">1 change in violations</td>
 							
 						<tr>
 					</table>
@@ -389,9 +389,9 @@
 								
 									<td id="RightCurlyAloneModuleStatisticsPatch">157 (1 added)</td>
 								
-									<td id="RightCurlySameModuleStatisticsPatch">7 (1 added)</td>
+									<td id="RightCurlySameModuleStatisticsPatch">6</td>
 								
-									<td id="RightCurlyAloneOrSingleLineModuleStatisticsPatch">7 (1 added)</td>
+									<td id="RightCurlyAloneOrSingleLineModuleStatisticsPatch">6</td>
 								
 									<td id="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheckModuleStatisticsPatch">3529</td>
 								
@@ -401,9 +401,9 @@
 								
 									<td id="RightCurlyAloneModuleNumDiff">1</td>
 								
-									<td id="RightCurlySameModuleNumDiff">1</td>
+									<td id="RightCurlySameModuleNumDiff">0</td>
 								
-									<td id="RightCurlyAloneOrSingleLineModuleNumDiff">1</td>
+									<td id="RightCurlyAloneOrSingleLineModuleNumDiff">0</td>
 								
 									<td id="com.puppycrawl.tools.checkstyle.checks.javadoc.SummaryJavadocCheckModuleNumDiff">0</td>
 								
@@ -413,7 +413,7 @@
 
 					<br />
 					Number of unique base messages reported below: <span id="uniqueMessagesBase">0</span><br />
-					Number of unique patch messages reported below: <span id="uniqueMessagesPatch">3</span><br />
+					Number of unique patch messages reported below: <span id="uniqueMessagesPatch">1</span><br />
 				</div>
 			</div>
 
@@ -434,43 +434,9 @@
 							
 								<tr class="a">
 							
-								<td><a name="A1" href = "#A1">#</a></td>
+								<td><a name="A1" href = "#A1">#A1</a></td>
 								<td>error</td>
 								<td>RightCurlyAlone</td>
-								<td>&#39;}&#39; at column 88 should be alone on a line.</td>
-								
-									
-									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/apache-ant/src/tests/antunit/taskdefs/apt/Distributed.java.html#L36">36</a></td>
-								
-								
-									
-									<td>88</td>
-								
-							</tr>
-						
-							
-								<tr class="a">
-							
-								<td><a name="A2" href = "#A2">#</a></td>
-								<td>error</td>
-								<td>RightCurlyAloneOrSingleLine</td>
-								<td>&#39;}&#39; at column 88 should be alone on a line.</td>
-								
-									
-									<td><a href = "xref/Users/shashvatkedia/Desktop/contribution/checkstyle-tester/repositories/apache-ant/src/tests/antunit/taskdefs/apt/Distributed.java.html#L36">36</a></td>
-								
-								
-									
-									<td>88</td>
-								
-							</tr>
-						
-							
-								<tr class="a">
-							
-								<td><a name="A3" href = "#A3">#</a></td>
-								<td>error</td>
-								<td>RightCurlySame</td>
 								<td>&#39;}&#39; at column 88 should be alone on a line.</td>
 								
 									

@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>AllOf xref</title>
+<link type="text/css" rel="stylesheet" href="../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   <em class="jxr_comment"> * Copyright (c) 2003, Oracle and/or its affiliates. All rights reserved.</em>
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_comment"> * DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS FILE HEADER.</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_comment"> * This code is free software; you can redistribute it and/or modify it</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_comment"> * under the terms of the GNU General Public License version 2 only, as</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_comment"> * published by the Free Software Foundation.</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <em class="jxr_comment"> * This code is distributed in the hope that it will be useful, but WITHOUT</em>
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>  <em class="jxr_comment"> * ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_comment"> * FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_comment"> * version 2 for more details (a copy is included in the LICENSE file that</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>  <em class="jxr_comment"> * accompanied this code).</em>
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>  <em class="jxr_comment"> * You should have received a copy of the GNU General Public License version</em>
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>  <em class="jxr_comment"> * 2 along with this work; if not, write to the Free Software Foundation,</em>
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>  <em class="jxr_comment"> * Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301 USA.</em>
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>  <em class="jxr_comment"> *</em>
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>  <em class="jxr_comment"> * Please contact Oracle, 500 Oracle Parkway, Redwood Shores, CA 94065 USA</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_comment"> * or visit www.oracle.com if you need additional information or have any</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_comment"> * questions.</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>  
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>  <em class="jxr_comment">/*</em>
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>  <em class="jxr_comment"> * @test</em>
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>  <em class="jxr_comment"> * @bug     4946090</em>
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>  <em class="jxr_comment"> * @summary AllOf static factory is broken in Regular and Jumbo enum set</em>
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>  <em class="jxr_comment"> * @author  Josh Bloch</em>
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>  <em class="jxr_comment"> */</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <strong class="jxr_keyword">import</strong> java.util.*;
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>  <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">class</strong> AllOf {
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>      <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">static</strong> <strong class="jxr_keyword">void</strong> main(String[] args) <strong class="jxr_keyword">throws</strong> Exception {
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>          test(Test0.<strong class="jxr_keyword">class</strong>, 0);
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>          test(Test33.<strong class="jxr_keyword">class</strong>, 33);
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>          test(Test127.<strong class="jxr_keyword">class</strong>, 127);
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>          test(Test128.<strong class="jxr_keyword">class</strong>, 128);
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>      }
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>  
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>      <strong class="jxr_keyword">static</strong> &lt;T <strong class="jxr_keyword">extends</strong> Enum&lt;T&gt;&gt; <strong class="jxr_keyword">void</strong> test(Class&lt;T&gt; enumClass,
+<a class="jxr_linenumber" name="L42" href="#L42">42</a>                                                  <strong class="jxr_keyword">int</strong> expected) {
+<a class="jxr_linenumber" name="L43" href="#L43">43</a>          EnumSet&lt;T&gt; set = EnumSet.allOf(enumClass);
+<a class="jxr_linenumber" name="L44" href="#L44">44</a>          <strong class="jxr_keyword">if</strong> (set.size() != expected)
+<a class="jxr_linenumber" name="L45" href="#L45">45</a>              <strong class="jxr_keyword">throw</strong> <strong class="jxr_keyword">new</strong> RuntimeException(set.size() +<span class="jxr_string">" != "</span> + expected);
+<a class="jxr_linenumber" name="L46" href="#L46">46</a>          set.toString();
+<a class="jxr_linenumber" name="L47" href="#L47">47</a>      }
+<a class="jxr_linenumber" name="L48" href="#L48">48</a>  
+<a class="jxr_linenumber" name="L49" href="#L49">49</a>      <strong class="jxr_keyword">public</strong> enum Test0 {}
+<a class="jxr_linenumber" name="L50" href="#L50">50</a>  
+<a class="jxr_linenumber" name="L51" href="#L51">51</a>      <strong class="jxr_keyword">public</strong> enum Test33 {
+<a class="jxr_linenumber" name="L52" href="#L52">52</a>          T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15, T16,
+<a class="jxr_linenumber" name="L53" href="#L53">53</a>          T17, T18, T19, T20, T21, T22, T23, T24, T25, T26, T27, T28, T29, T30,
+<a class="jxr_linenumber" name="L54" href="#L54">54</a>          T31, T32, T33
+<a class="jxr_linenumber" name="L55" href="#L55">55</a>      }
+<a class="jxr_linenumber" name="L56" href="#L56">56</a>  
+<a class="jxr_linenumber" name="L57" href="#L57">57</a>      <strong class="jxr_keyword">public</strong> enum Test127 {
+<a class="jxr_linenumber" name="L58" href="#L58">58</a>          T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15,
+<a class="jxr_linenumber" name="L59" href="#L59">59</a>          T16, T17, T18, T19, T20, T21, T22, T23, T24, T25, T26, T27, T28, T29,
+<a class="jxr_linenumber" name="L60" href="#L60">60</a>          T30, T31, T32, T33, T34, T35, T36, T37, T38, T39, T40, T41, T42, T43,
+<a class="jxr_linenumber" name="L61" href="#L61">61</a>          T44, T45, T46, T47, T48, T49, T50, T51, T52, T53, T54, T55, T56, T57,
+<a class="jxr_linenumber" name="L62" href="#L62">62</a>          T58, T59, T60, T61, T62, T63, T64, T65, T66, T67, T68, T69, T70, T71,
+<a class="jxr_linenumber" name="L63" href="#L63">63</a>          T72, T73, T74, T75, T76, T77, T78, T79, T80, T81, T82, T83, T84, T85,
+<a class="jxr_linenumber" name="L64" href="#L64">64</a>          T86, T87, T88, T89, T90, T91, T92, T93, T94, T95, T96, T97, T98, T99,
+<a class="jxr_linenumber" name="L65" href="#L65">65</a>          T100, T101, T102, T103, T104, T105, T106, T107, T108, T109, T110, T111,
+<a class="jxr_linenumber" name="L66" href="#L66">66</a>          T112, T113, T114, T115, T116, T117, T118, T119, T120, T121, T122, T123,
+<a class="jxr_linenumber" name="L67" href="#L67">67</a>          T124, T125, T126
+<a class="jxr_linenumber" name="L68" href="#L68">68</a>      }
+<a class="jxr_linenumber" name="L69" href="#L69">69</a>  
+<a class="jxr_linenumber" name="L70" href="#L70">70</a>      <strong class="jxr_keyword">public</strong> enum Test128 {
+<a class="jxr_linenumber" name="L71" href="#L71">71</a>          T0, T1, T2, T3, T4, T5, T6, T7, T8, T9, T10, T11, T12, T13, T14, T15,
+<a class="jxr_linenumber" name="L72" href="#L72">72</a>          T16, T17, T18, T19, T20, T21, T22, T23, T24, T25, T26, T27, T28, T29,
+<a class="jxr_linenumber" name="L73" href="#L73">73</a>          T30, T31, T32, T33, T34, T35, T36, T37, T38, T39, T40, T41, T42, T43,
+<a class="jxr_linenumber" name="L74" href="#L74">74</a>          T44, T45, T46, T47, T48, T49, T50, T51, T52, T53, T54, T55, T56, T57,
+<a class="jxr_linenumber" name="L75" href="#L75">75</a>          T58, T59, T60, T61, T62, T63, T64, T65, T66, T67, T68, T69, T70, T71,
+<a class="jxr_linenumber" name="L76" href="#L76">76</a>          T72, T73, T74, T75, T76, T77, T78, T79, T80, T81, T82, T83, T84, T85,
+<a class="jxr_linenumber" name="L77" href="#L77">77</a>          T86, T87, T88, T89, T90, T91, T92, T93, T94, T95, T96, T97, T98, T99,
+<a class="jxr_linenumber" name="L78" href="#L78">78</a>          T100, T101, T102, T103, T104, T105, T106, T107, T108, T109, T110, T111,
+<a class="jxr_linenumber" name="L79" href="#L79">79</a>          T112, T113, T114, T115, T116, T117, T118, T119, T120, T121, T122, T123,
+<a class="jxr_linenumber" name="L80" href="#L80">80</a>          T124, T125, T126, T127
+<a class="jxr_linenumber" name="L81" href="#L81">81</a>      }
+<a class="jxr_linenumber" name="L82" href="#L82">82</a>  }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>
