@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head><meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<title>DeliverOrder xref</title>
+<link type="text/css" rel="stylesheet" href="../../../../stylesheet.css" />
+</head>
+<body>
+<pre>
+<a class="jxr_linenumber" name="L1" href="#L1">1</a>   <strong class="jxr_keyword">package</strong> org.infinispan.remoting.inboundhandler;
+<a class="jxr_linenumber" name="L2" href="#L2">2</a>   
+<a class="jxr_linenumber" name="L3" href="#L3">3</a>   <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L4" href="#L4">4</a>   <em class="jxr_javadoccomment"> * Used in RPC, it defines how the messages are delivered to the nodes.</em>
+<a class="jxr_linenumber" name="L5" href="#L5">5</a>   <em class="jxr_javadoccomment"> *</em>
+<a class="jxr_linenumber" name="L6" href="#L6">6</a>   <em class="jxr_javadoccomment"> * @author Pedro Ruivo</em>
+<a class="jxr_linenumber" name="L7" href="#L7">7</a>   <em class="jxr_javadoccomment"> * @since 7.1</em>
+<a class="jxr_linenumber" name="L8" href="#L8">8</a>   <em class="jxr_javadoccomment"> */</em>
+<a class="jxr_linenumber" name="L9" href="#L9">9</a>   <strong class="jxr_keyword">public</strong> enum DeliverOrder {
+<a class="jxr_linenumber" name="L10" href="#L10">10</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L11" href="#L11">11</a>  <em class="jxr_javadoccomment">    * The message is delivered as soon as it is received. No order is ensured between messages.</em>
+<a class="jxr_linenumber" name="L12" href="#L12">12</a>  <em class="jxr_javadoccomment">    */</em>
+<a class="jxr_linenumber" name="L13" href="#L13">13</a>     NONE {
+<a class="jxr_linenumber" name="L14" href="#L14">14</a>        @Override
+<a class="jxr_linenumber" name="L15" href="#L15">15</a>        <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> preserveOrder() {
+<a class="jxr_linenumber" name="L16" href="#L16">16</a>           <strong class="jxr_keyword">return</strong> false;
+<a class="jxr_linenumber" name="L17" href="#L17">17</a>        }
+<a class="jxr_linenumber" name="L18" href="#L18">18</a>     },
+<a class="jxr_linenumber" name="L19" href="#L19">19</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L20" href="#L20">20</a>  <em class="jxr_javadoccomment">    * The message is delivered by the order they are sent. If a node sends M1 and M2 to other node, it delivers first M1</em>
+<a class="jxr_linenumber" name="L21" href="#L21">21</a>  <em class="jxr_javadoccomment">    * and then M2.</em>
+<a class="jxr_linenumber" name="L22" href="#L22">22</a>  <em class="jxr_javadoccomment">    */</em>
+<a class="jxr_linenumber" name="L23" href="#L23">23</a>     PER_SENDER {
+<a class="jxr_linenumber" name="L24" href="#L24">24</a>        @Override
+<a class="jxr_linenumber" name="L25" href="#L25">25</a>        <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> preserveOrder() {
+<a class="jxr_linenumber" name="L26" href="#L26">26</a>           <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L27" href="#L27">27</a>        }
+<a class="jxr_linenumber" name="L28" href="#L28">28</a>     },
+<a class="jxr_linenumber" name="L29" href="#L29">29</a>     <em class="jxr_javadoccomment">/**</em>
+<a class="jxr_linenumber" name="L30" href="#L30">30</a>  <em class="jxr_javadoccomment">    * The message is delivered in the same order in all the destinations. If N1 sends M1 and N2 sends M2 to nodes N3 and</em>
+<a class="jxr_linenumber" name="L31" href="#L31">31</a>  <em class="jxr_javadoccomment">    * N4, if N3 delivers first M1 and then M2, then N4 also delivers first M1 and then M2.</em>
+<a class="jxr_linenumber" name="L32" href="#L32">32</a>  <em class="jxr_javadoccomment">    */</em>
+<a class="jxr_linenumber" name="L33" href="#L33">33</a>     TOTAL {
+<a class="jxr_linenumber" name="L34" href="#L34">34</a>        @Override
+<a class="jxr_linenumber" name="L35" href="#L35">35</a>        <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">boolean</strong> preserveOrder() {
+<a class="jxr_linenumber" name="L36" href="#L36">36</a>           <strong class="jxr_keyword">return</strong> <strong class="jxr_keyword">true</strong>;
+<a class="jxr_linenumber" name="L37" href="#L37">37</a>        }
+<a class="jxr_linenumber" name="L38" href="#L38">38</a>     };
+<a class="jxr_linenumber" name="L39" href="#L39">39</a>  
+<a class="jxr_linenumber" name="L40" href="#L40">40</a>     <strong class="jxr_keyword">public</strong> <strong class="jxr_keyword">abstract</strong> <strong class="jxr_keyword">boolean</strong> preserveOrder();
+<a class="jxr_linenumber" name="L41" href="#L41">41</a>  }
+</pre>
+<hr/>
+<div id="footer"></div>
+</body>
+</html>
